@@ -1,0 +1,135 @@
+footer.footer {
+  padding-top: 0;
+  padding-bottom: 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #eaeaea;
+  width: 100vw;
+
+  .footer-inner {
+    position: relative;
+    padding-top: 4em;
+    padding-bottom: 2em;
+    height: 100%;
+    display: flex;
+
+    .contact {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 360px;
+
+      form {
+        display: flex;
+        flex-direction: column;
+        // width: 400px;
+
+        label {
+          margin-bottom: 1em;
+        }
+        input {
+          background-color: transparent;
+          border: none;
+          padding: 0.4em 0;
+          position: relative;
+
+          &:focus {
+            outline: none;
+          }
+        }
+        button {
+          font-size: inherit;
+          text-align: left;
+          background-color: transparent;
+          border: none;
+          border-top: 1px solid black;
+          padding: 0.4em 0;
+          display: flex;
+          align-items: center;
+
+          span {
+            margin-right: 0.3em;
+            transition: 0.3s ease;
+          }
+
+          &:hover {
+            span {
+              margin-right: 0.6em;
+            }
+          }
+        }
+      }
+
+      .enquiries {
+        margin-top: -20px;
+        a {
+          text-decoration: underline;
+        }
+      }
+
+      .socials {
+        width: 100%;
+        margin: 40px 0;
+
+        .socials-inner {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          span {
+            position: relative;
+            width: max-content;
+            &:not(:last-child) {
+              margin-bottom: 0.8em;
+            }
+
+            &::after {
+              content: '';
+              display: inline-block;
+              height: 1px;
+              width: 0%;
+              background-color: black;
+              position: absolute;
+              bottom: -0.2em;
+              left: 0;
+              transition: width 0.3s;
+            }
+
+            &:hover::after {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  footer.footer {
+    .footer-inner {
+      flex-direction: row;
+      position: relative;
+      .contact {
+        .socials {
+          margin: 0;
+          .socials-inner {
+            flex-direction: row;
+
+            span {
+              &:not(:last-child) {
+                margin-bottom: 0;
+              }
+            }
+          }
+        }
+        .copyright {
+          position: absolute;
+          bottom: 2em;
+          right: var(--gutter);
+        }
+      }
+    }
+  }
+}

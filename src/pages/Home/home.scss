@@ -1,0 +1,118 @@
+.home {
+  height: calc(100vh - var(--gutter) * 2);
+  width: calc(100vw - var(--gutter) * 2);
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background-color: white;
+
+  .transition-btn {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    z-index: 900;
+  }
+
+  .home-inner {
+    display: flex;
+    flex-direction: column;
+
+    .text {
+      flex-basis: 50%;
+
+      .intro-text {
+        padding: 10vh 0 5vh;
+        display: flex;
+        justify-content: center;
+
+        p {
+          width: 12em;
+          text-align: center;
+        }
+      }
+      .banner-text {
+        flex-basis: 60%;
+        display: flex;
+        justify-content: center;
+
+        h1 {
+          padding: 0;
+          font-size: 11vw;
+          margin-bottom: 0.1em;
+        }
+      }
+    }
+
+    .banner-image {
+      overflow: hidden;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      width: 100vw;
+      max-width: 1500px;
+      height: 60vh;
+      position: relative;
+
+      .overlay {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        transform-origin: top;
+        z-index: 100;
+      }
+
+      img {
+        opacity: 0;
+        overflow: hidden;
+        width: 110%;
+        height: 110%;
+        object-fit: cover;
+        object-position: 50% 35%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .home {
+    .home-inner {
+      .text {
+        .intro-text {
+          p {
+            width: 30em;
+            text-align: center;
+          }
+        }
+        .banner-text {
+          h1 {
+            // font-size: 5.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .home {
+    .home-inner {
+      .text {
+        .intro-text {
+          p {
+            width: 30em;
+            text-align: center;
+          }
+        }
+        .banner-text {
+          h1 {
+            font-size: 8.5rem;
+          }
+        }
+      }
+    }
+  }
+}

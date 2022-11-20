@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'Kern-Regular';
+  src: url('./assets/fonts/Kern-Regular.woff2') format('woff2'),
+    url('./assets/fonts/Kern-Regular.woff') format('woff');
+
+  font-weight: 1 999;
+}
+
+/*  
+url('./assets/fonts/Kern-Cycle-Variable-Regular.woff2')
+format('woff2-variations'),
+url('./assets/fonts/Kern-Cycle-Variable-Regular.woff2')
+format('woff2 supports variations'); */
+
+body,
+button,
+input,
+ul,
+textarea {
+  font-family: Kern-Regular, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* font-variation-settings: 'wght' 100; */
+}

@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import './global.css'
+import './typography.css'
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
+import Layout from './components/Layout/Layout'
+import Home from './pages/Home/Home'
+import Work from './pages/Work/Work'
+import Collection from './pages/Collection/Collection'
+import ArtPiece from './pages/ArtPiece/ArtPiece'
+import Bio from './pages/Bio/Bio'
+import NotFound from './pages/NotFound/NotFound'
+
+import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Layout>
+        <ScrollToTop>
+          <Routes>
+            {/* Route: each set up a matcher between a location and the component to show where that component is at. They tell Routes which component to inject when a certain route is active */}
+
+            <Route path="/" element={<Home />} />
+            <Route path="/work" element={<Work />} />
+            <Route path="/bio" element={<Bio />} />
+            <Route path="/:id" element={<Collection />} />
+            <Route path="/:id/:slug" element={<ArtPiece />} />
+            <Route path="*" element={<NotFound />} />
+            {/* if not other routs match */}
+          </Routes>
+        </ScrollToTop>
+      </Layout>
+    </Router>
+  )
 }
 
-export default App;
+export default App

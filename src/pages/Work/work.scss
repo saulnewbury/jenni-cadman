@@ -1,0 +1,214 @@
+.work {
+  width: 100%;
+  height: 100%;
+
+  .work-inner {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    // TEXT MENU
+    .collections-menu {
+      width: 100%;
+      height: calc(100vh - var(--gutter) * 2);
+      display: flex;
+      align-items: center;
+
+      .link-wrapper {
+        padding: 0.1em 0;
+
+        .c-link {
+          display: inline;
+          position: relative;
+          line-height: 1.2;
+
+          .collection-number {
+            position: absolute;
+            right: -1.5em;
+            bottom: 1.48em;
+            font-size: 0.39em;
+          }
+        }
+      }
+    }
+
+    // COLLECTIONS
+
+    .collections-gallery {
+      .collection {
+        display: flex;
+        flex-direction: column;
+        .image {
+          .image-wrapper {
+            height: 80vw;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+        .info {
+          padding: 1.5rem 0;
+          .info-inner {
+            .title {
+              margin-bottom: 1rem;
+            }
+            p:not(:last-child) {
+              margin-bottom: 1em;
+            }
+            .see-collection-link {
+              margin: 1.2em 0 1.5em;
+              background-color: white;
+              transition: background-color 0.3s;
+
+              &:hover {
+                background-color: rgb(241, 241, 241);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .work {
+    --base: 10;
+    .work-inner {
+      .collections-gallery {
+        margin-top: calc(-11px * var(--base));
+        .collection {
+          display: flex;
+          flex-direction: row;
+          padding-top: calc(10px * var(--base));
+          padding-bottom: calc(10px * var(--base));
+
+          .image {
+            flex-basis: 50%;
+            height: auto;
+            display: flex;
+
+            .image-wrapper {
+              height: calc(60px * var(--base));
+              width: 100%;
+            }
+          }
+
+          .info {
+            flex-basis: 50%;
+            display: flex;
+            align-items: center;
+            padding: 0 var(--gutter);
+          }
+        }
+
+        .c1 {
+          .image {
+            justify-content: flex-end;
+          }
+          .info {
+            justify-content: flex-start;
+          }
+        }
+        .c2 {
+          flex-direction: row-reverse;
+          .image {
+            justify-content: flex-start;
+          }
+          .info {
+            justify-content: flex-end;
+          }
+        }
+        .c3 {
+          .image {
+            justify-content: flex-end;
+          }
+          .info {
+            justify-content: flex-start;
+          }
+        }
+        .c4 {
+          flex-direction: row-reverse;
+          .image {
+            justify-content: flex-start;
+          }
+          .info {
+            justify-content: flex-end;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .work {
+    .work-inner {
+      .collections-gallery {
+        .collection {
+          .image {
+            .image-wrapper {
+              height: 600px;
+              width: 100%;
+            }
+          }
+          .info {
+            .info-inner {
+              width: 80%;
+              max-width: 600px;
+            }
+          }
+        }
+
+        .collection.c1 {
+          .image {
+            .image-wrapper {
+              width: calc(46px * var(--base));
+              height: calc(59px * var(--base));
+            }
+          }
+        }
+        .collection.c2 {
+          .image {
+            .image-wrapper {
+              width: calc(65px * var(--base));
+              height: calc(48px * var(--base));
+            }
+          }
+        }
+        .collection.c3 {
+          .image {
+            .image-wrapper {
+              width: calc(65px * var(--base));
+              height: calc(46px * var(--base));
+            }
+          }
+        }
+        .collection.c4 {
+          .image {
+            .image-wrapper {
+              width: calc(59px * var(--base));
+              height: calc(45px * var(--base));
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .work {
+    --base: 11;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  .work {
+    --base: 12;
+  }
+}
