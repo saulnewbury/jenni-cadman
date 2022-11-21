@@ -16,6 +16,9 @@ const Bio = () => {
   const creds = useRef()
   const info = useRef()
 
+  //-------------------------------------------------------------------------
+  // Enter animation
+  //-------------------------------------------------------------------------
   useEffect(() => {
     //Image
     gsap.fromTo(
@@ -39,6 +42,7 @@ const Bio = () => {
       }
     )
 
+    // Bio text
     const ps = info.current.children
     const childSplit = new SplitText(ps, {
       type: 'lines',

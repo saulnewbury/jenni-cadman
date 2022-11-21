@@ -1,11 +1,14 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import './picker.scss'
 
-import { Link } from 'react-router-dom'
-import gsap from 'gsap'
 import Counter from '../Counter/Counter'
 
-const Picker = ({ imagesData, collectionId, id }) => {
+import { Link, useLocation } from 'react-router-dom'
+import gsap from 'gsap'
+import { SplitText } from 'gsap/SplitText'
+gsap.registerPlugin(SplitText)
+
+const Picker = ({ imagesData, collectionId, id, handleExit }) => {
   const { subFolder, images } = imagesData
 
   const [numOfItems, setNumOfItems] = useState(1)
@@ -19,14 +22,37 @@ const Picker = ({ imagesData, collectionId, id }) => {
 
   const pickerViewport = useRef()
   const container = useRef()
+  const q = gsap.utils.selector(pickerViewport)
+
   const lastCurrent = useRef(current)
   const lastLeft = useRef(leftMost)
   const reveal = useRef()
   const hide = useRef()
 
+  const location = useLocation()
+
   const calcValues = setUp(numOfItems)
 
   useEffect(mediaQueries, [])
+
+  //-------------------------------------------------------------------------
+  // Picker Enter Animation
+  //-------------------------------------------------------------------------
+
+  useLayoutEffect(() => {
+    // Picker
+
+    gsap.fromTo(pickerViewport, { opacity: 0 }, { opacity: 1 })
+    gsap.fromTo(q('.image-item'), { opacity: 0 }, { opacity: 1, stagger: 0.05 })
+    // gsap.fromTo(q('.image-item'), { y: 50 }, { y: 0, stagger: 0.05 })
+
+    // Counter
+    gsap.fromTo(
+      [q('.counter'), q('h2'), q('.back')],
+      { opacity: 0 },
+      { opacity: 1 }
+    )
+  }, [location.key])
 
   // Run animations on change of 'current'. Do this as a 'layout' effect so that
   // users don't see a flash of the target state (set by React render).
@@ -89,7 +115,6 @@ const Picker = ({ imagesData, collectionId, id }) => {
       lastLeft.current = leftMost
     }
   })
-
   //-------------------------------------------------------------------------
   // mediaQueries
   //    This function is run as a 'componentDidMount' effect - i.e. after the
@@ -224,25 +249,55 @@ const Picker = ({ imagesData, collectionId, id }) => {
   //    Attached to each menu item as a 'click' event handler. Makes the
   // selected item the new 'current', which will trigger (via GSAP animation)
   // width and opacity changes.
+  //
+  // Also:
+  //    page exit animation (handleExit)
+  //    picker exit animation (exitAnimPicker)
   //-------------------------------------------------------------------------
 
   function handleClick(e) {
+    e.stopPropagation()
     const target = e.currentTarget
     const targetId = +target.dataset.id
 
-    // Prevent default only when initially selecting the item
-    if (targetId !== current) {
-      e.preventDefault()
-    }
-
     // exit function if clicking on item already selected
-    if (targetId === current) return
+    if (targetId === current) {
+      handleExit(
+        `/${collectionId}/${images[current].title
+          .replace(/\s+/g, '-')
+          .toLowerCase()}`
+      )
+      exitAnimPicker()
+      return
+    }
 
     setCurrent(targetId)
 
     // Create flag to determine regular or inverse calculation.
     const isInverse = current > targetId
     containerPosition(targetId, isInverse)
+  }
+
+  //-------------------------------------------------------------------------
+  // Exit animation for picker
+  //-------------------------------------------------------------------------
+
+  function exitAnimPicker() {
+    gsap.to([q('.counter'), q('h2'), q('.back')], {
+      opacity: 0,
+      duration: 0.5,
+      delay: 0.2
+    })
+
+    gsap
+      .to(q('.image-item'), {
+        opacity: 0,
+        stagger: 0.05,
+        delay: 0.2
+      })
+      .set(pickerViewport.current, { opacity: 0 })
+
+    // Counter
   }
 
   //-------------------------------------------------------------------------
@@ -294,12 +349,16 @@ const Picker = ({ imagesData, collectionId, id }) => {
         className="picker-viewport"
         style={{ height: calcValues.height, width: menuWidth }}
       >
-        <Link className="back link" to="/work">
-          BACK
-        </Link>
+        <div className="back-link-container">
+          <Link className="back link" to="/work">
+            BACK
+          </Link>
+        </div>
 
         <div className="artpiece-title">
-          <h2 className="uppercase title sm">{images[current].title}</h2>
+          <div className="artpiece-title-container">
+            <h2 className="uppercase title sm">{images[current].title}</h2>
+          </div>
         </div>
         <div
           className="counter indent"
@@ -316,10 +375,7 @@ const Picker = ({ imagesData, collectionId, id }) => {
           }}
         >
           {images.map((image, idx) => (
-            <Link
-              to={`/${collectionId}/${images[current].title
-                .replace(/\s+/g, '-')
-                .toLowerCase()}`}
+            <span
               className="image-item"
               style={{
                 paddingLeft: calcValues.padding,
@@ -348,7 +404,7 @@ const Picker = ({ imagesData, collectionId, id }) => {
                 <div className="overlay"></div>
               </div>
               <img
-                src={`/images/${subFolder}/${image.image}-${image.detail}.jpg`}
+                src={`/images/${subFolder}/thumbs/${image.image}-thumb.jpg`}
                 alt={image.alt}
                 style={{
                   opacity: idx === current ? 1.0 : 0.7
@@ -356,9 +412,6 @@ const Picker = ({ imagesData, collectionId, id }) => {
               />
               <span
                 className="view btn"
-                to={`/work/${images[current].title
-                  .replace(/\s+/g, '-')
-                  .toLowerCase()}`}
                 style={{
                   opacity: idx === current ? 1.0 : 0,
                   pointerEvents: idx === current ? 'auto' : 'none',
@@ -367,7 +420,7 @@ const Picker = ({ imagesData, collectionId, id }) => {
               >
                 View
               </span>
-            </Link>
+            </span>
           ))}
         </div>
       </div>
