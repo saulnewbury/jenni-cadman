@@ -81,6 +81,7 @@
     .work-inner {
       .collections-gallery {
         margin-top: calc(-11px * var(--base));
+        padding-bottom: calc(10px * var(--base));
         .collection {
           display: flex;
           flex-direction: row;

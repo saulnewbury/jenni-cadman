@@ -33,7 +33,7 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
 
   const calcValues = setUp(numOfItems)
 
-  useEffect(mediaQueries, [])
+  useLayoutEffect(mediaQueries, [])
 
   //-------------------------------------------------------------------------
   // Picker Enter Animation

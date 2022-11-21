@@ -29,7 +29,7 @@ const ArtPiece = () => {
   useLayoutEffect(() => {
     gsap.fromTo(artpiece.current, { opacity: 0 }, { opacity: 1 })
 
-    gsap.fromTo(q('.detail'), { opacity: 0 }, { opacity: 1 })
+    gsap.fromTo(q('.detail'), { opacity: 0 }, { opacity: 1, delay: 0.5 })
 
     // Overlay
     gsap.fromTo(

@@ -60,8 +60,7 @@ const NavBar = () => {
           >
             Bio
           </Link>
-          <Link
-            to="#"
+          <span
             className={`link item ${
               isCurrentRoute === '/contact' ? 'current-path' : ''
             }`}
@@ -71,7 +70,7 @@ const NavBar = () => {
             }}
           >
             Contact
-          </Link>
+          </span>
           {/* if path name contains numbers show element with corrosponding numbers */}
           {/* /\d/.test(isCurrentRoute) */}
           <span className="item num">
