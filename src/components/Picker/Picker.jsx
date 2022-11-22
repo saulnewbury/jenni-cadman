@@ -42,8 +42,22 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
   useLayoutEffect(() => {
     // Picker
 
-    gsap.fromTo(pickerViewport, { opacity: 0 }, { opacity: 1 })
-    gsap.fromTo(q('.image-item'), { opacity: 0 }, { opacity: 1, stagger: 0.05 })
+    // gsap.fromTo(
+    //   pickerViewport.current,
+    //   { opacity: 0 },
+    //   {
+    //     opacity: 1,
+    //     scrollTrigger: { trigger: pickerViewport.current, start: 'top 70%' }
+    //   }
+    // )
+    gsap.fromTo(
+      q('.image-item'),
+      { opacity: 0 },
+      {
+        opacity: 1,
+        stagger: 0.05
+      }
+    )
     // gsap.fromTo(q('.image-item'), { y: 50 }, { y: 0, stagger: 0.05 })
 
     // Counter
@@ -289,13 +303,12 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
       delay: 0.2
     })
 
-    gsap
-      .to(q('.image-item'), {
-        opacity: 0,
-        stagger: 0.05,
-        delay: 0.2
-      })
-      .set(pickerViewport.current, { opacity: 0 })
+    gsap.to(q('.image-item'), {
+      opacity: 0,
+      stagger: 0.05,
+      delay: 0.2
+    })
+    // .set(pickerViewport.current, { opacity: 0 })
 
     // Counter
   }
@@ -393,16 +406,6 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
               }}
               key={idx}
             >
-              <div
-                className="overlay-container"
-                style={{
-                  paddingLeft: calcValues.padding,
-                  paddingRight: calcValues.padding,
-                  width: idx === current ? calcValues.wide : calcValues.narrow
-                }}
-              >
-                <div className="overlay"></div>
-              </div>
               <img
                 src={`/images/${subFolder}/thumbs/${image.image}-thumb.jpg`}
                 alt={image.alt}

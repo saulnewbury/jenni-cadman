@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef } from 'react'
+import React, { useLayoutEffect, useRef } from 'react'
 import './artpiece.scss'
 
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
@@ -6,12 +6,15 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { collections } from '../../data/collections'
 import Picker from '../../components/Picker/Picker'
 
+import gsap from 'gsap'
 import { CustomEase } from 'gsap/CustomEase'
 import { SplitText } from 'gsap/SplitText'
-import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import gsapCore from 'gsap/gsap-core'
 
 gsap.registerPlugin(CustomEase)
 gsap.registerPlugin(SplitText)
+gsap.registerPlugin(ScrollTrigger)
 
 const ArtPiece = () => {
   const { slug, id } = useParams()
@@ -29,11 +32,9 @@ const ArtPiece = () => {
   useLayoutEffect(() => {
     gsap.fromTo(artpiece.current, { opacity: 0 }, { opacity: 1 })
 
-    gsap.fromTo(q('.detail'), { opacity: 0 }, { opacity: 1, delay: 0.5 })
-
-    // Overlay
+    // Main Image Overlay
     gsap.fromTo(
-      q('.overlay'),
+      q('.main-image .overlay'),
       { scaleY: 1 },
       {
         scaleY: 0,
@@ -45,6 +46,35 @@ const ArtPiece = () => {
         )
       }
     )
+
+    // Detail Image Overlay
+    gsap.fromTo(
+      q('.detail-image-inner h4'),
+      { opacity: 0 },
+      {
+        opacity: 1,
+        scrollTrigger: {
+          trigger: q('.detail'),
+          start: 'top 80%',
+          toggleActions: 'play none none none'
+        },
+        delay: 0.5
+      }
+    )
+    gsap.to(q('.detail-image .overlay'), {
+      scaleY: 0,
+      delay: 0.5,
+      duration: 2,
+      ease: CustomEase.create(
+        'custom',
+        'M0,0,C0.05,0,0.149,0.279,0.19,0.374,0.36,0.772,0.528,0.988,1,1'
+      ),
+      scrollTrigger: {
+        trigger: q('.detail'),
+        start: 'top 80%',
+        toggleActions: 'play none none none'
+      }
+    })
 
     // Title
     const childSplit = new SplitText(q('.info h1'), {
@@ -145,13 +175,16 @@ const ArtPiece = () => {
         <div className="detail-inner">
           <div className="spacer"></div>
           <div className="detail-content">
-            <div className="image">
-              <div className="image-inner">
+            <div className="detail-image">
+              <div className="detail-image-inner">
                 <h4>(Detail)</h4>
-                <img
-                  src={`../images/${subFolder}/${image}-${detail}.jpg`}
-                  alt={altText}
-                />
+                <div className="image">
+                  <div className="overlay"></div>
+                  <img
+                    src={`../images/${subFolder}/${image}-${detail}.jpg`}
+                    alt={altText}
+                  />
+                </div>
               </div>
             </div>
           </div>

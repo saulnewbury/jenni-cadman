@@ -27,10 +27,12 @@
         transform-origin: bottom;
       }
       img {
+        padding-bottom: 0.5px;
         margin-right: var(--gutter);
         max-height: 540px;
         max-width: calc(100vw - var(--gutter) * 2);
         width: auto;
+        min-height: 450px; // stop image collapsing to 0 with min-height
         object-fit: contain;
       }
     }
@@ -74,25 +76,42 @@
 
 .detail {
   padding-bottom: 9vw;
+  // opacity: 0;
   .detail-inner {
     .spacer {
       height: 3vh;
     }
     .detail-content {
-      .image {
+      .detail-image {
         display: flex;
         justify-content: flex-end;
         justify-content: flex-start;
 
-        .image-inner {
+        .detail-image-inner {
           h4 {
             margin-bottom: 0.3em;
           }
-          img {
-            max-height: 600px;
-            max-width: calc(100vw - var(--gutter) * 2);
-            width: auto;
-            object-fit: contain;
+          .image {
+            position: relative;
+
+            .overlay {
+              background-color: white;
+              height: 100%;
+              width: 100%;
+              position: absolute;
+              top: 0;
+              left: 0;
+              z-index: 100;
+              transform-origin: bottom;
+            }
+            img {
+              max-height: 600px;
+              max-width: calc(100vw - var(--gutter) * 2);
+              width: auto;
+              min-height: 450px; // stop image collapsing to 0 with min-height
+              object-fit: contain;
+              padding: 0.5px;
+            }
           }
         }
       }
@@ -105,10 +124,19 @@
 // SMALL SCREENS, LAPTOPS - from min-width: 769px
 
 @media screen and (min-width: 746px) {
+  .main-image {
+    .main-image-inner {
+      .image {
+        img {
+          max-width: calc(500px - var(--gutter) * 2); // constrain landscape
+        }
+      }
+    }
+  }
   .detail {
     .detail-inner {
       .detail-content {
-        .image {
+        .detail-image {
           justify-content: center;
           img {
           }
@@ -121,6 +149,13 @@
 @media screen and (min-width: 901px) {
   .main-image {
     .main-image-inner {
+      .image {
+        img {
+          max-width: 600px; // constrain landscape
+          max-height: 600px; // constrain portrait
+        }
+      }
+
       .info {
         .info-inner {
           width: 70%;
@@ -136,6 +171,54 @@
       .image {
         img {
           max-width: 780px;
+          min-height: 500px;
+        }
+      }
+    }
+  }
+  .detail {
+    .detail-inner {
+      .detail-content {
+        .detail-image {
+          .detail-image-inner {
+            .image {
+              img {
+                max-width: 780px;
+                min-height: 500px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .main-image {
+    .main-image-inner {
+      .image {
+        img {
+          max-width: 600px; // constrain landscape
+          max-height: 600px; // constrain portrait
+          min-height: 500px; // constrain prior to loading image
+        }
+      }
+    }
+  }
+  .detail {
+    .detail-inner {
+      .detail-content {
+        .detail-image {
+          .detail-image-inner {
+            .image {
+              img {
+                max-width: 780px; // constrain landscape
+                max-height: 600px; // constrain portrait
+                min-height: 500px; // constrain prior to loading image
+              }
+            }
+          }
         }
       }
     }
@@ -149,6 +232,7 @@
         img {
           max-width: 780px;
           max-height: 700px;
+          min-height: 600px;
         }
       }
       .info {
@@ -161,14 +245,19 @@
       }
     }
   }
-}
-
-@media screen and (min-width: 1441px) {
-  .main-image {
-    .main-image-inner {
-      .image {
-        img {
-          max-height: 600px;
+  .detail {
+    .detail-inner {
+      .detail-content {
+        .detail-image {
+          .detail-image-inner {
+            .image {
+              img {
+                max-width: 780px; // constrain landscape
+                max-height: 700px; // constrain portrait
+                min-height: 600px; // constrain prior to image loading
+              }
+            }
+          }
         }
       }
     }
@@ -180,7 +269,9 @@
     .main-image-inner {
       .image {
         img {
-          max-height: 800px;
+          max-width: 780px; // constrain landscape
+          max-height: 800px; // constrain portait
+          min-height: 700px; // constrain prior to image loading
         }
       }
     }
@@ -188,10 +279,12 @@
   .detail {
     .detail-inner {
       .detail-content {
-        .image {
-          .image-inner {
-            img {
-              max-height: 800px;
+        .detail-image {
+          .detail-image-inner {
+            .image {
+              img {
+                max-height: 800px;
+              }
             }
           }
         }
