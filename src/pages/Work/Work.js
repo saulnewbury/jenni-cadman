@@ -1,10 +1,13 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import './work.scss'
 
 import { collections } from '../../data/collections'
 
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
+import ScrollSmoother from 'gsap/ScrollSmoother'
+import CustomEase from 'gsap/CustomEase'
+gsap.registerPlugin(ScrollSmoother, CustomEase)
 
 const Work = () => {
   const t1 = useRef()
@@ -18,9 +21,26 @@ const Work = () => {
   const c4 = useRef()
 
   const gallery = useRef()
+  const q = gsap.utils.selector(gallery)
 
   const tRefs = [t1, t2, t3, t4]
   const cRefs = [c1, c2, c3, c4]
+
+  const smoother = useRef(null)
+
+  useLayoutEffect(() => {
+    smoother.current = ScrollSmoother.create({
+      wrapper: '#smooth-wrapper',
+      content: '#smooth-content',
+      smooth: 2,
+      smoothTouch: 0.1
+    })
+
+    smoother.current.effects(q('.info'), {
+      speed: 1.03
+      // lag: i => (i * i) / 4
+    })
+  }, [])
 
   useEffect(() => {
     gsap.fromTo(
@@ -44,12 +64,19 @@ const Work = () => {
 
   function handleClick(e) {
     const id = e.currentTarget.id
-    cRefs[id].current.scrollIntoView({ block: 'center', behavior: 'smooth' })
+    // cRefs[id].current.scrollIntoView({ block: 'center', behavior: 'smooth' })
+
+    // smoother.scrollTo(cRefs[id].current, true, 'center center')
+    gsap.to(smoother.current, {
+      scrollTop: smoother.current.offset(cRefs[id].current, 'center center'),
+      duration: 1.5,
+      ease: 'power3.out'
+    })
   }
 
   return (
-    <section className="work">
-      <div className="work-inner">
+    <section id="smooth-wrapper" className="work">
+      <div id="smooth-content" className="work-inner">
         <div className="collections-menu title lg uppercase indent">
           <div className="collections-menu-inner">
             {collections.map((entry, idx) => (

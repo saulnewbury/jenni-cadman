@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from 'react'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import './artpiece.scss'
 
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
@@ -10,17 +10,15 @@ import gsap from 'gsap'
 import { CustomEase } from 'gsap/CustomEase'
 import { SplitText } from 'gsap/SplitText'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import gsapCore from 'gsap/gsap-core'
 
-gsap.registerPlugin(CustomEase)
-gsap.registerPlugin(SplitText)
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(CustomEase, SplitText, ScrollTrigger)
 
 const ArtPiece = () => {
   const { slug, id } = useParams()
 
-  const artpiece = useRef()
+  const artpiece = useRef(null)
   const q = gsap.utils.selector(artpiece)
+  // const q = gsap.utils.selector(artpiece)
 
   const navigate = useNavigate()
   const location = useLocation()
@@ -29,7 +27,7 @@ const ArtPiece = () => {
   // Enter animations
   //-------------------------------------------------------------------------
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     gsap.fromTo(artpiece.current, { opacity: 0 }, { opacity: 1 })
 
     // Main Image Overlay
@@ -38,8 +36,8 @@ const ArtPiece = () => {
       { scaleY: 1 },
       {
         scaleY: 0,
-        delay: 0.5,
-        duration: 2,
+        delay: 0.8,
+        duration: 1.5,
         ease: CustomEase.create(
           'custom',
           'M0,0,C0.05,0,0.149,0.279,0.19,0.374,0.36,0.772,0.528,0.988,1,1'
@@ -55,7 +53,7 @@ const ArtPiece = () => {
         opacity: 1,
         scrollTrigger: {
           trigger: q('.detail'),
-          start: 'top 80%',
+          start: 'top 60%',
           toggleActions: 'play none none none'
         },
         delay: 0.5
@@ -63,15 +61,16 @@ const ArtPiece = () => {
     )
     gsap.to(q('.detail-image .overlay'), {
       scaleY: 0,
-      delay: 0.5,
-      duration: 2,
+      // delay: 0.5,
+      duration: 1.5,
       ease: CustomEase.create(
         'custom',
         'M0,0,C0.05,0,0.149,0.279,0.19,0.374,0.36,0.772,0.528,0.988,1,1'
       ),
       scrollTrigger: {
+        id: 'detailReveal',
         trigger: q('.detail'),
-        start: 'top 80%',
+        start: '10% 80%',
         toggleActions: 'play none none none'
       }
     })
@@ -82,12 +81,12 @@ const ArtPiece = () => {
     })
 
     gsap.from(childSplit.chars, {
-      duration: 1,
+      duration: 1.2,
       yPercent: 100,
       ease: 'power2.inOut',
       // ease: 'none',
       // stagger: 0.01,
-      delay: 1.1
+      delay: 1.4
     })
 
     // Details
@@ -101,8 +100,12 @@ const ArtPiece = () => {
       ease: 'power2.inOut',
       // ease: 'none',
       // stagger: 0.01,
-      delay: 1.3
+      delay: 1.5
     })
+
+    return () => {
+      ScrollTrigger.getById('detailReveal').kill()
+    }
   }, [location.key])
 
   //-------------------------------------------------------------------------

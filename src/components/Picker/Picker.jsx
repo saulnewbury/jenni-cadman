@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 import './picker.scss'
 
 import Counter from '../Counter/Counter'
@@ -55,7 +55,7 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
       { opacity: 0 },
       {
         opacity: 1,
-        stagger: 0.05
+        stagger: 0.08
       }
     )
     // gsap.fromTo(q('.image-item'), { y: 50 }, { y: 0, stagger: 0.05 })
@@ -154,14 +154,14 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
   function mediaQueries() {
     let mm = gsap.matchMedia()
 
-    mm.add(`(min-width: 2321px)`, () => {
-      setNumOfItems(9) // 23
-      setCurrent(id || 0)
-      setLeftMost(0)
-      setMenuWidth('40.46vw')
-    })
+    // mm.add(`(min-width: 2321px)`, () => {
+    //   setNumOfItems(9) // 23
+    //   setCurrent(id || 0)
+    //   setLeftMost(0)
+    //   setMenuWidth('40.46vw')
+    // })
 
-    mm.add(`(min-width: 1780px) and (max-width: 2320px)`, () => {
+    mm.add(`(min-width: 1780px)`, () => {
       setNumOfItems(9) //19
       setCurrent(id || 0)
       setLeftMost(0)
@@ -179,7 +179,7 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
       setNumOfItems(9)
       setCurrent(id || 0)
       setLeftMost(0)
-      setMenuWidth('742px')
+      setMenuWidth('682px') // was 742 - gutter = 680
     })
 
     for (let index = 7; index <= 12; index++) {
@@ -190,7 +190,7 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
         setNumOfItems(index - 3)
         setCurrent(id || 0)
         setLeftMost(0)
-        setMenuWidth('100vw')
+        setMenuWidth('92vw')
       })
     }
 
@@ -198,7 +198,7 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
       setNumOfItems(3) // 6 narrow widths
       setCurrent(id || 0)
       setLeftMost(0)
-      setMenuWidth('100vw')
+      setMenuWidth('92vw')
     })
 
     return () => {
