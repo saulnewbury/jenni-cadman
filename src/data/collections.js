@@ -4,7 +4,7 @@ export const collections = [
     title: 'Conversations With My Mother',
     subFolder: 'veronica',
     featuredImage: {
-      name: 'veronica-3',
+      name: 'collection-conversations-with-my-mother',
       altText: 'portrait of veronica 3'
     },
     desc: [

@@ -6,8 +6,9 @@ import { collections } from '../../data/collections'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import ScrollSmoother from 'gsap/ScrollSmoother'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 import CustomEase from 'gsap/CustomEase'
-gsap.registerPlugin(ScrollSmoother, CustomEase)
+gsap.registerPlugin(ScrollSmoother, ScrollTrigger, CustomEase)
 
 const Work = () => {
   const t1 = useRef()
@@ -30,16 +31,18 @@ const Work = () => {
 
   useLayoutEffect(() => {
     smoother.current = ScrollSmoother.create({
-      wrapper: '#smooth-wrapper',
+      // wrapper: '#smooth-wrapper',
       content: '#smooth-content',
-      smooth: 2,
+      smooth: 1,
       smoothTouch: 0.1
     })
-
     smoother.current.effects(q('.info'), {
-      speed: 1.03
-      // lag: i => (i * i) / 4
+      speed: 1.05
     })
+
+    return () => {
+      smoother.current.revert()
+    }
   }, [])
 
   useEffect(() => {

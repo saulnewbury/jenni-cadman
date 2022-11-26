@@ -12,6 +12,7 @@ import Bio from './pages/Bio/Bio'
 import NotFound from './pages/NotFound/NotFound'
 
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
+import Contact from './pages/Contact/Contact'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/work" element={<Work />} />
             <Route path="/bio" element={<Bio />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/:id" element={<Collection />} />
             <Route path="/:id/:slug" element={<ArtPiece />} />
             <Route path="*" element={<NotFound />} />

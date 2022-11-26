@@ -13,8 +13,12 @@ gsap.registerPlugin(CustomEase)
 const Bio = () => {
   const image = useRef()
   const overlay = useRef()
-  const creds = useRef()
   const info = useRef()
+  const creds = useRef()
+  const experience = useRef()
+  const q = gsap.utils.selector(info)
+  const qC = gsap.utils.selector(creds)
+  const qE = gsap.utils.selector(experience)
 
   //-------------------------------------------------------------------------
   // Enter animation
@@ -23,14 +27,14 @@ const Bio = () => {
     //Image
     gsap.fromTo(
       image.current,
-      { objectPosition: '50% 45%' },
-      { objectPosition: '50% 50%' }
+      { objectPosition: '50% 45%', y: 10 },
+      { objectPosition: '50% 50%', y: 0 }
     )
 
     // Overlay
     gsap.fromTo(
       overlay.current,
-      2,
+      1.7,
       { scaleY: 1 },
       {
         scaleY: 0,
@@ -38,24 +42,23 @@ const Bio = () => {
           'custom',
           'M0,0,C0.05,0,0.149,0.279,0.19,0.374,0.36,0.772,0.528,0.988,1,1'
         ),
-        delay: 0.5
+        delay: 0.3
       }
     )
 
     // Bio text
-    const ps = info.current.children
-    const childSplit = new SplitText(ps, {
-      type: 'lines',
-      linesClass: 'split-child'
-    })
+    gsap.fromTo(
+      q('p'),
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, delay: 0.3, stagger: 0.15 }
+    )
 
-    gsap.from(childSplit.lines, {
-      duration: 1.5,
-      yPercent: 100,
-      ease: 'power2.inOut',
-      stagger: 0.05,
-      delay: 1
-    })
+    // Credentials
+    gsap.fromTo(
+      qC('p'),
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, delay: 1, stagger: 0.1 }
+    )
   }, [])
 
   return (
@@ -98,6 +101,7 @@ const Bio = () => {
           {resumeEntries.map((obj, idx) => {
             return (
               <div
+                ref={experience}
                 key={idx.toString()}
                 className={`category ${idx % 2 === 0 ? '' : 'fill'}`}
               >

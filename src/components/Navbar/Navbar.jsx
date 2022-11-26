@@ -20,14 +20,6 @@ const NavBar = () => {
     setNaveIsOpen(!navIsOpen)
   }
 
-  function handleScroll() {
-    window.scrollTo({
-      top: 10000,
-      left: 0,
-      behavior: 'smooth'
-    })
-  }
-
   isNumber.current = parseInt(isCurrentRoute.replace(/\D/g, ''))
 
   return (
@@ -35,7 +27,9 @@ const NavBar = () => {
       <div className="logo">
         <Link
           to="/"
-          className={/\d/.test(location.pathname) ? 'visibility' : ''}
+          className={`logo-link ${
+            /\d/.test(location.pathname) ? 'visibility' : ''
+          }`}
         >
           Jenni Cadman
         </Link>
@@ -60,17 +54,17 @@ const NavBar = () => {
           >
             Bio
           </Link>
-          <span
+          <Link
+            to="/contact"
             className={`link item ${
               isCurrentRoute === '/contact' ? 'current-path' : ''
             }`}
             onClick={() => {
               handleClick()
-              handleScroll()
             }}
           >
             Contact
-          </span>
+          </Link>
           {/* if path name contains numbers show element with corrosponding numbers */}
           {/* /\d/.test(isCurrentRoute) */}
           <span className="item num">

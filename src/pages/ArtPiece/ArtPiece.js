@@ -16,9 +16,8 @@ gsap.registerPlugin(CustomEase, SplitText, ScrollTrigger)
 const ArtPiece = () => {
   const { slug, id } = useParams()
 
-  const artpiece = useRef(null)
+  const artpiece = useRef()
   const q = gsap.utils.selector(artpiece)
-  // const q = gsap.utils.selector(artpiece)
 
   const navigate = useNavigate()
   const location = useLocation()
@@ -28,83 +27,87 @@ const ArtPiece = () => {
   //-------------------------------------------------------------------------
 
   useEffect(() => {
-    gsap.fromTo(artpiece.current, { opacity: 0 }, { opacity: 1 })
+    const ctx = gsap.context(() => {
+      gsap.fromTo(q('.detail'), { opacity: 0 }, { opacity: 1, duration: 0.1 })
 
-    // Main Image Overlay
-    gsap.fromTo(
-      q('.main-image .overlay'),
-      { scaleY: 1 },
-      {
-        scaleY: 0,
-        delay: 0.8,
-        duration: 1.5,
-        ease: CustomEase.create(
-          'custom',
-          'M0,0,C0.05,0,0.149,0.279,0.19,0.374,0.36,0.772,0.528,0.988,1,1'
-        )
-      }
-    )
+      // Main Image Overlay
+      gsap.fromTo(
+        q('.main-image .overlay'),
+        { scaleY: 1 },
+        {
+          scaleY: 0,
+          delay: 0.5,
+          duration: 1.5,
+          ease: CustomEase.create(
+            'custom',
+            'M0,0,C0.05,0,0.149,0.279,0.19,0.374,0.36,0.772,0.528,0.988,1,1'
+          )
+        }
+      )
 
-    // Detail Image Overlay
-    gsap.fromTo(
-      q('.detail-image-inner h4'),
-      { opacity: 0 },
-      {
-        opacity: 1,
-        scrollTrigger: {
-          trigger: q('.detail'),
-          start: 'top 60%',
-          toggleActions: 'play none none none'
+      // Detail Image Overlay
+      gsap.fromTo(
+        q('.detail-image-inner h4'),
+        { opacity: 0 },
+        {
+          opacity: 1,
+          scrollTrigger: {
+            trigger: q('.detail'),
+            start: 'top 60%',
+            toggleActions: 'play none none none'
+          }
+        }
+      )
+      gsap.fromTo(
+        q('.detail-image .overlay'),
+        {
+          scaleY: 1
         },
-        delay: 0.5
-      }
-    )
-    gsap.to(q('.detail-image .overlay'), {
-      scaleY: 0,
-      // delay: 0.5,
-      duration: 1.5,
-      ease: CustomEase.create(
-        'custom',
-        'M0,0,C0.05,0,0.149,0.279,0.19,0.374,0.36,0.772,0.528,0.988,1,1'
-      ),
-      scrollTrigger: {
-        id: 'detailReveal',
-        trigger: q('.detail'),
-        start: '10% 80%',
-        toggleActions: 'play none none none'
-      }
-    })
+        {
+          scaleY: 0,
+          duration: 1.5,
+          ease: CustomEase.create(
+            'custom',
+            'M0,0,C0.05,0,0.149,0.279,0.19,0.374,0.36,0.772,0.528,0.988,1,1'
+          ),
+          scrollTrigger: {
+            id: 'detailReveal',
+            trigger: q('.detail .overlay'),
+            start: '10% 80%',
+            toggleActions: 'play none none none'
+          }
+        }
+      )
+      const childSplit = new SplitText(q('.info h1'), {
+        type: 'chars'
+      })
 
-    // Title
-    const childSplit = new SplitText(q('.info h1'), {
-      type: 'chars'
-    })
+      gsap.from(childSplit.chars, {
+        duration: 1.2,
+        yPercent: 100,
+        ease: 'power2.inOut',
+        // ease: 'none',
+        // stagger: 0.01,
+        delay: 1.4
+      })
 
-    gsap.from(childSplit.chars, {
-      duration: 1.2,
-      yPercent: 100,
-      ease: 'power2.inOut',
-      // ease: 'none',
-      // stagger: 0.01,
-      delay: 1.4
-    })
+      // Details
+      const childSplitDetails = new SplitText(q('.info p'), {
+        type: 'chars'
+      })
 
-    // Details
-    const childSplitDetails = new SplitText(q('.info p'), {
-      type: 'chars'
-    })
-
-    gsap.from(childSplitDetails.chars, {
-      duration: 1,
-      yPercent: 100,
-      ease: 'power2.inOut',
-      // ease: 'none',
-      // stagger: 0.01,
-      delay: 1.5
+      gsap.from(childSplitDetails.chars, {
+        duration: 1,
+        yPercent: 100,
+        ease: 'power2.inOut',
+        // ease: 'none',
+        // stagger: 0.01,
+        delay: 1.5
+      })
     })
 
     return () => {
-      ScrollTrigger.getById('detailReveal').kill()
+      ctx.revert()
     }
   }, [location.key])
 
@@ -131,7 +134,7 @@ const ArtPiece = () => {
   //-------------------------------------------------------------------------
 
   function handleExit(path) {
-    gsap.to([artpiece.current, q('.detail')], {
+    gsap.to(q('.detail'), {
       opacity: 0,
       duration: 1,
       delay: 0.8,

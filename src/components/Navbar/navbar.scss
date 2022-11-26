@@ -10,7 +10,7 @@
   .logo {
     cursor: pointer;
 
-    span.visibility {
+    .logo-link.visibility {
       visibility: hidden;
     }
   }
@@ -109,7 +109,7 @@
 @media screen and (min-width: 1200px) {
   .navbar {
     .logo {
-      span.visibility {
+      .logo-link.visibility {
         visibility: visible;
       }
     }

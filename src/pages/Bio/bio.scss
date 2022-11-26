@@ -118,8 +118,10 @@
   .bio {
     .bio-inner {
       margin: auto;
+
       .jenni-cadman {
         display: flex;
+
         .image {
           display: flex;
           justify-content: flex-end;
@@ -127,7 +129,9 @@
           max-height: 430px;
           flex-basis: 50%;
         }
+
         .info {
+          padding-top: 0;
           flex-basis: 40%;
           flex-grow: 1;
           flex-shrink: 1;
