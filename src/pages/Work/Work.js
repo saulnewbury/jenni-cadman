@@ -31,7 +31,7 @@ const Work = () => {
 
   useLayoutEffect(() => {
     smoother.current = ScrollSmoother.create({
-      // wrapper: '#smooth-wrapper',
+      wrapper: '#smooth-wrapper',
       content: '#smooth-content',
       smooth: 1,
       smoothTouch: 0.1

@@ -25,6 +25,8 @@ const ArtPiece = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
+  // console.log(document.body.scrollHeight)
+
   //-------------------------------------------------------------------------
   // Enter animations
   //-------------------------------------------------------------------------
@@ -118,8 +120,9 @@ const ArtPiece = () => {
     smoother.current = ScrollSmoother.create({
       wrapper: '#smooth-wrapper-artpiece',
       content: '#smooth-content-artpiece',
-      smooth: 2,
-      smoothTouch: 0.1
+      smooth: 1
+      // smoothTouch: 0.1
+      // normalizeScroll: true
     })
 
     return () => {
@@ -160,7 +163,7 @@ const ArtPiece = () => {
 
   return (
     <div id="smooth-wrapper-artpiece">
-      <div id="smooth-content-artpiece">
+      <div id="smooth-content-artpiece" className="gutter">
         <div
           key={location.pathname}
           ref={artpiece}
