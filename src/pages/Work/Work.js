@@ -67,9 +67,7 @@ const Work = () => {
 
   function handleClick(e) {
     const id = e.currentTarget.id
-    // cRefs[id].current.scrollIntoView({ block: 'center', behavior: 'smooth' })
 
-    // smoother.scrollTo(cRefs[id].current, true, 'center center')
     gsap.to(smoother.current, {
       scrollTop: smoother.current.offset(cRefs[id].current, 'center center'),
       duration: 1.5,

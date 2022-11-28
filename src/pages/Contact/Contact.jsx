@@ -10,6 +10,12 @@ const Contact = () => {
 
   useLayoutEffect(() => {
     gsap.fromTo(
+      contact.current,
+      { backgroundColor: '#ffffff' },
+      { backgroundColor: '#eaeaea' }
+    )
+
+    gsap.fromTo(
       [q('form label'), q('form input'), q('form button')],
       { opacity: 0, y: 10 },
       { opacity: 1, y: 1, stagger: 0.1 }

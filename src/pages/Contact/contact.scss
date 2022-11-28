@@ -5,15 +5,20 @@
 }
 
 .contact {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   align-items: center;
-  height: calc(100vh - var(--gutter) * 2);
 
   .contact-inner {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 330px;
+    margin-left: var(--gutter);
 
     form {
       display: flex;

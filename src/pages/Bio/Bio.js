@@ -7,15 +7,15 @@ import { bioInfo } from '../../data/bioInfo'
 import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
 import { CustomEase } from 'gsap/CustomEase'
-gsap.registerPlugin(SplitText)
-gsap.registerPlugin(CustomEase)
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(SplitText, CustomEase, ScrollTrigger)
 
 const Bio = () => {
   const image = useRef()
   const overlay = useRef()
   const info = useRef()
   const creds = useRef()
-  const experience = useRef()
+  const experience = useRef([])
   const q = gsap.utils.selector(info)
   const qC = gsap.utils.selector(creds)
   const qE = gsap.utils.selector(experience)
@@ -23,6 +23,7 @@ const Bio = () => {
   //-------------------------------------------------------------------------
   // Enter animation
   //-------------------------------------------------------------------------
+
   useEffect(() => {
     //Image
     gsap.fromTo(
@@ -59,6 +60,59 @@ const Bio = () => {
       { y: 20, opacity: 0 },
       { y: 0, opacity: 1, duration: 1, delay: 1, stagger: 0.1 }
     )
+
+    const titles = gsap.utils.toArray(qE('h2'))
+    titles.forEach(title => {
+      gsap.fromTo(
+        title,
+        { y: 20, opacity: 0 },
+        {
+          scrollTrigger: {
+            trigger: title,
+            start: 'top 95%'
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          markers: true
+        }
+      )
+    })
+    const dates = gsap.utils.toArray(qE('.date'))
+    dates.forEach(date => {
+      gsap.fromTo(
+        date,
+        { y: 20, opacity: 0 },
+        {
+          scrollTrigger: {
+            trigger: date,
+            start: 'top 95%'
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          markers: true
+        }
+      )
+    })
+
+    const details = gsap.utils.toArray(qE('.details'))
+    details.forEach(details => {
+      gsap.fromTo(
+        details,
+        { y: 20, opacity: 0 },
+        {
+          scrollTrigger: {
+            trigger: details,
+            start: 'top 95%'
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          markers: true
+        }
+      )
+    })
   }, [])
 
   return (
@@ -97,11 +151,10 @@ const Bio = () => {
             </div>
           </div>
         </section>
-        <section className="experience indent">
+        <section ref={experience} className="experience indent">
           {resumeEntries.map((obj, idx) => {
             return (
               <div
-                ref={experience}
                 key={idx.toString()}
                 className={`category ${idx % 2 === 0 ? '' : 'fill'}`}
               >
