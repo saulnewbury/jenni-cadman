@@ -63,7 +63,7 @@ const Home = () => {
         </div>
         <div className="banner-image">
           <div ref={overlay} className="overlay"></div>
-          <img ref={image} src="/images/veronica/veronica-2.jpg" alt="" />
+          <img ref={image} src="/images/veronica/veronica-2.webp" alt="" />
         </div>
       </div>
     </div>

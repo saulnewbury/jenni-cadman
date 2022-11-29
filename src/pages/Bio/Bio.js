@@ -124,7 +124,7 @@ const Bio = () => {
               <div ref={overlay} className="overlay"></div>
               <img
                 ref={image}
-                src="/images/other/jenni-cadman-textileartist-portrait.jpg"
+                src="/images/other/jenni-cadman-textileartist-portrait.webp"
                 alt=""
               />
             </div>
