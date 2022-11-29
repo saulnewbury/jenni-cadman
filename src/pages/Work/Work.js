@@ -100,7 +100,7 @@ const Work = () => {
               <div className="image">
                 <div className="image-wrapper">
                   <img
-                    src={`/images/${entry.subFolder}/${entry.featuredImage.name}.jpg`}
+                    src={`/images/${entry.subFolder}/${entry.featuredImage.name}.webp`}
                     alt=""
                   />
                 </div>

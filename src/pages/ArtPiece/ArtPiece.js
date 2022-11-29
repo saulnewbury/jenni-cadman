@@ -174,7 +174,7 @@ const ArtPiece = () => {
               <div className="image">
                 <div className="overlay"></div>
                 <img
-                  src={`../images/${subFolder}/${image}.jpg`}
+                  src={`../images/${subFolder}/${image}.webp`}
                   alt={altText}
                 />
               </div>
@@ -215,7 +215,7 @@ const ArtPiece = () => {
                     <div className="image">
                       <div className="overlay"></div>
                       <img
-                        src={`../images/${subFolder}/${image}-${detail}.jpg`}
+                        src={`../images/${subFolder}/${image}-${detail}.webp`}
                         alt={altText}
                       />
                     </div>

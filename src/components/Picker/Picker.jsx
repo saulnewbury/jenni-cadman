@@ -407,7 +407,7 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
               key={idx}
             >
               <img
-                src={`/images/${subFolder}/thumbs/${image.image}-thumb.jpg`}
+                src={`/images/${subFolder}/thumbs/${image.image}-thumb.webp`}
                 alt={image.alt}
                 style={{
                   opacity: idx === current ? 1.0 : 0.7
