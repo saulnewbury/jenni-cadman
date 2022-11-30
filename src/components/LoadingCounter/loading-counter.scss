@@ -1,0 +1,13 @@
+.loading-counter {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+  font-size: 4rem;
+
+  span {
+    font-size: 4rem;
+  }
+}
