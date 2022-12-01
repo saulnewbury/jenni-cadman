@@ -161,7 +161,7 @@ const ArtPiece = () => {
     })
   }
 
-  return (
+  return () => (
     <div id="smooth-wrapper-artpiece">
       <div id="smooth-content-artpiece" className="gutter">
         <div

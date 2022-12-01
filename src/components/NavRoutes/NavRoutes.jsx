@@ -12,8 +12,10 @@ import NotFound from '../../pages/NotFound/NotFound'
 const NavRoutes = ({ children }) => {
   const { key } = useLocation()
 
+  // key={key}
+
   return (
-    <Routes key={key}>
+    <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/work" element={<Work />} />
       <Route path="/bio" element={<Bio />} />
