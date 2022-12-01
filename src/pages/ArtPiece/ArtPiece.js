@@ -128,7 +128,7 @@ const ArtPiece = () => {
     return () => {
       smoother.current.revert()
     }
-  }, [])
+  }, [location])
 
   //-------------------------------------------------------------------------
   // Get data
