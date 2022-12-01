@@ -11,38 +11,43 @@ const Home = () => {
   const overlay = useRef()
 
   useEffect(() => {
-    gsap.fromTo(
-      intro.current,
-      2,
-      { opacity: 0 },
-      { opacity: 1, ease: 'power4.inOut', delay: 0.2 }
-    )
-    gsap.fromTo(
-      heading.current,
-      2,
-      { opacity: 0 },
-      { opacity: 1, ease: 'power1.inOut', delay: 1.1 }
-    )
-    gsap.fromTo(
-      overlay.current,
-      4,
-      { scaleY: 1 },
-      { scaleY: 0, ease: 'power4.inOut', delay: 0.3 }
-    )
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        intro.current,
+        2,
+        { opacity: 0 },
+        { opacity: 1, ease: 'power4.inOut', delay: 0.2 }
+      )
+      gsap.fromTo(
+        heading.current,
+        2,
+        { opacity: 0 },
+        { opacity: 1, ease: 'power1.inOut', delay: 1.1 }
+      )
+      gsap.fromTo(
+        overlay.current,
+        4,
+        { scaleY: 1 },
+        { scaleY: 0, ease: 'power4.inOut', delay: 0.3 }
+      )
 
-    gsap.fromTo(
-      image.current,
-      2.5,
-      { opacity: 0 },
-      { opacity: 1, delay: 1, ease: 'power4.inOut' }
-    )
+      gsap.fromTo(
+        image.current,
+        2.5,
+        { opacity: 0 },
+        { opacity: 1, delay: 1, ease: 'power4.inOut' }
+      )
 
-    gsap.fromTo(
-      image.current,
-      20,
-      { objectPosition: '50% 30%' },
-      { objectPosition: '50% 35%', delay: 1.3, ease: 'none' }
-    )
+      gsap.fromTo(
+        image.current,
+        20,
+        { objectPosition: '50% 30%' },
+        { objectPosition: '50% 35%', delay: 1.3, ease: 'none' }
+      )
+    })
+    return () => {
+      ctx.revert()
+    }
   }, [])
 
   return (

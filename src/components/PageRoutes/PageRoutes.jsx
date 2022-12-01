@@ -1,5 +1,6 @@
 import React from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+
+import { useLocation, Routes, Route } from 'react-router-dom'
 
 import Home from '../../pages/Home/Home'
 import Work from '../../pages/Work/Work'
@@ -9,13 +10,10 @@ import Bio from '../../pages/Bio/Bio'
 import Contact from '../../pages/Contact/Contact'
 import NotFound from '../../pages/NotFound/NotFound'
 
-const NavRoutes = ({ children }) => {
+const PageRoutes = () => {
   const { key } = useLocation()
-
-  // key={key}
-
   return (
-    <Routes>
+    <Routes key={key}>
       <Route path="/" element={<Home />} />
       <Route path="/work" element={<Work />} />
       <Route path="/bio" element={<Bio />} />
@@ -27,4 +25,4 @@ const NavRoutes = ({ children }) => {
   )
 }
 
-export default NavRoutes
+export default PageRoutes

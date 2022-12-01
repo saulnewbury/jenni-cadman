@@ -38,7 +38,7 @@ const LoadingCounter = ({ isLoading }) => {
           gsap.to(counter.current, {
             innerText: sum.current,
             snap: 'innerText',
-            duration: 5,
+            duration: 0.1,
             onComplete: () => {
               if (sum.current === 100) {
                 exitAnim()
@@ -71,11 +71,11 @@ const LoadingCounter = ({ isLoading }) => {
 
     gsap.set([container.current, underlay.current], {
       opacity: 0,
-      delay: 0.3
+      delay: 0.45
     })
     gsap.to(overlay.current, {
       y: '-100vh',
-      delay: 0.8,
+      delay: 0.5,
       duration: 0.4,
       ease: 'power1.inOut',
       onComplete: () => {
@@ -90,7 +90,7 @@ const LoadingCounter = ({ isLoading }) => {
       <div ref={container} className="container">
         <div className="inner-container">
           <div className="counter">
-            <span ref={counter}>00</span>%
+            <span ref={counter}>0</span>%
           </div>
         </div>
       </div>

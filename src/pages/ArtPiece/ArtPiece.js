@@ -25,7 +25,7 @@ const ArtPiece = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  // console.log(document.body.scrollHeight)
+  console.log(location)
 
   //-------------------------------------------------------------------------
   // Enter animations
@@ -161,7 +161,7 @@ const ArtPiece = () => {
     })
   }
 
-  return () => (
+  return (
     <div id="smooth-wrapper-artpiece">
       <div id="smooth-content-artpiece" className="gutter">
         <div

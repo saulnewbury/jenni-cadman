@@ -5,9 +5,9 @@ import './typography.css'
 
 import { BrowserRouter as Router } from 'react-router-dom'
 
+import PageRoutes from './components/PageRoutes/PageRoutes'
 import Layout from './components/Layout/Layout'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
-import NavRoutes from './components/NavRoutes/NavRoutes'
 import LoadingCounter from './components/LoadingCounter/LoadingCounter'
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
     <Router>
       <Layout>
         <ScrollToTop>
-          <NavRoutes />
+          <PageRoutes />
         </ScrollToTop>
       </Layout>
     </Router>
