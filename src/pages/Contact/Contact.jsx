@@ -9,7 +9,7 @@ const Contact = () => {
   const q = gsap.utils.selector(contact)
 
   useLayoutEffect(() => {
-    const ctx = gsap.contecx(() => {
+    const ctx = gsap.context(() => {
       gsap.fromTo(
         contact.current,
         { backgroundColor: '#ffffff' },
