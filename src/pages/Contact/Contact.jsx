@@ -9,29 +9,35 @@ const Contact = () => {
   const q = gsap.utils.selector(contact)
 
   useLayoutEffect(() => {
-    gsap.fromTo(
-      contact.current,
-      { backgroundColor: '#ffffff' },
-      { backgroundColor: '#eaeaea' }
-    )
+    const ctx = gsap.contecx(() => {
+      gsap.fromTo(
+        contact.current,
+        { backgroundColor: '#ffffff' },
+        { backgroundColor: '#eaeaea' }
+      )
 
-    gsap.fromTo(
-      [q('form label'), q('form input'), q('form button')],
-      { opacity: 0, y: 10 },
-      { opacity: 1, y: 1, stagger: 0.1 }
-    )
+      gsap.fromTo(
+        [q('form label'), q('form input'), q('form button')],
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 1, stagger: 0.1 }
+      )
 
-    gsap.fromTo(
-      q('.enquiries'),
-      { opacity: 0, y: 10 },
-      { opacity: 1, y: 1, delay: 0.3 }
-    )
+      gsap.fromTo(
+        q('.enquiries'),
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 1, delay: 0.3 }
+      )
 
-    gsap.fromTo(
-      q('.socials span'),
-      { opacity: 0, y: 10 },
-      { opacity: 1, y: 1, delay: 0.4, stagger: 0.1 }
-    )
+      gsap.fromTo(
+        q('.socials span'),
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 1, delay: 0.4, stagger: 0.1 }
+      )
+    })
+
+    return () => {
+      ctx.revert()
+    }
   }, [])
 
   return (

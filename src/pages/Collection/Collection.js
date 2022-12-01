@@ -17,11 +17,12 @@ const Collection = () => {
   const picker = useRef()
 
   useLayoutEffect(() => {
-    gsap.fromTo(
+    const tween = gsap.fromTo(
       colTitle.current,
       { opacity: 0, y: 10 },
       { opacity: 1, y: 0, duration: 0.8, delay: 0.5 }
     )
+    return () => tween.revert()
   }, [])
 
   const { imagesData, title } = collections[id - 1]

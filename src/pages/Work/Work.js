@@ -46,24 +46,29 @@ const Work = () => {
   }, [])
 
   useEffect(() => {
-    gsap.fromTo(
-      [t1.current, t2.current, t3.current, t4.current],
-      { opacity: 0, y: 10 },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.1,
-        duration: 0.8,
-        delay: 0.5
-      }
-    )
-    gsap.fromTo(
-      gallery.current,
-      1,
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, delay: 1 }
-    )
-  })
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        [t1.current, t2.current, t3.current, t4.current],
+        { opacity: 0, y: 10 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.1,
+          duration: 0.8,
+          delay: 0.5
+        }
+      )
+      gsap.fromTo(
+        gallery.current,
+        1,
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, delay: 1 }
+      )
+    })
+    return () => {
+      ctx.revert()
+    }
+  }, [])
 
   function handleClick(e) {
     const id = e.currentTarget.id

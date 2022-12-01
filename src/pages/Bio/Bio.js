@@ -25,91 +25,97 @@ const Bio = () => {
   //-------------------------------------------------------------------------
 
   useEffect(() => {
-    //Image
-    gsap.fromTo(
-      image.current,
-      { objectPosition: '50% 45%', y: 10 },
-      { objectPosition: '50% 50%', y: 0 }
-    )
-
-    // Overlay
-    gsap.fromTo(
-      overlay.current,
-      1.7,
-      { scaleY: 1 },
-      {
-        scaleY: 0,
-        ease: CustomEase.create(
-          'custom',
-          'M0,0,C0.05,0,0.149,0.279,0.19,0.374,0.36,0.772,0.528,0.988,1,1'
-        ),
-        delay: 0.3
-      }
-    )
-
-    // Bio text
-    gsap.fromTo(
-      q('p'),
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, delay: 0.3, stagger: 0.15 }
-    )
-
-    // Credentials
-    gsap.fromTo(
-      qC('p'),
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, delay: 1, stagger: 0.1 }
-    )
-
-    const titles = gsap.utils.toArray(qE('h2'))
-    titles.forEach(title => {
+    const ctx = gsap.context(() => {
+      //Image
       gsap.fromTo(
-        title,
-        { y: 20, opacity: 0 },
+        image.current,
+        { objectPosition: '50% 45%', y: 10 },
+        { objectPosition: '50% 50%', y: 0 }
+      )
+
+      // Overlay
+      gsap.fromTo(
+        overlay.current,
+        1.7,
+        { scaleY: 1 },
         {
-          scrollTrigger: {
-            trigger: title,
-            start: 'top 95%'
-          },
-          y: 0,
-          opacity: 1,
-          duration: 0.5
+          scaleY: 0,
+          ease: CustomEase.create(
+            'custom',
+            'M0,0,C0.05,0,0.149,0.279,0.19,0.374,0.36,0.772,0.528,0.988,1,1'
+          ),
+          delay: 0.3
         }
       )
-    })
-    const dates = gsap.utils.toArray(qE('.date'))
-    dates.forEach(date => {
+
+      // Bio text
       gsap.fromTo(
-        date,
+        q('p'),
         { y: 20, opacity: 0 },
-        {
-          scrollTrigger: {
-            trigger: date,
-            start: 'top 95%'
-          },
-          y: 0,
-          opacity: 1,
-          duration: 0.5
-        }
+        { y: 0, opacity: 1, duration: 0.8, delay: 0.3, stagger: 0.15 }
       )
+
+      // Credentials
+      gsap.fromTo(
+        qC('p'),
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, delay: 1, stagger: 0.1 }
+      )
+
+      const titles = gsap.utils.toArray(qE('h2'))
+      titles.forEach(title => {
+        gsap.fromTo(
+          title,
+          { y: 20, opacity: 0 },
+          {
+            scrollTrigger: {
+              trigger: title,
+              start: 'top 95%'
+            },
+            y: 0,
+            opacity: 1,
+            duration: 0.5
+          }
+        )
+      })
+      const dates = gsap.utils.toArray(qE('.date'))
+      dates.forEach(date => {
+        gsap.fromTo(
+          date,
+          { y: 20, opacity: 0 },
+          {
+            scrollTrigger: {
+              trigger: date,
+              start: 'top 95%'
+            },
+            y: 0,
+            opacity: 1,
+            duration: 0.5
+          }
+        )
+      })
+
+      const details = gsap.utils.toArray(qE('.details'))
+      details.forEach(details => {
+        gsap.fromTo(
+          details,
+          { y: 20, opacity: 0 },
+          {
+            scrollTrigger: {
+              trigger: details,
+              start: 'top 95%'
+            },
+            y: 0,
+            opacity: 1,
+            duration: 0.5
+          }
+        )
+      })
     })
 
-    const details = gsap.utils.toArray(qE('.details'))
-    details.forEach(details => {
-      gsap.fromTo(
-        details,
-        { y: 20, opacity: 0 },
-        {
-          scrollTrigger: {
-            trigger: details,
-            start: 'top 95%'
-          },
-          y: 0,
-          opacity: 1,
-          duration: 0.5
-        }
-      )
-    })
+    return () => {
+      ctx.revert()
+    }
   }, [])
 
   return (
