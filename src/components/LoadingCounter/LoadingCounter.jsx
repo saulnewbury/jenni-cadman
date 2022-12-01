@@ -8,10 +8,12 @@ import gsap from 'gsap'
 const LoadingCounter = ({ isLoading }) => {
   const imgs = getImageUrls()
 
+  const container = useRef(null)
   const counter = useRef(null)
+  const underlay = useRef(null)
+  const overlay = useRef(null)
+
   const value = useRef(100 / imgs.length)
-  console.log(imgs.length)
-  console.log(value)
   const sum = useRef(0)
 
   const loaderStarted = useRef(false)
@@ -39,24 +41,60 @@ const LoadingCounter = ({ isLoading }) => {
             duration: 5,
             onComplete: () => {
               if (sum.current === 100) {
-                isLoading()
+                exitAnim()
+              } else {
+                return
               }
             }
           })
+
+          gsap.to(underlay.current, {
+            duration: 5,
+            width: `${sum.current}%`
+            // snap: 'width'
+          })
+
           resolve()
         }
         img.onerror = reject()
       })
     })
     await Promise.all(promises)
-    console.log(promises)
+  }
+
+  function exitAnim() {
+    gsap.to(overlay.current, {
+      height: '100vh',
+      duration: 0.4,
+      ease: 'power1.inOut'
+    })
+
+    gsap.set([container.current, underlay.current], {
+      opacity: 0,
+      delay: 0.3
+    })
+    gsap.to(overlay.current, {
+      y: '-100vh',
+      delay: 0.8,
+      duration: 0.4,
+      ease: 'power1.inOut',
+      onComplete: () => {
+        isLoading()
+      }
+    })
   }
 
   return (
     <div className="loading-counter">
-      <div>
-        <span ref={counter}>00</span>%
+      <div ref={underlay} className="underlay"></div>
+      <div ref={container} className="container">
+        <div className="inner-container">
+          <div className="counter">
+            <span ref={counter}>00</span>%
+          </div>
+        </div>
       </div>
+      <div ref={overlay} className="overlay"></div>
     </div>
   )
 }
