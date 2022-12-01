@@ -110,7 +110,7 @@ const ArtPiece = () => {
     return () => {
       ctx.revert()
     }
-  }, [])
+  }, [location])
 
   //-------------------------------------------------------------------------
   // ScrollSmoother
@@ -128,7 +128,7 @@ const ArtPiece = () => {
     return () => {
       smoother.current.revert()
     }
-  }, [location])
+  }, [])
 
   //-------------------------------------------------------------------------
   // Get data
