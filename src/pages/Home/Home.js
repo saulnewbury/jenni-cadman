@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 
+import { Link } from 'react-router-dom'
+
 import gsap from 'gsap'
 
 import './home.scss'
@@ -66,10 +68,10 @@ const Home = () => {
             </h1>
           </div>
         </div>
-        <div className="banner-image">
+        <Link to="/work" className="banner-image">
           <div ref={overlay} className="overlay"></div>
           <img ref={image} src="/images/veronica/veronica-2.webp" alt="" />
-        </div>
+        </Link>
       </div>
     </div>
   )
