@@ -156,8 +156,6 @@
       .image {
         img {
           max-width: 815px; // constrain landscape
-          max-height: 600px; // constrain portrait
-          max-width: 815px; // constrain landscape
           max-height: 538px; // constrain portrait
         }
       }
@@ -200,36 +198,37 @@
   }
 }
 
-@media screen and (min-width: 1441px) {
-  .main-image {
-    .main-image-inner {
-      .image {
-        img {
-          // max-width: 600px; // constrain landscape
-          max-height: 700px; // constrain portrait
-          min-height: 500px; // constrain prior to loading image
-        }
-      }
-    }
-  }
-  .detail {
-    .detail-inner {
-      .detail-content {
-        .detail-image {
-          .detail-image-inner {
-            .image {
-              img {
-                max-width: 780px; // constrain landscape
-                max-height: 600px; // constrain portrait
-                min-height: 500px; // constrain prior to loading image
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
+// was 1441px
+// @media screen and (min-width: 1600px) {
+//   .main-image {
+//     .main-image-inner {
+//       .image {
+//         img {
+//           // max-width: 600px; // constrain landscape
+//           max-height: 700px; // constrain portrait
+//           min-height: 500px; // constrain prior to loading image
+//         }
+//       }
+//     }
+//   }
+//   .detail {
+//     .detail-inner {
+//       .detail-content {
+//         .detail-image {
+//           .detail-image-inner {
+//             .image {
+//               img {
+//                 max-width: 780px; // constrain landscape
+//                 max-height: 600px; // constrain portrait
+//                 min-height: 500px; // constrain prior to loading image
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
 @media screen and (min-width: 1600px) {
   .main-image {

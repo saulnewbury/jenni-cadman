@@ -40,17 +40,6 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
   //-------------------------------------------------------------------------
 
   useLayoutEffect(() => {
-    // Picker
-
-    // gsap.fromTo(
-    //   pickerViewport.current,
-    //   { opacity: 0 },
-    //   {
-    //     opacity: 1,
-    //     scrollTrigger: { trigger: pickerViewport.current, start: 'top 70%' }
-    //   }
-    // )
-
     const ctx = gsap.context(() => {
       gsap.fromTo(
         '.image-item',
@@ -60,7 +49,6 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
           stagger: 0.08
         }
       )
-      // gsap.fromTo(q('.image-item'), { y: 50 }, { y: 0, stagger: 0.05 })
 
       // Counter
       gsap.fromTo('.counter, h2, .back', { opacity: 0 }, { opacity: 1 })
@@ -276,7 +264,11 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
           .replace(/\s+/g, '-')
           .toLowerCase()}`
       )
+      // handleExit function in passed in from parent
+
       exitAnimPicker()
+      // exitAnimPicker function below
+
       return
     }
 
@@ -289,24 +281,26 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
 
   //-------------------------------------------------------------------------
   // Exit animation for picker
+  // Called from within handleClick function
   //-------------------------------------------------------------------------
 
   function exitAnimPicker() {
-    // const ctx = gsap.context(() => {
-    //   gsap.to([q('.counter'), q('h2'), q('.back')], {
-    //     opacity: 0,
-    //     duration: 0.5,
-    //     delay: 0.2
-    //   })
-    //   gsap.to(q('.image-item'), {
-    //     opacity: 0,
-    //     stagger: 0.05,
-    //     delay: 0.2
-    //   })
-    // }, pickerViewport)
-    // return () => {
-    //   ctx.revert()
-    // }
+    const ctx = gsap.context(() => {
+      gsap.to('.counter, h2, .back', {
+        opacity: 0,
+        duration: 0.5,
+        delay: 0.2
+      })
+      gsap.to(q('.image-item'), {
+        opacity: 0,
+        stagger: 0.05,
+        delay: 0.2
+      })
+    }, pickerViewport)
+
+    return () => {
+      ctx.revert()
+    }
   }
 
   //-------------------------------------------------------------------------

@@ -158,7 +158,10 @@ const ArtPiece = () => {
       opacity: 0,
       duration: 1,
       delay: 0.8,
-      onComplete: () => navigate(path)
+      onComplete: () => {
+        window.scrollTo(0, 0)
+        navigate(path)
+      }
     })
   }
 
