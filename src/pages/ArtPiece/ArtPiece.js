@@ -33,7 +33,11 @@ const ArtPiece = () => {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.detail', { opacity: 0 }, { opacity: 1, duration: 0.1 })
+      gsap.fromTo(
+        '.detail, .main-image',
+        { opacity: 0 },
+        { opacity: 1, duration: 0.1 }
+      )
 
       // Main Image Overlay
       gsap.fromTo(
@@ -153,8 +157,8 @@ const ArtPiece = () => {
   //-------------------------------------------------------------------------
 
   function handleExit(path) {
-    gsap.set('body', { overflowX: 'hidden' })
-    gsap.to(q('.detail'), {
+    // gsap.set('body', { overflowX: 'hidden' })
+    gsap.to('.detail, .main-image', {
       opacity: 0,
       duration: 1,
       delay: 0.8,
