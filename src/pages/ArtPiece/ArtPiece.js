@@ -154,12 +154,13 @@ const ArtPiece = () => {
   //-------------------------------------------------------------------------
 
   function handleExit(path) {
+    gsap.set('body', { overflowX: 'hidden' })
     gsap.to(q('.detail'), {
       opacity: 0,
       duration: 1,
       delay: 0.8,
       onComplete: () => {
-        window.scrollTo(0, 0)
+        smoother.current.scrollTop(0)
         navigate(path)
       }
     })
