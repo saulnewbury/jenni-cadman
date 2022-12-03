@@ -160,7 +160,7 @@ const ArtPiece = () => {
       duration: 1,
       delay: 0.8,
       onComplete: () => {
-        smoother.current.scrollTop(0)
+        smoother.current.scrollTo(0, false)
         navigate(path)
       }
     })
