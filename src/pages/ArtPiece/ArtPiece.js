@@ -225,11 +225,11 @@ const ArtPiece = () => {
               </div>
             </div>
           </div>
-          {/* <Picker
+          <Picker
             imagesData={imagesData}
             collectionId={id}
             handleExit={handleExit}
-          /> */}
+          />
         </div>
       </div>
     </div>
