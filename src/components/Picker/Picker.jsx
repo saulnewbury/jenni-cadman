@@ -292,22 +292,21 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
   //-------------------------------------------------------------------------
 
   function exitAnimPicker() {
-    const ctx = gsap.context(() => {
-      gsap.to([q('.counter'), q('h2'), q('.back')], {
-        opacity: 0,
-        duration: 0.5,
-        delay: 0.2
-      })
-
-      gsap.to(q('.image-item'), {
-        opacity: 0,
-        stagger: 0.05,
-        delay: 0.2
-      })
-    }, pickerViewport)
-    return () => {
-      ctx.revert()
-    }
+    // const ctx = gsap.context(() => {
+    //   gsap.to([q('.counter'), q('h2'), q('.back')], {
+    //     opacity: 0,
+    //     duration: 0.5,
+    //     delay: 0.2
+    //   })
+    //   gsap.to(q('.image-item'), {
+    //     opacity: 0,
+    //     stagger: 0.05,
+    //     delay: 0.2
+    //   })
+    // }, pickerViewport)
+    // return () => {
+    //   ctx.revert()
+    // }
   }
 
   //-------------------------------------------------------------------------
