@@ -33,11 +33,11 @@ const ArtPiece = () => {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.detail', { opacity: 0 }, { opacity: 1, duration: 0.1 })
+      gsap.fromTo(q('.detail'), { opacity: 0 }, { opacity: 1, duration: 0.1 })
 
       // Main Image Overlay
       gsap.fromTo(
-        '.main-image .overlay',
+        q('.main-image .overlay'),
         { scaleY: 1 },
         {
           scaleY: 0,
@@ -52,12 +52,12 @@ const ArtPiece = () => {
 
       // Detail Image Overlay
       gsap.fromTo(
-        '.detail-image-inner h4',
+        q('.detail-image-inner h4'),
         { opacity: 0 },
         {
           opacity: 1,
           scrollTrigger: {
-            trigger: '.detail',
+            trigger: q('.detail'),
             start: 'top 60%',
             toggleActions: 'play none none none'
           }
@@ -65,7 +65,7 @@ const ArtPiece = () => {
       )
 
       gsap.fromTo(
-        '.detail-image .overlay',
+        q('.detail-image .overlay'),
         {
           scaleY: 1
         },
@@ -78,13 +78,13 @@ const ArtPiece = () => {
           ),
           scrollTrigger: {
             id: 'detailReveal',
-            trigger: '.detail .overlay',
+            trigger: q('.detail .overlay'),
             start: '10% 80%'
             // toggleActions: 'restart none none revert'
           }
         }
       )
-      const childSplit = new SplitText('.info h1', {
+      const childSplit = new SplitText(q('.info h1'), {
         type: 'chars'
       })
 
@@ -96,7 +96,7 @@ const ArtPiece = () => {
       })
 
       // Details
-      const childSplitDetails = new SplitText('.info p', {
+      const childSplitDetails = new SplitText(q('.info p'), {
         type: 'chars'
       })
 
@@ -106,7 +106,7 @@ const ArtPiece = () => {
         ease: 'power2.inOut',
         delay: 1.5
       })
-    }, artpiece)
+    })
 
     return () => {
       ctx.revert()

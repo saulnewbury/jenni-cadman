@@ -12,15 +12,16 @@ import NotFound from '../../pages/NotFound/NotFound'
 
 const PageRoutes = () => {
   const { key } = useLocation()
+
   return (
     <Routes key={key}>
-      <Route path="/" element={<Home />} />
-      <Route path="/work" element={<Work />} />
-      <Route path="/bio" element={<Bio />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/:id" element={<Collection />} />
-      <Route path="/:id/:slug" element={<ArtPiece />} />
-      <Route path="*" element={<NotFound />} />
+      <Route path="/" element={<Home />} gestureEnabled={false} />
+      <Route path="/work" element={<Work />} gestureEnabled={false} />
+      <Route path="/bio" element={<Bio />} gestureEnabled={false} />
+      <Route path="/contact" element={<Contact gestureEnabled={false} />} />
+      <Route path="/:id" element={<Collection />} gestureEnabled={false} />
+      <Route path="/:id/:slug" element={<ArtPiece />} gestureEnabled={false} />
+      <Route path="*" element={<NotFound />} gestureEnabled={false} />
     </Routes>
   )
 }

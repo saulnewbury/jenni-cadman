@@ -11,6 +11,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(SplitText, CustomEase, ScrollTrigger)
 
 const Bio = () => {
+  const bio = useRef()
   const image = useRef()
   const overlay = useRef()
   const info = useRef()
@@ -19,6 +20,10 @@ const Bio = () => {
   const q = gsap.utils.selector(info)
   const qC = gsap.utils.selector(creds)
   const qE = gsap.utils.selector(experience)
+
+  // useEffect(() => {
+
+  // }, [])
 
   //-------------------------------------------------------------------------
   // Enter animation
@@ -119,7 +124,7 @@ const Bio = () => {
   }, [])
 
   return (
-    <div className="bio">
+    <div ref={bio} className="bio">
       <div className="bio-inner">
         <section className="jenni-cadman indent">
           <div className="image">

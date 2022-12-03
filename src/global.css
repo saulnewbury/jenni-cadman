@@ -6,6 +6,10 @@
   line-height: 1em;
 }
 
+body {
+  overscroll-behavior: none;
+}
+
 p,
 label,
 ul li span {
