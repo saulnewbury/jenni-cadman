@@ -50,6 +50,7 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
     //     scrollTrigger: { trigger: pickerViewport.current, start: 'top 70%' }
     //   }
     // )
+
     gsap.fromTo(
       q('.image-item'),
       { opacity: 0 },
