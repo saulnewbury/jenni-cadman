@@ -32,6 +32,7 @@ const ArtPiece = () => {
   //-------------------------------------------------------------------------
 
   useLayoutEffect(() => {
+    gsap.set('body', { overflowY: 'auto' })
     const ctx = gsap.context(() => {
       gsap.fromTo(
         '.detail, .main-image',
@@ -121,18 +122,18 @@ const ArtPiece = () => {
   // ScrollSmoother
   //-------------------------------------------------------------------------
 
-  // useEffect(() => {
-  // smoother.current = ScrollSmoother.create({
-  //   wrapper: '#smooth-wrapper-artpiece',
-  //   content: '#smooth-content-artpiece',
-  //   smooth: 1
-  //   // smoothTouch: 0.1
-  //   // normalizeScroll: true
-  // })
-  // return () => {
-  //   smoother.current.kill()
-  // }
-  // }, [])
+  useEffect(() => {
+    smoother.current = ScrollSmoother.create({
+      wrapper: '#smooth-wrapper-artpiece',
+      content: '#smooth-content-artpiece',
+      smooth: 1
+      // smoothTouch: 0.1
+      // normalizeScroll: true
+    })
+    return () => {
+      smoother.current.kill()
+    }
+  }, [])
 
   //-------------------------------------------------------------------------
   // Get data
@@ -157,13 +158,14 @@ const ArtPiece = () => {
   //-------------------------------------------------------------------------
 
   function handleExit(path) {
-    // gsap.set('body', { overflowX: 'hidden' })
-    gsap.to('.detail, .main-image', {
+    gsap.set('body', { overflowY: 'hidden' })
+    gsap.to([q('.detail'), q('.main-image')], {
       opacity: 0,
       duration: 1,
       delay: 0.8,
       onComplete: () => {
         // smoother.current.scrollTo(0, false)
+        smoother.current.paused(true)
         window.scrollTo(0, 0)
         navigate(path)
       }
