@@ -33,6 +33,7 @@ const ArtPiece = () => {
 
   useLayoutEffect(() => {
     gsap.set('body', { overflowY: 'auto' })
+    smoother.current.paused(false)
     const ctx = gsap.context(() => {
       gsap.fromTo(
         '.detail, .main-image',
