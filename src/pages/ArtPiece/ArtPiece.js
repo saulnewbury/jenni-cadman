@@ -122,19 +122,19 @@ const ArtPiece = () => {
   // ScrollSmoother
   //-------------------------------------------------------------------------
 
-  useEffect(() => {
-    smoother.current = ScrollSmoother.create({
-      wrapper: '#smooth-wrapper-artpiece',
-      content: '#smooth-content-artpiece',
-      smooth: 1,
-      // smoothTouch: 0.1
-      normalizeScroll: true
-    })
-    // smoother.current.paused(false)
-    return () => {
-      smoother.current.kill()
-    }
-  }, [])
+  // useEffect(() => {
+  //   smoother.current = ScrollSmoother.create({
+  //     wrapper: '#smooth-wrapper-artpiece',
+  //     content: '#smooth-content-artpiece',
+  //     smooth: 1,
+  //     // smoothTouch: 0.1
+  //     normalizeScroll: true
+  //   })
+  //   // smoother.current.paused(false)
+  //   return () => {
+  //     smoother.current.kill()
+  //   }
+  // }, [])
 
   //-------------------------------------------------------------------------
   // Get data
@@ -165,7 +165,7 @@ const ArtPiece = () => {
       duration: 1,
       delay: 0.8,
       onComplete: () => {
-        smoother.current.paused(true)
+        // smoother.current.paused(true)
         // smoother.current.scrollTop(0)
         window.scrollTo(0, 0)
         navigate(path)
