@@ -126,11 +126,11 @@ const ArtPiece = () => {
     smoother.current = ScrollSmoother.create({
       wrapper: '#smooth-wrapper-artpiece',
       content: '#smooth-content-artpiece',
-      smooth: 1
+      smooth: 1,
       // smoothTouch: 0.1
-      // normalizeScroll: true
+      normalizeScroll: true
     })
-    smoother.current.paused(false)
+    // smoother.current.paused(false)
     return () => {
       smoother.current.kill()
     }
