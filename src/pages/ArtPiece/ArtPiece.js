@@ -175,7 +175,7 @@ const ArtPiece = () => {
 
   return (
     <div id="smooth-wrapper-artpiece">
-      <div id="smooth-content-artpiece" className="gutter">
+      <div id="smooth-content-artpiece">
         <div
           key={location.pathname}
           ref={artpiece}
