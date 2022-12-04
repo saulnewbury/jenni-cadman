@@ -33,7 +33,6 @@ const ArtPiece = () => {
 
   useLayoutEffect(() => {
     gsap.set('body', { overflowY: 'auto' })
-    smoother.current.paused(false)
     const ctx = gsap.context(() => {
       gsap.fromTo(
         '.detail, .main-image',
@@ -131,6 +130,7 @@ const ArtPiece = () => {
       // smoothTouch: 0.1
       // normalizeScroll: true
     })
+    smoother.current.paused(false)
     return () => {
       smoother.current.kill()
     }
@@ -165,9 +165,9 @@ const ArtPiece = () => {
       duration: 1,
       delay: 0.8,
       onComplete: () => {
-        // smoother.current.scrollTo(0, false)
         smoother.current.paused(true)
-        window.scrollTo(0, 0)
+        smoother.current.scrollTo(0)
+        // window.scrollTo(0, 0)
         navigate(path)
       }
     })
