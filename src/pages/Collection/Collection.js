@@ -18,7 +18,7 @@ const Collection = () => {
   const picker = useRef()
 
   useLayoutEffect(() => {
-    gsap.set('.page-overlay', { scaleY: 1 }, { scaleY: 0 })
+    gsap.set('.page-overlay', { scaleY: 0 })
     const tween = gsap.fromTo(
       colTitle.current,
       { opacity: 0, y: 10 },
