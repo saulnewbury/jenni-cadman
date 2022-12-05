@@ -176,7 +176,7 @@ export const collections = [
           id: 2,
           title: 'Deer in Conversation',
           image: 'deer-in-conversation',
-          detail: 'detail',
+          detail: 'none',
           imageDetail: 'deer-in-conversation-detail',
           altText: 'Composition of elements ',
           desc: {
@@ -191,7 +191,7 @@ export const collections = [
           id: 3,
           title: 'Grazing',
           image: 'grazing',
-          detail: 'detail',
+          detail: 'none',
           altText: 'Composition of elements',
           desc: {
             year: 2010,
@@ -205,7 +205,7 @@ export const collections = [
           id: 4,
           title: 'Teasel by the Stream',
           image: 'teasel-by-the-stream',
-          detail: 'detail',
+          detail: 'none',
           altText: 'Composition of elements',
           desc: {
             year: 2010,
@@ -219,7 +219,7 @@ export const collections = [
           id: 5,
           title: 'Every Cloud has a Silver Lining',
           image: 'every-cloud-has-a-silver-lining',
-          detail: 'detail',
+          detail: 'none',
           altText: 'Composition of elements',
           desc: {
             year: 2010,
@@ -233,7 +233,7 @@ export const collections = [
           id: 6,
           title: 'Embracing a Colourful World',
           image: 'embracing-a-colourful-world',
-          detail: 'detail',
+          detail: 'none',
           imageDetail: 'embracing-a-colourful-world-detail',
           altText: 'Composition of elements',
           desc: {
@@ -266,7 +266,7 @@ export const collections = [
           id: 1,
           title: 'West Bay Beach and Harbour',
           image: 'west-bay-beach-and-harbour',
-          detail: 'detail',
+          detail: 'none',
           altText:
             'Shadowy harbour walls in the foreground. Several old cottages painted brightly edge the beach. A tall cliff looms beyond. The sky is bright blue. ',
           desc: {
@@ -281,7 +281,7 @@ export const collections = [
           id: 2,
           title: 'Darwin My Faithful Hound',
           image: 'darwin-my-faithful-hound',
-          detail: 'detail',
+          detail: 'none',
           altText:
             'Black and red embroidery on white. A patterned border of waves surrounds a woman and dog in profile they both look towards a sun with face.',
           desc: {
@@ -326,7 +326,7 @@ export const collections = [
           id: 5,
           title: 'Darwin II',
           image: 'darwin-2',
-          detail: 'detail',
+          detail: 'none',
           altText:
             'Predominantly a background of black threads with hints of colour show a dogs head outlined in a thick white stitching.',
           desc: {
@@ -341,7 +341,7 @@ export const collections = [
           id: 6,
           title: 'Darwin IV',
           image: 'darwin-4',
-          detail: 'detail',
+          detail: 'none',
           altText:
             'Rows and waves of stitching cover a collage of brown, maroon and yellow fabrics. A single thick thread traces the contours of a dog’s head.',
           desc: {
@@ -432,7 +432,7 @@ export const collections = [
           id: 12,
           title: 'Cliff and Boat (Grey Sky)',
           image: 'cliff-and-boat-(grey-sky)',
-          detail: 'detail',
+          detail: 'none',
           altText:
             'The profile of a pale cliff topped with deep green. A deep green-black boat sits on multi-coloured pebbles. The sky is tones of grey.',
           desc: {

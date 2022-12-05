@@ -1,16 +1,19 @@
-import React, { useEffect, useLayoutEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import './work.scss'
 
 import { collections } from '../../data/collections'
 
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import gsap from 'gsap'
-import ScrollSmoother from 'gsap/ScrollSmoother'
-import ScrollTrigger from 'gsap/ScrollTrigger'
+// import ScrollSmoother from 'gsap/ScrollSmoother'
+// import ScrollTrigger from 'gsap/ScrollTrigger'
 import CustomEase from 'gsap/CustomEase'
-gsap.registerPlugin(ScrollSmoother, ScrollTrigger, CustomEase)
+import useScrollSmoother from '../../hooks/useScrollSmoother'
 
 const Work = () => {
+  gsap.registerPlugin(CustomEase)
+  const navigate = useNavigate()
+
   const t1 = useRef()
   const t2 = useRef()
   const t3 = useRef()
@@ -21,29 +24,14 @@ const Work = () => {
   const c3 = useRef()
   const c4 = useRef()
 
+  const pageOverlay = useRef()
   const gallery = useRef()
   const q = gsap.utils.selector(gallery)
 
   const tRefs = [t1, t2, t3, t4]
   const cRefs = [c1, c2, c3, c4]
 
-  const smoother = useRef(null)
-
-  useLayoutEffect(() => {
-    smoother.current = ScrollSmoother.create({
-      wrapper: '#smooth-wrapper',
-      content: '#smooth-content',
-      smooth: 1,
-      smoothTouch: 0.1
-    })
-    smoother.current.effects(q('.info'), {
-      speed: 1.05
-    })
-
-    return () => {
-      smoother.current.revert()
-    }
-  }, [])
+  const { smoother } = useScrollSmoother({})
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -80,8 +68,24 @@ const Work = () => {
     })
   }
 
+  function exitAnim(path) {
+    console.log('scale')
+    gsap.to(pageOverlay.current, {
+      scaleY: 1,
+      duration: 1,
+      ease: CustomEase.create(
+        'custom',
+        'M0,0,C0.05,0,0.149,0.279,0.19,0.374,0.36,0.772,0.528,0.988,1,1'
+      ),
+      onComplete: () => {
+        navigate(path)
+      }
+    })
+  }
+
   return (
-    <section id="smooth-wrapper" className="work">
+    <div id="smooth-wrapper" className="work">
+      <div ref={pageOverlay} className="page-overlay"></div>
       <div id="smooth-content" className="work-inner">
         <div className="collections-menu title lg uppercase indent">
           <div className="collections-menu-inner">
@@ -117,19 +121,21 @@ const Work = () => {
                     <p key={idx.toString()}>{p}</p>
                   ))}
 
-                  <Link
-                    to={`/0${entry.id}/`}
+                  <div
                     className="btn see-collection-link"
+                    onClick={() => {
+                      exitAnim(`/0${entry.id}/`)
+                    }}
                   >
                     See Collection
-                  </Link>
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 

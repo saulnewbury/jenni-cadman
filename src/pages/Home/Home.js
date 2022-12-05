@@ -1,16 +1,20 @@
 import React, { useEffect, useRef } from 'react'
-
-import { Link } from 'react-router-dom'
-
-import gsap from 'gsap'
-
 import './home.scss'
 
+import { useNavigate } from 'react-router-dom'
+
+import gsap from 'gsap'
+import CustomEase from 'gsap/CustomEase'
+gsap.registerPlugin(CustomEase)
+
 const Home = () => {
+  const navigate = useNavigate()
+
   const intro = useRef()
   const heading = useRef()
   const image = useRef()
   const overlay = useRef()
+  const pageOverlay = useRef()
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -52,8 +56,24 @@ const Home = () => {
     }
   }, [])
 
+  function exitAnim(path) {
+    console.log('scale')
+    gsap.to(pageOverlay.current, {
+      scaleY: 1,
+      duration: 1,
+      ease: CustomEase.create(
+        'custom',
+        'M0,0,C0.05,0,0.149,0.279,0.19,0.374,0.36,0.772,0.528,0.988,1,1'
+      ),
+      onComplete: () => {
+        navigate(path)
+      }
+    })
+  }
+
   return (
     <div className="home">
+      <div ref={pageOverlay} className="page-overlay"></div>
       <div className="home-inner">
         <div className="text">
           <div className="intro-text">
@@ -68,10 +88,15 @@ const Home = () => {
             </h1>
           </div>
         </div>
-        <Link to="/work" className="banner-image">
+        <div
+          onClick={() => {
+            exitAnim('/work')
+          }}
+          className="banner-image"
+        >
           <div ref={overlay} className="overlay"></div>
           <img ref={image} src="/images/veronica/veronica-2.webp" alt="" />
-        </Link>
+        </div>
       </div>
     </div>
   )

@@ -62,6 +62,8 @@
               margin-bottom: 1em;
             }
             .see-collection-link {
+              display: inline-block;
+              cursor: pointer;
               margin: 1.2em 0 1.5em;
               background-color: white;
               transition: background-color 0.3s;

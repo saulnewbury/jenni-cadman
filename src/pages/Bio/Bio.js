@@ -21,10 +21,6 @@ const Bio = () => {
   const qC = gsap.utils.selector(creds)
   const qE = gsap.utils.selector(experience)
 
-  // useEffect(() => {
-
-  // }, [])
-
   //-------------------------------------------------------------------------
   // Enter animation
   //-------------------------------------------------------------------------

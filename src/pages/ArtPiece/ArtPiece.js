@@ -6,26 +6,25 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { collections } from '../../data/collections'
 import Picker from '../../components/Picker/Picker'
 
+import useScrollSmoother from '../../hooks/useScrollSmoother'
+
 import gsap from 'gsap'
 import { CustomEase } from 'gsap/CustomEase'
 import { SplitText } from 'gsap/SplitText'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ScrollSmoother } from 'gsap/ScrollSmoother'
+// import { ScrollSmoother } from 'gsap/ScrollSmoother'
 
-gsap.registerPlugin(CustomEase, SplitText, ScrollTrigger, ScrollSmoother)
+gsap.registerPlugin(CustomEase, SplitText, ScrollTrigger)
 
+// Artpiece component
 const ArtPiece = () => {
   const { slug, id } = useParams()
-
-  const artpiece = useRef()
-  const q = gsap.utils.selector(artpiece)
-
-  const smoother = useRef(null)
-
   const navigate = useNavigate()
   const location = useLocation()
 
-  console.log(location)
+  const artpiece = useRef()
+
+  const { smoother } = useScrollSmoother({})
 
   //-------------------------------------------------------------------------
   // Enter animations
@@ -33,13 +32,12 @@ const ArtPiece = () => {
 
   useLayoutEffect(() => {
     gsap.set('body', { overflowY: 'auto' })
+    const page = gsap.fromTo(
+      artpiece.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 0.1 }
+    )
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.detail, .main-image',
-        { opacity: 0 },
-        { opacity: 1, duration: 0.1 }
-      )
-
       // Main Image Overlay
       gsap.fromTo(
         '.main-image .overlay',
@@ -114,27 +112,10 @@ const ArtPiece = () => {
     }, artpiece)
 
     return () => {
+      page.kill()
       ctx.revert()
     }
   }, [location])
-
-  //-------------------------------------------------------------------------
-  // ScrollSmoother
-  //-------------------------------------------------------------------------
-
-  useEffect(() => {
-    smoother.current = ScrollSmoother.create({
-      wrapper: '#smooth-wrapper-artpiece',
-      content: '#smooth-content-artpiece',
-      smooth: 1,
-      // smoothTouch: 0.1
-      normalizeScroll: true
-    })
-    // smoother.current.paused(false)
-    return () => {
-      smoother.current.kill()
-    }
-  }, [])
 
   //-------------------------------------------------------------------------
   // Get data
@@ -160,12 +141,11 @@ const ArtPiece = () => {
 
   function handleExit(path) {
     gsap.set('body', { overflowY: 'hidden' })
-    gsap.to([q('.detail'), q('.main-image')], {
+    gsap.to(artpiece.current, {
       opacity: 0,
       duration: 1,
       delay: 0.8,
       onComplete: () => {
-        // smoother.current.paused(true)
         smoother.current.scrollTop(0)
         // window.scrollTo(0, 0)
         navigate(path)
@@ -174,75 +154,67 @@ const ArtPiece = () => {
   }
 
   return (
-    <div id="smooth-wrapper-artpiece">
-      <div id="smooth-content-artpiece">
-        <div
-          key={location.pathname}
-          ref={artpiece}
-          className="art-piece indent"
-        >
-          <div className="main-image">
-            <div className="main-image-inner">
-              <div className="image">
-                <div className="overlay"></div>
-                <img
-                  src={`../images/${subFolder}/${image}.webp`}
-                  alt={altText}
-                />
+    <div key={location.pathname} ref={artpiece} className="art-piece indent">
+      <div className="main-image">
+        <div className="main-image-inner">
+          <div className="image">
+            <div className="overlay"></div>
+            <img src={`../images/${subFolder}/${image}.webp`} alt={altText} />
+          </div>
+          <div className="info">
+            <div className="info-inner">
+              <div className="title-container">
+                <h1 className="title uppercase sm">{title}</h1>
               </div>
-              <div className="info">
-                <div className="info-inner">
-                  <div className="title-container">
-                    <h1 className="title uppercase sm">{title}</h1>
-                  </div>
-                  <div className="p-container">
-                    <p className="collection-date">{desc.year}</p>
-                  </div>
-                  <div className="p-container">
-                    <p className="medium">{desc.medium}</p>
-                  </div>
-                  <div className="p-container">
-                    <p className="size">{desc.size}</p>
-                  </div>
+              <div className="p-container">
+                <p className="collection-date">{desc.year}</p>
+              </div>
+              <div className="p-container">
+                <p className="medium">{desc.medium}</p>
+              </div>
+              <div className="p-container">
+                <p className="size">{desc.size}</p>
+              </div>
 
-                  {desc.mount && (
-                    <div className="p-container">
-                      <p className="mount">{desc.mount}</p>
-                    </div>
-                  )}
-                  <div className="p-container">
-                    <p className="price">{desc.price}</p>
-                  </div>
+              {desc.mount && (
+                <div className="p-container">
+                  <p className="mount">{desc.mount}</p>
                 </div>
+              )}
+              <div className="p-container">
+                <p className="price">{desc.price}</p>
               </div>
             </div>
           </div>
-          <div className="detail">
-            <div className="detail-inner">
-              <div className="spacer"></div>
-              <div className="detail-content">
-                <div className="detail-image">
-                  <div className="detail-image-inner">
-                    <h4>(Detail)</h4>
-                    <div className="image">
-                      <div className="overlay"></div>
-                      <img
-                        src={`../images/${subFolder}/${image}-${detail}.webp`}
-                        alt={altText}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <Picker
-            imagesData={imagesData}
-            collectionId={id}
-            handleExit={handleExit}
-          />
         </div>
       </div>
+      {detail === 'detail' && (
+        <div className="detail">
+          <div className="detail-inner">
+            <div className="spacer"></div>
+            <div className="detail-content">
+              <div className="detail-image">
+                <div className="detail-image-inner">
+                  <h4>(Detail)</h4>
+                  <div className="image">
+                    <div className="overlay"></div>
+                    <img
+                      src={`../images/${subFolder}/${image}-${detail}.webp`}
+                      alt={altText}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      <Picker
+        imagesData={imagesData}
+        collectionId={id}
+        id={artpieceId - 1}
+        handleExit={handleExit}
+      />
     </div>
   )
 }

@@ -14,6 +14,7 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother'
 
 gsap.registerPlugin(CustomEase, SplitText, ScrollTrigger, ScrollSmoother)
 
+// Artpiece component
 const ArtPiece = () => {
   const { slug, id } = useParams()
 
@@ -32,12 +33,16 @@ const ArtPiece = () => {
   //-------------------------------------------------------------------------
 
   useLayoutEffect(() => {
+    gsap.set('body', { overflowY: 'auto' })
+    const page = gsap.fromTo(
+      artpiece.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 0.1 }
+    )
     const ctx = gsap.context(() => {
-      gsap.fromTo(q('.detail'), { opacity: 0 }, { opacity: 1, duration: 0.1 })
-
       // Main Image Overlay
       gsap.fromTo(
-        q('.main-image .overlay'),
+        '.main-image .overlay',
         { scaleY: 1 },
         {
           scaleY: 0,
@@ -52,12 +57,12 @@ const ArtPiece = () => {
 
       // Detail Image Overlay
       gsap.fromTo(
-        q('.detail-image-inner h4'),
+        '.detail-image-inner h4',
         { opacity: 0 },
         {
           opacity: 1,
           scrollTrigger: {
-            trigger: q('.detail'),
+            trigger: '.detail',
             start: 'top 60%',
             toggleActions: 'play none none none'
           }
@@ -65,7 +70,7 @@ const ArtPiece = () => {
       )
 
       gsap.fromTo(
-        q('.detail-image .overlay'),
+        '.detail-image .overlay',
         {
           scaleY: 1
         },
@@ -78,13 +83,13 @@ const ArtPiece = () => {
           ),
           scrollTrigger: {
             id: 'detailReveal',
-            trigger: q('.detail .overlay'),
+            trigger: '.detail .overlay',
             start: '10% 80%'
             // toggleActions: 'restart none none revert'
           }
         }
       )
-      const childSplit = new SplitText(q('.info h1'), {
+      const childSplit = new SplitText('.info h1', {
         type: 'chars'
       })
 
@@ -96,7 +101,7 @@ const ArtPiece = () => {
       })
 
       // Details
-      const childSplitDetails = new SplitText(q('.info p'), {
+      const childSplitDetails = new SplitText('.info p', {
         type: 'chars'
       })
 
@@ -106,9 +111,10 @@ const ArtPiece = () => {
         ease: 'power2.inOut',
         delay: 1.5
       })
-    })
+    }, artpiece)
 
     return () => {
+      page.kill()
       ctx.revert()
     }
   }, [location])
@@ -121,11 +127,11 @@ const ArtPiece = () => {
     smoother.current = ScrollSmoother.create({
       wrapper: '#smooth-wrapper-artpiece',
       content: '#smooth-content-artpiece',
-      smooth: 1
+      smooth: 1,
       // smoothTouch: 0.1
-      // normalizeScroll: true
+      normalizeScroll: true
     })
-
+    // smoother.current.paused(false)
     return () => {
       smoother.current.kill()
     }
@@ -154,17 +160,24 @@ const ArtPiece = () => {
   //-------------------------------------------------------------------------
 
   function handleExit(path) {
-    gsap.to(q('.detail'), {
+    gsap.set('body', { overflowY: 'hidden' })
+    // gsap.to([q('.detail'), q('.main-image')], {
+    gsap.to(artpiece.current, {
       opacity: 0,
       duration: 1,
       delay: 0.8,
-      onComplete: () => navigate(path)
+      onComplete: () => {
+        // smoother.current.paused(true)
+        smoother.current.scrollTop(0)
+        // window.scrollTo(0, 0)
+        navigate(path)
+      }
     })
   }
 
   return (
     <div id="smooth-wrapper-artpiece">
-      <div id="smooth-content-artpiece" className="gutter">
+      <div id="smooth-content-artpiece">
         <div
           key={location.pathname}
           ref={artpiece}
@@ -206,28 +219,31 @@ const ArtPiece = () => {
               </div>
             </div>
           </div>
-          <div className="detail">
-            <div className="detail-inner">
-              <div className="spacer"></div>
-              <div className="detail-content">
-                <div className="detail-image">
-                  <div className="detail-image-inner">
-                    <h4>(Detail)</h4>
-                    <div className="image">
-                      <div className="overlay"></div>
-                      <img
-                        src={`../images/${subFolder}/${image}-${detail}.webp`}
-                        alt={altText}
-                      />
+          {detail === 'detail' && (
+            <div className="detail">
+              <div className="detail-inner">
+                <div className="spacer"></div>
+                <div className="detail-content">
+                  <div className="detail-image">
+                    <div className="detail-image-inner">
+                      <h4>(Detail)</h4>
+                      <div className="image">
+                        <div className="overlay"></div>
+                        <img
+                          src={`../images/${subFolder}/${image}-${detail}.webp`}
+                          alt={altText}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          )}
           <Picker
             imagesData={imagesData}
             collectionId={id}
+            id={artpieceId - 1}
             handleExit={handleExit}
           />
         </div>
