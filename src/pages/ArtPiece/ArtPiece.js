@@ -12,7 +12,6 @@ import gsap from 'gsap'
 import { CustomEase } from 'gsap/CustomEase'
 import { SplitText } from 'gsap/SplitText'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-// import { ScrollSmoother } from 'gsap/ScrollSmoother'
 
 gsap.registerPlugin(CustomEase, SplitText, ScrollTrigger)
 

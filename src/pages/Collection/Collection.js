@@ -7,6 +7,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
+import gsapCore from 'gsap/gsap-core'
 gsap.registerPlugin(SplitText)
 
 const Collection = () => {
@@ -17,6 +18,7 @@ const Collection = () => {
   const picker = useRef()
 
   useLayoutEffect(() => {
+    gsap.fromTo('.page-overlay', { scaleY: 1 }, { scaleY: 0 })
     const tween = gsap.fromTo(
       colTitle.current,
       { opacity: 0, y: 10 },

@@ -5,8 +5,6 @@ import { collections } from '../../data/collections'
 
 import { useNavigate } from 'react-router-dom'
 import gsap from 'gsap'
-// import ScrollSmoother from 'gsap/ScrollSmoother'
-// import ScrollTrigger from 'gsap/ScrollTrigger'
 import CustomEase from 'gsap/CustomEase'
 import useScrollSmoother from '../../hooks/useScrollSmoother'
 
@@ -70,7 +68,7 @@ const Work = () => {
 
   function exitAnim(path) {
     console.log('scale')
-    gsap.to(pageOverlay.current, {
+    gsap.to('.page-overlay', {
       scaleY: 1,
       duration: 1,
       ease: CustomEase.create(
@@ -78,15 +76,15 @@ const Work = () => {
         'M0,0,C0.05,0,0.149,0.279,0.19,0.374,0.36,0.772,0.528,0.988,1,1'
       ),
       onComplete: () => {
+        smoother.current.scrollTop(0)
         navigate(path)
       }
     })
   }
 
   return (
-    <div id="smooth-wrapper" className="work">
-      <div ref={pageOverlay} className="page-overlay"></div>
-      <div id="smooth-content" className="work-inner">
+    <div className="work">
+      <div className="work-inner">
         <div className="collections-menu title lg uppercase indent">
           <div className="collections-menu-inner">
             {collections.map((entry, idx) => (
