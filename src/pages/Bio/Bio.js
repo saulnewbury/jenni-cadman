@@ -8,9 +8,11 @@ import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
 import { CustomEase } from 'gsap/CustomEase'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-gsap.registerPlugin(SplitText, CustomEase, ScrollTrigger)
+import useScrollSmoother from '../../hooks/useScrollSmoother'
 
 const Bio = () => {
+  gsap.registerPlugin(SplitText, CustomEase, ScrollTrigger)
+
   const bio = useRef()
   const image = useRef()
   const overlay = useRef()
@@ -21,9 +23,15 @@ const Bio = () => {
   const qC = gsap.utils.selector(creds)
   const qE = gsap.utils.selector(experience)
 
+  const { smoother } = useScrollSmoother({})
+
   //-------------------------------------------------------------------------
   // Enter animation
   //-------------------------------------------------------------------------
+
+  useEffect(() => {
+    smoother.current.scrollTop(0)
+  }, [])
 
   useEffect(() => {
     const ctx = gsap.context(() => {

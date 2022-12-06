@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import './work.scss'
 
 import { collections } from '../../data/collections'
@@ -28,6 +28,10 @@ const Work = () => {
   const cRefs = [c1, c2, c3, c4]
 
   const { smoother } = useScrollSmoother({})
+
+  useLayoutEffect(() => {
+    smoother.current?.scrollTop(0)
+  }, [])
 
   useEffect(() => {
     const ctx = gsap.context(() => {
