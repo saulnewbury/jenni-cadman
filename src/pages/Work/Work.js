@@ -29,7 +29,7 @@ const Work = () => {
 
   const { smoother } = useScrollSmoother({})
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     smoother.current?.scrollTop(0)
   }, [])
 
