@@ -22,9 +22,7 @@ const Work = () => {
   const c3 = useRef()
   const c4 = useRef()
 
-  const pageOverlay = useRef()
   const gallery = useRef()
-  const q = gsap.utils.selector(gallery)
 
   const tRefs = [t1, t2, t3, t4]
   const cRefs = [c1, c2, c3, c4]

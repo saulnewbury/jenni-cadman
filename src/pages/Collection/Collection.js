@@ -7,7 +7,6 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
-import gsapCore from 'gsap/gsap-core'
 gsap.registerPlugin(SplitText)
 
 const Collection = () => {

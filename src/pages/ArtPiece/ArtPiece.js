@@ -30,7 +30,9 @@ const ArtPiece = () => {
   //-------------------------------------------------------------------------
 
   useLayoutEffect(() => {
-    gsap.set('body', { overflowY: 'auto' })
+    gsap.set('body', {
+      overflowY: 'auto'
+    })
     const page = gsap.fromTo(
       artpiece.current,
       { opacity: 0 },
@@ -48,42 +50,46 @@ const ArtPiece = () => {
           ease: CustomEase.create(
             'custom',
             'M0,0,C0.05,0,0.149,0.279,0.19,0.374,0.36,0.772,0.528,0.988,1,1'
-          )
-        }
-      )
-
-      // Detail Image Overlay
-      gsap.fromTo(
-        '.detail-image-inner h4',
-        { opacity: 0 },
-        {
-          opacity: 1,
-          scrollTrigger: {
-            trigger: '.detail',
-            start: 'top 60%',
-            toggleActions: 'play none none none'
+          ),
+          onStart: () => {
+            ScrollTrigger.refresh(true)
           }
         }
       )
 
+      // Detail Image h4
+      gsap.fromTo(
+        '.detail-image-inner h4',
+        { opacity: 0 },
+        {
+          delay: 0.3,
+          opacity: 1,
+          scrollTrigger: {
+            trigger: '.detail',
+            start: 'top 80%'
+          }
+        }
+      )
+
+      // Detail image overlay
       gsap.fromTo(
         '.detail-image .overlay',
         {
           scaleY: 1
         },
         {
+          delay: 0.5,
+          scrollTrigger: {
+            id: 'detailReveal',
+            trigger: '.detail .overlay',
+            start: 'top 80%'
+          },
           scaleY: 0,
           duration: 1.5,
           ease: CustomEase.create(
             'custom',
             'M0,0,C0.05,0,0.149,0.279,0.19,0.374,0.36,0.772,0.528,0.988,1,1'
-          ),
-          scrollTrigger: {
-            id: 'detailReveal',
-            trigger: '.detail .overlay',
-            start: '10% 80%'
-            // toggleActions: 'restart none none revert'
-          }
+          )
         }
       )
       const childSplit = new SplitText('.info h1', {

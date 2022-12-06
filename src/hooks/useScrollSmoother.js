@@ -9,7 +9,7 @@ export default function useScrollSmoother() {
 
   useEffect(() => {
     smoother.current = ScrollSmoother.create({
-      smooth: 2,
+      smooth: 1.2,
       effects: true
     })
   }, [])

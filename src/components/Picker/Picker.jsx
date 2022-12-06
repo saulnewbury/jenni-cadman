@@ -6,9 +6,10 @@ import Counter from '../Counter/Counter'
 import { Link, useLocation } from 'react-router-dom'
 import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
-gsap.registerPlugin(SplitText)
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const Picker = ({ imagesData, collectionId, id, handleExit }) => {
+  gsap.registerPlugin(SplitText, ScrollTrigger)
   const { subFolder, images } = imagesData
 
   const [numOfItems, setNumOfItems] = useState(1)
@@ -46,13 +47,29 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
         { opacity: 0 },
         {
           opacity: 1,
-          stagger: 0.08
+          stagger: 0.08,
+          scrollTrigger: {
+            trigger: '.image-menu',
+            start: 'top 80%',
+            markers: true
+          }
         }
       )
 
       // Counter
-      gsap.fromTo('.counter, h2, .back', { opacity: 0 }, { opacity: 1 })
+      gsap.fromTo(
+        '.counter, h2, .back',
+        { opacity: 0 },
+        {
+          opacity: 1,
+          scrollTrigger: {
+            trigger: '.image-menu',
+            start: 'top 90%'
+          }
+        }
+      )
     }, pickerViewport)
+
     return () => {
       ctx.revert()
     }

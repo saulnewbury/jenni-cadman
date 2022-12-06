@@ -133,6 +133,7 @@
         img {
           // max-width: calc(500px - var(--gutter) * 2); // constrain landscape
           min-height: 450px; // stop image collapsing to 0 with min-height
+          // min-height: 540px;
         }
       }
     }
@@ -142,7 +143,11 @@
       .detail-content {
         .detail-image {
           justify-content: center;
-          img {
+          .detail-image-inner {
+            .image {
+              img {
+              }
+            }
           }
         }
       }
