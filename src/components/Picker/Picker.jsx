@@ -22,8 +22,8 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
   // gives the required outer container width in those units.
 
   const pickerViewport = useRef()
-  const container = useRef()
   const q = gsap.utils.selector(pickerViewport)
+  const container = useRef()
 
   const lastCurrent = useRef(current)
   const lastLeft = useRef(leftMost)
@@ -50,8 +50,8 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
           stagger: 0.08,
           scrollTrigger: {
             trigger: '.image-menu',
-            start: 'top 80%',
-            markers: true
+            start: 'top 80%'
+            // markers: true
           }
         }
       )
@@ -73,7 +73,7 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
     return () => {
       ctx.revert()
     }
-  }, [location.key])
+  }, [location.key, numOfItems])
 
   // Run animations on change of 'current'. Do this as a 'layout' effect so that
   // users don't see a flash of the target state (set by React render).
@@ -91,21 +91,11 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
       )
       gsap.fromTo(p('img'), { opacity: 1.0 }, { opacity: 0.7 })
       gsap.fromTo(
-        p('.overlay-container'),
-        { width: `${calcValues.wide}` },
-        { width: `${calcValues.narrow}` }
-      )
-      gsap.fromTo(
         newTarget,
         { width: `${calcValues.narrow}` },
         { width: `${calcValues.wide}` }
       )
       gsap.fromTo(c('img'), { opacity: 0.7 }, { opacity: 1.0 })
-      gsap.fromTo(
-        c('.overlay-container'),
-        { width: `${calcValues.narrow}` },
-        { width: `${calcValues.wide}` }
-      )
       reveal.current?.pause().kill()
       reveal.current = gsap.fromTo(
         c('.view'),
@@ -308,7 +298,7 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
         duration: 0.5,
         delay: 0.2
       })
-      gsap.to(q('.image-item'), {
+      gsap.to('.image-item', {
         opacity: 0,
         stagger: 0.05,
         delay: 0.2
