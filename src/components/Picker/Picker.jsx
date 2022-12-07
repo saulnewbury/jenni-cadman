@@ -22,7 +22,6 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
   // gives the required outer container width in those units.
 
   const pickerViewport = useRef()
-  const q = gsap.utils.selector(pickerViewport)
   const container = useRef()
 
   const lastCurrent = useRef(current)
@@ -64,7 +63,7 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
           opacity: 1,
           scrollTrigger: {
             trigger: '.image-menu',
-            start: 'top 90%'
+            start: 'top 80%'
           }
         }
       )

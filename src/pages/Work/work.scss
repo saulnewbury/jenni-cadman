@@ -17,18 +17,62 @@
       align-items: center;
 
       .link-wrapper {
-        padding: 0.1em 0;
+        padding: 0.2em 0;
 
         .c-link {
           display: inline;
+          display: inline-block;
           position: relative;
-          line-height: 1.2;
+          overflow-y: clip;
+          // border: 1px black solid;
 
-          .collection-number {
+          .entry-title {
+            pointer-events: none;
+            margin: 0;
+            line-height: 0.9;
+            font-kerning: none;
+
+            .words {
+              pointer-events: none;
+              line-height: 0.9;
+            }
+          }
+
+          &::before {
+            content: '';
+            width: 0.2em;
+            height: 0.02em;
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: black;
+            opacity: 0;
+            transition: opacity 0.5s, left 0.3s;
+          }
+
+          &:hover::before {
+            left: -16px;
+            opacity: 1;
+          }
+
+          .collection-number-container {
+            pointer-events: none;
             position: absolute;
             right: -1.5em;
-            bottom: 1.48em;
-            font-size: 0.39em;
+            bottom: 1.15em;
+            bottom: 0.8em;
+            font-size: 0.46em;
+
+            .collection-number-inner {
+              overflow: hidden;
+              // border: solid 1px black;
+
+              .collection-number {
+                margin: 0;
+                line-height: 0.1;
+              }
+            }
           }
         }
       }

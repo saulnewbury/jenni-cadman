@@ -49,7 +49,7 @@ const LoadingCounter = ({ isLoading }) => {
           })
 
           gsap.to(underlay.current, {
-            duration: 5,
+            duration: 0.1,
             width: `${sum.current}%`
             // snap: 'width'
           })

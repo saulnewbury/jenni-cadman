@@ -6,11 +6,15 @@ import { collections } from '../../data/collections'
 import { useNavigate } from 'react-router-dom'
 import gsap from 'gsap'
 import CustomEase from 'gsap/CustomEase'
+import SplitText from 'gsap/SplitText'
 import useScrollSmoother from '../../hooks/useScrollSmoother'
 
 const Work = () => {
-  gsap.registerPlugin(CustomEase)
+  gsap.registerPlugin(CustomEase, SplitText)
   const navigate = useNavigate()
+
+  const work = useRef()
+  const q = gsap.utils.selector(work)
 
   const t1 = useRef()
   const t2 = useRef()
@@ -33,7 +37,7 @@ const Work = () => {
     smoother.current?.scrollTop(0)
   }, [])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         [t1.current, t2.current, t3.current, t4.current],
@@ -84,16 +88,87 @@ const Work = () => {
     })
   }
 
+  // function handleMouseEnter(e) {
+  // console.log(e.target.className.slice(0, 7))
+  // const mySplitText = new SplitText(
+  //   `.${e.target.className.slice(0, 7)} .collection-number`,
+  //   {
+  //     type: 'chars'
+  //   }
+  // )
+
+  // const chars = mySplitText.chars
+
+  // gsap.fromTo(chars, { yPercent: 0 }, { yPercent: -130, duration: 0.15 })
+  // gsap.fromTo(
+  //   chars,
+  //   { yPercent: 130 },
+  //   { yPercent: 0, delay: 0.15, duration: 0.2 }
+  // )
+  // }
+
+  function handleMouseEnter(e) {
+    // Title Link animations
+    console.log(e.currentTarget.className.slice(0, 7))
+    const mySplitText = new SplitText(
+      `.${e.currentTarget.className.slice(0, 7)} .entry-title`,
+      {
+        type: 'words',
+        charsClass: 'words'
+      }
+    )
+    const words = mySplitText.words
+    gsap.fromTo(words, { yPercent: 0 }, { yPercent: -130, duration: 0.15 })
+    const bTween = gsap.fromTo(
+      words,
+      { yPercent: 130 },
+      {
+        yPercent: 0,
+        delay: 0.15,
+        duration: 0.2,
+        onComplete: () => {
+          bTween.revert()
+        }
+      }
+    )
+
+    // Collection number animations
+    const mySplitNum = new SplitText(
+      `.${e.currentTarget.className.slice(0, 7)} .collection-number`,
+      {
+        type: 'chars'
+      }
+    )
+
+    const nums = mySplitNum.chars
+
+    gsap.fromTo(nums, { yPercent: 0 }, { yPercent: -130, duration: 0.3 })
+    gsap.fromTo(
+      nums,
+      { yPercent: 130 },
+      { yPercent: 0, delay: 0.15, duration: 0.4 }
+    )
+  }
+
   return (
-    <div className="work">
+    <div ref={work} className="work">
       <div className="work-inner">
         <div className="collections-menu title lg uppercase indent">
           <div className="collections-menu-inner">
             {collections.map((entry, idx) => (
               <div key={entry.id} ref={tRefs[idx]} className="link-wrapper">
-                <div className="c-link" onClick={handleClick} id={idx}>
-                  {entry.title}
-                  <span className="collection-number">{`0${entry.id}`}</span>
+                <div
+                  className={`c-link${idx} c-link`}
+                  onMouseEnter={handleMouseEnter}
+                  onClick={handleClick}
+                  id={idx}
+                >
+                  <h1 className="entry-title title lg">{entry.title}</h1>
+                  <span className="collection-number-container">
+                    <div className="collection-number-inner">
+                      <span className="collection-number">{`0${entry.id}`}</span>
+                    </div>
+                  </span>
                 </div>
               </div>
             ))}
