@@ -28,19 +28,20 @@
 
           .entry-title {
             margin: 0;
-            line-height: 0.8;
+            line-height: 0.78;
             font-kerning: none;
             font-style: normal;
             transform: skewX(0);
             transition: transform 0.2s;
+            // border: 1px solid black;
 
-            // &:hover {
-            //   transform: skewX(-10deg);
-            // }
+            &:hover {
+              transform: skewX(-10deg);
+            }
 
             .textChars {
               pointer-events: none;
-              line-height: 0.8;
+              line-height: 0.78;
             }
           }
 

@@ -127,7 +127,7 @@ const Work = () => {
       chars,
       { yPercent: 130 },
       {
-        stagger: 0.01,
+        // stagger: 0.01,
         yPercent: 0,
         delay: 0.2,
         duration: 0.3,
