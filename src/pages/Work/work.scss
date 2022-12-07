@@ -27,10 +27,16 @@
           // border: 1px black solid;
 
           .entry-title {
-            pointer-events: none;
             margin: 0;
             line-height: 0.8;
             font-kerning: none;
+            font-style: normal;
+            transform: skewX(0);
+            transition: transform 0.2s;
+
+            &:hover {
+              transform: skewX(-10deg);
+            }
 
             .chars {
               pointer-events: none;
