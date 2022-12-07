@@ -34,11 +34,11 @@
             transform: skewX(0);
             transition: transform 0.2s;
 
-            &:hover {
-              transform: skewX(-10deg);
-            }
+            // &:hover {
+            //   transform: skewX(-10deg);
+            // }
 
-            .chars {
+            .textChars {
               pointer-events: none;
               line-height: 0.8;
             }
@@ -67,16 +67,19 @@
             position: absolute;
             right: -1.5em;
             bottom: 1.15em;
-            bottom: 0.8em;
+            bottom: 0.75em;
             font-size: 0.46em;
 
             .collection-number-inner {
               overflow: hidden;
-              // border: solid 1px black;
 
               .collection-number {
                 margin: 0;
-                line-height: 0.1;
+                line-height: 0.8;
+
+                .numChars {
+                  line-height: 0.8;
+                }
               }
             }
           }

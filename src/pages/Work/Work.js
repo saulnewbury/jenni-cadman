@@ -110,48 +110,50 @@ const Work = () => {
   function handleMouseEnter(e) {
     // Title Link animations
     console.log('fire')
-    // const mySplitText = new SplitText(
-    //   `.${e.currentTarget.className.slice(0, 7)} .entry-title`,
-    //   {
-    //     type: 'chars',
-    //     charsClass: 'chars'
-    //   }
-    // )
-    // const chars = mySplitText.chars
-    // const aTween = gsap.fromTo(
-    //   chars,
-    //   { yPercent: 0 },
-    //   { yPercent: -130, duration: 0.15 }
-    // )
-    // const bTween = gsap.fromTo(
-    //   chars,
-    //   { yPercent: 130 },
-    //   {
-    //     yPercent: 0,
-    //     delay: 0.15,
-    //     duration: 0.2,
-    //     onComplete: () => {
-    //       bTween.kill()
-    //       aTween.kill()
-    //     }
-    //   }
-    // )
+    const mySplitText = new SplitText(
+      `.${e.currentTarget.className.slice(0, 7)} .entry-title`,
+      {
+        type: 'chars',
+        charsClass: 'textChars'
+      }
+    )
+    const chars = mySplitText.chars
+    const aTween = gsap.fromTo(
+      chars,
+      { yPercent: 0 },
+      { yPercent: -130, duration: 0.15 }
+    )
+    const bTween = gsap.fromTo(
+      chars,
+      { yPercent: 130 },
+      {
+        stagger: 0.01,
+        yPercent: 0,
+        delay: 0.2,
+        duration: 0.3,
+        onComplete: () => {
+          bTween.kill()
+          aTween.kill()
+        }
+      }
+    )
 
     // Collection number animations
     const mySplitNum = new SplitText(
       `.${e.currentTarget.className.slice(0, 7)} .collection-number`,
       {
-        type: 'chars'
+        type: 'chars',
+        charsClass: 'numChars'
       }
     )
 
     const nums = mySplitNum.chars
 
-    gsap.fromTo(nums, { yPercent: 0 }, { yPercent: -130, duration: 0.3 })
+    gsap.fromTo(nums, { yPercent: 0 }, { yPercent: -130, duration: 0.4 })
     gsap.fromTo(
       nums,
       { yPercent: 130 },
-      { yPercent: 0, delay: 0.15, duration: 0.4 }
+      { yPercent: 0, delay: 0.6, duration: 0.5 }
     )
   }
 
@@ -168,10 +170,10 @@ const Work = () => {
                   onClick={handleClick}
                   id={idx}
                 >
-                  <h1 className="entry-title title lg">{entry.title}</h1>
+                  <h3 className="entry-title title lg">{entry.title}</h3>
                   <span className="collection-number-container">
                     <div className="collection-number-inner">
-                      <span className="collection-number">{`0${entry.id}`}</span>
+                      <h1 className="collection-number">{`0${entry.id}`}</h1>
                     </div>
                   </span>
                 </div>
