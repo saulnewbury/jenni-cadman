@@ -109,28 +109,33 @@ const Work = () => {
 
   function handleMouseEnter(e) {
     // Title Link animations
-    console.log(e.currentTarget.className.slice(0, 7))
-    const mySplitText = new SplitText(
-      `.${e.currentTarget.className.slice(0, 7)} .entry-title`,
-      {
-        type: 'words',
-        charsClass: 'words'
-      }
-    )
-    const words = mySplitText.words
-    gsap.fromTo(words, { yPercent: 0 }, { yPercent: -130, duration: 0.15 })
-    const bTween = gsap.fromTo(
-      words,
-      { yPercent: 130 },
-      {
-        yPercent: 0,
-        delay: 0.15,
-        duration: 0.2,
-        onComplete: () => {
-          bTween.revert()
-        }
-      }
-    )
+    console.log('fire')
+    // const mySplitText = new SplitText(
+    //   `.${e.currentTarget.className.slice(0, 7)} .entry-title`,
+    //   {
+    //     type: 'chars',
+    //     charsClass: 'chars'
+    //   }
+    // )
+    // const chars = mySplitText.chars
+    // const aTween = gsap.fromTo(
+    //   chars,
+    //   { yPercent: 0 },
+    //   { yPercent: -130, duration: 0.15 }
+    // )
+    // const bTween = gsap.fromTo(
+    //   chars,
+    //   { yPercent: 130 },
+    //   {
+    //     yPercent: 0,
+    //     delay: 0.15,
+    //     duration: 0.2,
+    //     onComplete: () => {
+    //       bTween.kill()
+    //       aTween.kill()
+    //     }
+    //   }
+    // )
 
     // Collection number animations
     const mySplitNum = new SplitText(

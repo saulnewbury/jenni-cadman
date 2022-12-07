@@ -29,19 +29,19 @@
           .entry-title {
             pointer-events: none;
             margin: 0;
-            line-height: 0.9;
+            line-height: 0.8;
             font-kerning: none;
 
-            .words {
+            .chars {
               pointer-events: none;
-              line-height: 0.9;
+              line-height: 0.8;
             }
           }
 
           &::before {
             content: '';
             width: 0.2em;
-            height: 0.02em;
+            height: 0.01em;
             position: absolute;
             left: -30px;
             top: 50%;
