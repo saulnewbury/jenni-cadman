@@ -69,9 +69,11 @@ img {
 }
 
 .btn {
+  cursor: pointer;
   padding: 0.8em 1.5em;
   border-radius: 1000px;
   border: solid 1px var(--primary);
+  display: inline-block;
 }
 
 .z-1 {

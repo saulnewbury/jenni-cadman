@@ -88,25 +88,6 @@ const Work = () => {
     })
   }
 
-  // function handleMouseEnter(e) {
-  // console.log(e.target.className.slice(0, 7))
-  // const mySplitText = new SplitText(
-  //   `.${e.target.className.slice(0, 7)} .collection-number`,
-  //   {
-  //     type: 'chars'
-  //   }
-  // )
-
-  // const chars = mySplitText.chars
-
-  // gsap.fromTo(chars, { yPercent: 0 }, { yPercent: -130, duration: 0.15 })
-  // gsap.fromTo(
-  //   chars,
-  //   { yPercent: 130 },
-  //   { yPercent: 0, delay: 0.15, duration: 0.2 }
-  // )
-  // }
-
   function handleMouseEnter(e) {
     // Title Link animations
     console.log('fire')
@@ -153,7 +134,7 @@ const Work = () => {
     gsap.fromTo(
       nums,
       { yPercent: 130 },
-      { yPercent: 0, delay: 0.6, duration: 0.5 }
+      { yPercent: 0, delay: 0.5, duration: 0.5 }
     )
   }
 

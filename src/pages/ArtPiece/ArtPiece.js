@@ -1,10 +1,11 @@
-import React, { useEffect, useLayoutEffect, useRef } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import './artpiece.scss'
 
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 
 import { collections } from '../../data/collections'
 import Picker from '../../components/Picker/Picker'
+import ImageModal from '../../components/ImageModal/ImageModal'
 
 import useScrollSmoother from '../../hooks/useScrollSmoother'
 
@@ -20,6 +21,8 @@ const ArtPiece = () => {
   const { slug, id } = useParams()
   const navigate = useNavigate()
   const location = useLocation()
+
+  const [isOpen, setIsOpen] = useState(false)
 
   const artpiece = useRef()
 
@@ -152,75 +155,91 @@ const ArtPiece = () => {
       delay: 0.8,
       onComplete: () => {
         smoother.current.scrollTop(0)
-        // window.scrollTo(0, 0)
         navigate(path)
       }
     })
   }
 
   return (
-    <div key={location.pathname} ref={artpiece} className="art-piece indent">
-      <div className="main-image">
-        <div className="main-image-inner">
-          <div className="image">
-            <div className="overlay"></div>
-            <img src={`../images/${subFolder}/${image}.webp`} alt={altText} />
-          </div>
-          <div className="info">
-            <div className="info-inner">
-              <div className="title-container">
-                <h1 className="title uppercase sm">{title}</h1>
+    <>
+      <div key={location.pathname} ref={artpiece} className="art-piece indent">
+        <div className="main-image">
+          <div className="main-image-inner">
+            <div className="image">
+              <div className="overlay"></div>
+              <img src={`../images/${subFolder}/${image}.webp`} alt={altText} />
+              <ImageModal
+                src={`../images/${subFolder}/${image}.webp`}
+                onClose={() => {
+                  setIsOpen(!isOpen)
+                }}
+                open={isOpen}
+              />
+              <div
+                className="btn open-modal-btn"
+                onClick={() => {
+                  setIsOpen(!isOpen)
+                }}
+              >
+                Enlarge
               </div>
-              <div className="p-container">
-                <p className="collection-date">{desc.year}</p>
-              </div>
-              <div className="p-container">
-                <p className="medium">{desc.medium}</p>
-              </div>
-              <div className="p-container">
-                <p className="size">{desc.size}</p>
-              </div>
-
-              {desc.mount && (
-                <div className="p-container">
-                  <p className="mount">{desc.mount}</p>
+            </div>
+            <div className="info">
+              <div className="info-inner">
+                <div className="title-container">
+                  <h1 className="title uppercase sm">{title}</h1>
                 </div>
-              )}
-              <div className="p-container">
-                <p className="price">{desc.price}</p>
+                <div className="p-container">
+                  <p className="collection-date">{desc.year}</p>
+                </div>
+                <div className="p-container">
+                  <p className="medium">{desc.medium}</p>
+                </div>
+                <div className="p-container">
+                  <p className="size">{desc.size}</p>
+                </div>
+
+                {desc.mount && (
+                  <div className="p-container">
+                    <p className="mount">{desc.mount}</p>
+                  </div>
+                )}
+                <div className="p-container">
+                  <p className="price">{desc.price}</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      {detail === 'detail' && (
-        <div className="detail">
-          <div className="detail-inner">
-            <div className="spacer"></div>
-            <div className="detail-content">
-              <div className="detail-image">
-                <div className="detail-image-inner">
-                  <h4>(Detail)</h4>
-                  <div className="image">
-                    <div className="overlay"></div>
-                    <img
-                      src={`../images/${subFolder}/${image}-${detail}.webp`}
-                      alt={altText}
-                    />
+        {detail === 'detail' && (
+          <div className="detail">
+            <div className="detail-inner">
+              <div className="spacer"></div>
+              <div className="detail-content">
+                <div className="detail-image">
+                  <div className="detail-image-inner">
+                    <h4>(Detail)</h4>
+                    <div className="image">
+                      <div className="overlay"></div>
+                      <img
+                        src={`../images/${subFolder}/${image}-${detail}.webp`}
+                        alt={altText}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
-      <Picker
-        imagesData={imagesData}
-        collectionId={id}
-        id={artpieceId - 1}
-        handleExit={handleExit}
-      />
-    </div>
+        )}
+        <Picker
+          imagesData={imagesData}
+          collectionId={id}
+          id={artpieceId - 1}
+          handleExit={handleExit}
+        />
+      </div>
+    </>
   )
 }
 
