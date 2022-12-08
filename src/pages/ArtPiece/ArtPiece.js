@@ -8,6 +8,7 @@ import Picker from '../../components/Picker/Picker'
 import ImageModal from '../../components/ImageModal/ImageModal'
 
 import useScrollSmoother from '../../hooks/useScrollSmoother'
+import { useDocumentTitle } from '../../hooks/useDocumentTitle'
 
 import gsap from 'gsap'
 import { CustomEase } from 'gsap/CustomEase'
@@ -27,6 +28,9 @@ const ArtPiece = () => {
   const artpiece = useRef()
 
   const { smoother } = useScrollSmoother({})
+  useDocumentTitle(`Jenni Cadman | ${slug}`)
+
+  console.log(location)
 
   //-------------------------------------------------------------------------
   // Enter animations
@@ -232,6 +236,7 @@ const ArtPiece = () => {
             </div>
           </div>
         )}
+        <div className="copyright">Jenni Cadman &#169; 2022</div>
         <Picker
           imagesData={imagesData}
           collectionId={id}

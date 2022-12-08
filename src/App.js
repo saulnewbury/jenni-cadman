@@ -4,8 +4,6 @@ import './typography.css'
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-// import PageRoutes from './components/PageRoutes/PageRoutes'
-
 import Home from './pages/Home/Home'
 import Work from './pages/Work/Work'
 import Collection from './pages/Collection/Collection'
@@ -14,7 +12,6 @@ import Bio from './pages/Bio/Bio'
 import Contact from './pages/Contact/Contact'
 import NotFound from './pages/NotFound/NotFound'
 import Layout from './components/Layout/Layout'
-import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 import LoadingCounter from './components/LoadingCounter/LoadingCounter'
 
 function App() {
@@ -44,7 +41,6 @@ function App() {
   ) : (
     <Router>
       <Layout>
-        {/* <ScrollToTop> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/work" element={<Work />} />
@@ -54,7 +50,6 @@ function App() {
           <Route path="/:id/:slug" element={<ArtPiece />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        {/* </ScrollToTop> */}
       </Layout>
     </Router>
   )

@@ -1,8 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import './bio.scss'
-import { resumeEntries } from '../../data/resume'
 
+import { resumeEntries } from '../../data/resume'
 import { bioInfo } from '../../data/bioInfo'
+
+import { useParams } from 'react-router-dom'
+import { useDocumentTitle } from '../../hooks/useDocumentTitle'
 
 import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
@@ -12,6 +15,8 @@ import useScrollSmoother from '../../hooks/useScrollSmoother'
 
 const Bio = () => {
   gsap.registerPlugin(SplitText, CustomEase, ScrollTrigger)
+
+  // const {slug, id} = useParams()
 
   const bio = useRef()
   const image = useRef()
@@ -24,6 +29,12 @@ const Bio = () => {
   const qE = gsap.utils.selector(experience)
 
   const { smoother } = useScrollSmoother({})
+
+  //-------------------------------------------------------------------------
+  // Set page title
+  //-------------------------------------------------------------------------
+
+  // useDocumentTitle(`Jenni Cadman | ${slug}`)
 
   //-------------------------------------------------------------------------
   // Enter animation
@@ -191,6 +202,7 @@ const Bio = () => {
             )
           })}
         </section>
+        <div className="copyright">Jenni Cadman &#169; 2022</div>
       </div>
     </div>
   )

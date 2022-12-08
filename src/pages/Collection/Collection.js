@@ -55,6 +55,7 @@ const Collection = () => {
           />
         </div>
       </div>
+      <div className="copyright">Jenni Cadman &#169; 2022</div>
     </>
   )
 }

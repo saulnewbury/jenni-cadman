@@ -132,6 +132,13 @@ img {
   transform-origin: bottom;
 }
 
+/* Copyright */
+.copyright {
+  position: absolute;
+  right: var(--gutter);
+  bottom: var(--gutter);
+}
+
 /* MEDIA QUERIES */
 
 @media screen and (min-width: 768px) {
