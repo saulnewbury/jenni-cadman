@@ -4,6 +4,7 @@ import './collection.scss'
 import Picker from '../../components/Picker/Picker'
 
 import { useParams, useNavigate } from 'react-router-dom'
+import { useDocumentTitle } from '../../hooks/useDocumentTitle'
 
 import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
@@ -11,7 +12,10 @@ gsap.registerPlugin(SplitText)
 
 const Collection = () => {
   const { id } = useParams()
+  const { imagesData, title } = collections[id - 1]
+
   const navigate = useNavigate()
+  useDocumentTitle(`Jenni Cadman | ${id} ${title}`)
 
   const colTitle = useRef()
   const picker = useRef()
@@ -25,8 +29,6 @@ const Collection = () => {
     )
     return () => tween.revert()
   }, [])
-
-  const { imagesData, title } = collections[id - 1]
 
   function handleExit(path) {
     gsap.to([colTitle.current, picker.current], {

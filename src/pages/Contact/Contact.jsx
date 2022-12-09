@@ -2,11 +2,15 @@ import React, { useLayoutEffect, useRef } from 'react'
 import { BsArrowRight } from 'react-icons/bs'
 import './contact.scss'
 
+import { useDocumentTitle } from '../../hooks/useDocumentTitle'
+
 import gsap from 'gsap'
 
 const Contact = () => {
   const contact = useRef(null)
   const q = gsap.utils.selector(contact)
+
+  useDocumentTitle('Jenni Cadman | Contact')
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {

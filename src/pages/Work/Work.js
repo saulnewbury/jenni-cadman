@@ -7,14 +7,16 @@ import { useNavigate } from 'react-router-dom'
 import gsap from 'gsap'
 import CustomEase from 'gsap/CustomEase'
 import SplitText from 'gsap/SplitText'
+
+import { useDocumentTitle } from '../../hooks/useDocumentTitle'
 import useScrollSmoother from '../../hooks/useScrollSmoother'
 
 const Work = () => {
   gsap.registerPlugin(CustomEase, SplitText)
   const navigate = useNavigate()
+  useDocumentTitle(`Jenni Cadman | Work`)
 
   const work = useRef()
-  const q = gsap.utils.selector(work)
 
   const t1 = useRef()
   const t2 = useRef()
@@ -102,7 +104,7 @@ const Work = () => {
     const aTween = gsap.fromTo(
       chars,
       { yPercent: 0 },
-      { yPercent: -130, duration: 0.15 }
+      { yPercent: -130, duration: 0.3 }
     )
     const bTween = gsap.fromTo(
       chars,
