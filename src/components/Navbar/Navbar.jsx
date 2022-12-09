@@ -6,18 +6,25 @@ import { useLocation } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 const NavBar = () => {
-  const [navIsOpen, setNaveIsOpen] = useState(false)
+  const [autoOpenNav, setAutoOpenNav] = useState(true)
+  const [navIsOpen, setNavIsOpen] = useState(false)
   const isNumber = useRef(false)
   const [isCurrentRoute, setIsCurrentRoute] = useState('/')
 
   const location = useLocation()
 
   useEffect(() => {
+    if (location.pathname === '/' && autoOpenNav) {
+      window.setTimeout(() => {
+        setNavIsOpen(true)
+        setAutoOpenNav(false)
+      }, 3000)
+    }
     setIsCurrentRoute(location.pathname)
-  }, [navIsOpen, location.pathname])
+  }, [navIsOpen, location.pathname, autoOpenNav])
 
   function handleClick() {
-    setNaveIsOpen(!navIsOpen)
+    setNavIsOpen(!navIsOpen)
   }
 
   isNumber.current = parseInt(isCurrentRoute.replace(/\D/g, ''))
@@ -38,7 +45,7 @@ const NavBar = () => {
         <div className="links">
           <Link
             to="/work"
-            className={`link item ${
+            className={`link item nav-item ${
               isCurrentRoute === '/work' ? 'current-path' : ''
             }`}
             onClick={handleClick}
@@ -47,7 +54,7 @@ const NavBar = () => {
           </Link>
           <Link
             to="/bio"
-            className={`link item ${
+            className={`link item nav-item ${
               isCurrentRoute === '/bio' ? 'current-path' : ''
             }`}
             onClick={handleClick}
@@ -56,7 +63,7 @@ const NavBar = () => {
           </Link>
           <Link
             to="/contact"
-            className={`link item ${
+            className={`link item nav-item ${
               isCurrentRoute === '/contact' ? 'current-path' : ''
             }`}
             onClick={() => {
@@ -65,9 +72,7 @@ const NavBar = () => {
           >
             Contact
           </Link>
-          {/* if path name contains numbers show element with corrosponding numbers */}
-          {/* /\d/.test(isCurrentRoute) */}
-          <span className="item num">
+          <span className="nav-item num">
             {isNumber.current ? `0${isNumber.current}` : null}
           </span>
         </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 import './artpiece.scss'
 
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
@@ -28,9 +28,8 @@ const ArtPiece = () => {
   const artpiece = useRef()
 
   const { smoother } = useScrollSmoother({})
-  useDocumentTitle(`Jenni Cadman | ${slug}`)
 
-  console.log(location)
+  useDocumentTitle(`Jenni Cadman | ${slug}`)
 
   //-------------------------------------------------------------------------
   // Enter animations
@@ -175,6 +174,7 @@ const ArtPiece = () => {
               <ImageModal
                 src={`../images/${subFolder}/${image}.webp`}
                 onClose={() => {
+                  smoother.current.paused(false)
                   setIsOpen(!isOpen)
                 }}
                 open={isOpen}
@@ -182,6 +182,7 @@ const ArtPiece = () => {
               <div
                 className="btn open-modal-btn"
                 onClick={() => {
+                  smoother.current.paused(true)
                   setIsOpen(!isOpen)
                 }}
               >

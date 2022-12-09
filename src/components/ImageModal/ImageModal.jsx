@@ -9,7 +9,11 @@ const ImageModal = ({ src, open, onClose }) => {
 
   useLayoutEffect(() => {
     if (!open) return
-    const tween = gsap.fromTo(modal.current, { opacity: 0 }, { opacity: 1 })
+    const tween = gsap.fromTo(
+      modal.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 0.8, delay: 0.2 }
+    )
 
     return () => {
       tween.kill()

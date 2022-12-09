@@ -23,20 +23,20 @@
       align-items: center;
       position: relative;
 
-      .item {
+      .nav-item {
         pointer-events: none;
         opacity: 0;
         position: absolute;
         right: 0.7rem;
-        transition: right 0.3s, opacity 0.3s;
+        transition: right 0.5s, opacity 0.5s ease-in;
       }
 
-      .item.num {
+      .nav-item.num {
         display: inline-block;
         opacity: 1;
       }
 
-      .item.current-path {
+      .nav-item.current-path {
         pointer-events: unset;
         opacity: 1;
       }
@@ -68,39 +68,58 @@
       }
     }
   }
+
   nav.open {
     .cross {
       transform: rotate(-135deg);
     }
 
     .links {
-      .item {
+      .nav-item {
         pointer-events: unset;
       }
-      .item:first-child {
+      .nav-item:first-child {
         opacity: 1;
         right: 9rem;
       }
-      .item:nth-child(2) {
+      .nav-item:nth-child(2) {
         opacity: 1;
         right: 6.5rem;
       }
-      .item:nth-child(3) {
+      .nav-item:nth-child(3) {
         opacity: 1;
         right: 1.3rem;
       }
-      .item:last-child {
+      .nav-item:last-child {
         opacity: 0;
         right: 1.3rem;
       }
-    }
-  }
-}
 
-@media screen and (min-width: 1000px) {
-  .navbar {
-    nav {
-      .links {
+      // .nav-item:after {
+      //   content: '';
+      //   position: absolute;
+      //   background-color: black;
+      //   height: 1px;
+      //   width: 0%;
+      //   bottom: -0.1em;
+      //   left: 0;
+      //   transition: width 0.5s;
+      // }
+
+      // .nav-item:not(.num):not(.current-path):hover:after {
+      //   width: 95%;
+      // }
+
+      // .nav-item.current-path:after {
+      //   width: 95%;
+      // }
+
+      .nav-item:not(.num):not(.current-path):hover {
+        color: grey;
+      }
+
+      .nav-item.current-path {
+        color: grey;
       }
     }
   }
