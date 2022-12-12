@@ -185,7 +185,8 @@ const Bio = () => {
                           <span>{entry.date}</span>
                         </div>
                         <div className="details">
-                          <span>{entry.info}</span> {entry.location}
+                          <span className="info">{entry.info}</span>{' '}
+                          {entry.location}
                         </div>
                       </li>
                     )

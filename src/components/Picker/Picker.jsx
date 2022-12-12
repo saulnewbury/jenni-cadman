@@ -7,6 +7,7 @@ import { Link, useLocation } from 'react-router-dom'
 import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useEffect } from 'react'
 
 const Picker = ({ imagesData, collectionId, id, handleExit }) => {
   gsap.registerPlugin(SplitText, ScrollTrigger)
@@ -112,7 +113,9 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
     }
   })
 
+  //-------------------------------------------------------------------------
   // Animate the change in container position when the leftmost item changes.
+  //-------------------------------------------------------------------------
   useLayoutEffect(() => {
     if (leftMost !== lastLeft.current) {
       const value = calcValues.narrow.slice(0, -2) //  assuming units are two characters
@@ -151,22 +154,19 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
     let mm = gsap.matchMedia()
 
     mm.add(`(min-width: 1780px)`, () => {
-      setNumOfItems(9) //19
-      setCurrent(id || 0)
+      setNumOfItems(9) //19s
       setLeftMost(0)
       setMenuWidth('943px')
     })
 
     mm.add(`(min-width: 1400px) and (max-width: 1779px)`, () => {
       setNumOfItems(9) //19
-      setCurrent(id || 0)
       setLeftMost(0)
       setMenuWidth('53vw')
     })
 
     mm.add(`(min-width: 742px) and (max-width: 1399px)`, () => {
       setNumOfItems(9)
-      setCurrent(id || 0)
       setLeftMost(0)
       setMenuWidth('682px') // was 742 - gutter = 680
     })
@@ -177,7 +177,6 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
 
       mm.add(`(min-width: ${min}px) and (max-width: ${max}px)`, () => {
         setNumOfItems(index - 3)
-        setCurrent(id || 0)
         setLeftMost(0)
         setMenuWidth('92vw')
       })
@@ -185,7 +184,6 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
 
     mm.add(`(max-width: 399px)`, () => {
       setNumOfItems(3) // 6 narrow widths
-      setCurrent(id || 0)
       setLeftMost(0)
       setMenuWidth('92vw')
     })
@@ -194,6 +192,14 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
       mm.kill()
     }
   }
+
+  useEffect(() => {
+    if (numOfItems > 1) {
+      setCurrent(id || 0)
+    }
+    const isInverse = current > id
+    containerPosition(id, isInverse)
+  }, [numOfItems])
 
   //-------------------------------------------------------------------------
   // setup
@@ -265,16 +271,14 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
 
     // exit function if clicking on item already selected
     if (targetId === current) {
+      // Exit animation on parent
       handleExit(
         `/${collectionId}/${images[current].title
           .replace(/\s+/g, '-')
           .toLowerCase()}`
       )
-      // handleExit function in passed in from parent
-
+      // exit animation on picker
       exitAnimPicker()
-      // exitAnimPicker function below
-
       return
     }
 
@@ -343,6 +347,7 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
       newLeft = leftMost - diff
     }
 
+    console.log(leftMost)
     // move container to new position
     setLeftMost(newLeft)
   }

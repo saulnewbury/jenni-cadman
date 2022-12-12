@@ -69,21 +69,47 @@ const Contact = () => {
           <div className="socials">
             <div className="socials-inner uppercase">
               <span>
-                <a href="https://www.axisweb.org/p/jennicadman/">Axis</a>
+                <a
+                  href="https://www.axisweb.org/p/jennicadman/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Axis
+                </a>
               </span>
               <span>
-                <a href="https://www.flickr.com/photos/jencad/">Flicker</a>
+                <a
+                  href="https://www.flickr.com/photos/jencad/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Flickr
+                </a>
               </span>
               <span>
-                <a href="https://www.instagram.com/jennicadmanartist/">
+                <a
+                  href="https://www.instagram.com/jennicadmanartist/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Instagram
                 </a>
               </span>
               <span>
-                <a href="https://www.pinterest.co.uk/jennicadman/">Pinterest</a>
+                <a
+                  href="https://www.pinterest.co.uk/jennicadman/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Pinterest
+                </a>
               </span>
               <span>
-                <a href="https://www.linkedin.com/in/jenni-cadman-74a5269b/">
+                <a
+                  href="https://www.linkedin.com/in/jenni-cadman-74a5269b/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   LinkedIn
                 </a>
               </span>

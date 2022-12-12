@@ -25,9 +25,9 @@ export const collections = [
           altText: 'portrait of veronica 1',
           desc: {
             year: 2021,
-            medium: 'Rayon and cotton threads on linen.',
+            medium: 'Rayon and cotton threads on linen',
             size: '41 x 31 x 2cms',
-            mount: 'Stretched over a wooden frame.',
+            mount: 'Stretched over a wooden frame',
             price: 'NFS'
           }
         },
@@ -39,9 +39,9 @@ export const collections = [
           altText: 'portrait of veronica 2',
           desc: {
             year: 2021,
-            medium: 'Rayon and cotton threads on linen.',
+            medium: 'Rayon and cotton threads on linen',
             size: '41 x 31 x 2cms',
-            mount: 'Stretched over a wooden frame.',
+            mount: 'Stretched over a wooden frame',
             price: 'NFS'
           }
         },
@@ -53,7 +53,7 @@ export const collections = [
           altText: 'portrait of veronica 3',
           desc: {
             year: 2021,
-            medium: 'Rayon and cotton threads on calico.',
+            medium: 'Rayon and cotton threads on calico',
             size: '41 x 30cms',
             price: 'NFS'
           }
@@ -66,7 +66,7 @@ export const collections = [
           altText: 'portrait of veronica 4',
           desc: {
             year: 2021,
-            medium: 'Rayon and cotton threads on calico.',
+            medium: 'Rayon and cotton threads on calico',
             size: '42 x 30cms',
             price: 'NFS'
           }
@@ -79,9 +79,9 @@ export const collections = [
           altText: 'portrait of veronica 5',
           desc: {
             year: 2021,
-            medium: 'Rayon and cotton threads on linen.',
+            medium: 'Rayon and cotton threads on linen',
             size: '32 x 37 x 2.2cms',
-            mount: 'Mounted in tray frame.',
+            mount: 'Mounted in a tray frame',
             price: 'NFS'
           }
         },
@@ -93,9 +93,9 @@ export const collections = [
           altText: 'portrait of veronica 6',
           desc: {
             year: 2021,
-            medium: 'Rayon and cotton threads on linen.',
+            medium: 'Rayon and cotton threads on linen',
             size: '32 x 37 x 2.2cms',
-            mount: 'Mounted in tray frame.',
+            mount: 'Mounted in a tray frame',
             price: 'NFS'
           }
         },
@@ -107,9 +107,9 @@ export const collections = [
           altText: 'portrait of veronica 7',
           desc: {
             year: 2021,
-            medium: 'Rayon and cotton threads on linen.',
+            medium: 'Rayon and cotton threads on linen',
             size: '32 x 37 x 2.2cms',
-            mount: 'Mounted in tray frame.',
+            mount: 'Mounted in a tray frame',
             price: 'NFS'
           }
         },
@@ -121,9 +121,9 @@ export const collections = [
           altText: 'portrait of mother I',
           desc: {
             year: 2021,
-            medium: 'Monotype printed on Fabriano 250 gsm acid free paper.',
+            medium: 'Monotype printed on Fabriano 250 gsm acid free paper',
             size: '29.7 x 42cms',
-            mount: 'Mounted in tray frame.',
+            mount: '',
             price: 'NFS'
           }
         },
@@ -135,9 +135,9 @@ export const collections = [
           altText: 'portrait of mother II',
           desc: {
             year: 2021,
-            medium: 'Monotype printed on Fabriano 250 gsm acid free paper.',
+            medium: 'Monotype printed on Fabriano 250 gsm acid free paper',
             size: '29.7 x 42cms',
-            mount: 'Mounted in tray frame.',
+            mount: '',
             price: 'NFS'
           }
         }
@@ -166,9 +166,9 @@ export const collections = [
           altText: 'Composition inspired by a walk in the park',
           desc: {
             year: 2012,
-            medium: 'Rayon threads free-machined on calico.',
+            medium: 'Rayon threads free-machined on calico',
             size: '81 x 65cms',
-            mount: 'Stretched and framed, unglazed.',
+            mount: 'Stretched and framed',
             price: '£650 SOLD'
           }
         },
@@ -178,12 +178,12 @@ export const collections = [
           image: 'deer-in-conversation',
           detail: 'none',
           imageDetail: 'deer-in-conversation-detail',
-          altText: 'Composition of elements ',
+          altText: 'Composition of elements',
           desc: {
             year: 2010,
-            medium: 'Rayon and cotton threads free-machined onto calico.',
+            medium: 'Rayon and cotton threads free-machined onto calico',
             size: '20.5 X 15.5cms',
-            mount: 'Framed under glass.',
+            mount: 'Framed under glass',
             price: 'ARTIST COLLECTION'
           }
         },
@@ -195,9 +195,9 @@ export const collections = [
           altText: 'Composition of elements',
           desc: {
             year: 2010,
-            medium: 'Rayon and cotton threads free-machined onto calico.',
+            medium: 'Rayon and cotton threads free-machined onto calico',
             size: '20.5 X 15.5cms',
-            mount: 'Framed under glass.',
+            mount: 'Framed under glass',
             price: '£225'
           }
         },
@@ -209,10 +209,10 @@ export const collections = [
           altText: 'Composition of elements',
           desc: {
             year: 2010,
-            medium: 'Rayon and cotton threads free-machined onto calico.',
+            medium: 'Rayon and cotton threads free-machined onto calico',
             size: '20.5 X 15.5cms',
-            mount: 'Framed under glass.',
-            price: '£225'
+            mount: 'Framed under glass',
+            price: '£225 SOLD'
           }
         },
         {
@@ -223,9 +223,9 @@ export const collections = [
           altText: 'Composition of elements',
           desc: {
             year: 2010,
-            medium: 'Rayon and cotton threads free-machined onto calico.',
+            medium: 'Rayon and cotton threads free-machined onto calico',
             size: '20.5 X 15.5cms',
-            mount: 'Framed under glass.',
+            mount: 'Framed under glass',
             price: '£225'
           }
         },
@@ -234,15 +234,99 @@ export const collections = [
           title: 'Embracing a Colourful World',
           image: 'embracing-a-colourful-world',
           detail: 'none',
-          imageDetail: 'embracing-a-colourful-world-detail',
           altText: 'Composition of elements',
           desc: {
             year: 2010,
-            medium:
-              'Rayon and cotton threads free-machined onto mixed fabrics.',
+            medium: 'Rayon and cotton threads free-machined onto mixed fabrics',
             size: '43 X 30cms',
-            mount: 'Framed under glass.',
+            mount: 'Framed under glass',
             price: '£600 SOLD'
+          }
+        },
+        {
+          id: 7,
+          title: 'As The Crow Flys',
+          image: 'as-the-crow-flys',
+          detail: 'detail',
+          altText: '',
+          desc: {
+            year: 2009,
+            medium:
+              'Cotton and rayon threads free-machine embroidered onto mixed fabrics',
+            size: '40.5 x 28cms',
+            mount: 'Framed under glass',
+            price: 'Artists Collection'
+          }
+        },
+        {
+          id: 8,
+          title: 'Making Headway',
+          image: 'making-headway',
+          detail: 'detail',
+          altText: '',
+          desc: {
+            year: 2009,
+            medium: 'Cotton and rayon threads free-machined on calico',
+            size: '29 x 172cms each panel',
+            mount: 'Wallhanging',
+            price: '£1,500'
+          }
+        },
+        {
+          id: 9,
+          title: 'Fallow Deer By The Lake',
+          image: 'fallow-deer-by-the-lake',
+          detail: 'detail',
+          altText: '',
+          desc: {
+            year: 2009,
+            medium:
+              'Cotton hand embroidery threads and rayon threads free-machined on calico',
+            size: '98 x 81cms',
+            mount: 'Wallhanging',
+            price: '£1,500'
+          }
+        },
+        {
+          id: 10,
+          title: 'Journeyland',
+          image: 'journeyland',
+          detail: 'detail',
+          altText: '',
+          desc: {
+            year: 2009,
+            medium: 'Cotton and rayon threads free-machined on calico',
+            size: '52 x 34cms',
+            mount: 'Framed and glazed',
+            price: '£575'
+          }
+        },
+        {
+          id: 11,
+          title: 'Road To Melbury',
+          image: 'road-to-melbury',
+          detail: 'none',
+          altText: '',
+          desc: {
+            year: 2007,
+            medium: 'Cotton and rayon threads free-machined on calico',
+            size: '18.5 x 280cms each panel',
+            mount: 'Wallhanging',
+            price: '£1,700'
+          }
+        },
+        {
+          id: 12,
+          title: 'Pitch',
+          image: 'pitch',
+          detail: 'detail',
+          altText: '',
+          desc: {
+            year: 2007,
+            medium: 'Cotton and rayon threads free-machined on calico',
+            size: '98 x 81cms',
+            mount: 'Wallhanging',
+            price: '£1,200 SOLD'
           }
         }
       ]
@@ -271,9 +355,9 @@ export const collections = [
             'Shadowy harbour walls in the foreground. Several old cottages painted brightly edge the beach. A tall cliff looms beyond. The sky is bright blue. ',
           desc: {
             year: 2014,
-            medium: 'Rayon threads, calico and mixed fabrics.',
+            medium: 'Rayon threads, calico and mixed fabrics',
             size: '92 x 73cms',
-            mount: 'Stretched.',
+            mount: 'Stretched over a wooden frame',
             price: '£795'
           }
         },
@@ -288,7 +372,7 @@ export const collections = [
             year: 2014,
             medium: 'Embroidery',
             size: '27.5 cms',
-            mount: 'Stretched over a wooden frame.',
+            mount: 'Stretched over a wooden frame',
             price: 'Artists collection'
           }
         },
@@ -301,9 +385,9 @@ export const collections = [
             'Large colourful abstract wall hanging in heavy embroidery threads. Large areas of blue, black and magenta lead into small green horizon.',
           desc: {
             year: 2011,
-            medium: 'Cotton hand embroidery threads free-machined on calico.',
+            medium: 'Cotton hand embroidery threads free-machined on calico',
             size: '82 x 89 cms',
-            mount: 'Unglazed wallhanging.',
+            mount: 'Wallhanging',
             price: '£1,500 SOLD'
           }
         },
@@ -316,9 +400,9 @@ export const collections = [
             'Heavy outline of black stitching depicts the head of a running dog ears flapping. Subtle shades of metallic silver and gold with coloured hints.',
           desc: {
             year: 2006,
-            medium: 'Cotton and rayon threads free-machined on calico.',
+            medium: 'Cotton and rayon threads free-machined on calico',
             size: '40 x 46cms',
-            mount: 'Framed under glass.',
+            mount: 'Framed under glass',
             price: 'NFS'
           }
         },
@@ -331,9 +415,9 @@ export const collections = [
             'Predominantly a background of black threads with hints of colour show a dogs head outlined in a thick white stitching.',
           desc: {
             year: 2006,
-            medium: 'Cotton and rayon threads free-machined on calico.',
+            medium: 'Cotton and rayon threads free-machined on calico',
             size: '40 x 48cms',
-            mount: 'Framed under glass.',
+            mount: 'Framed under glass',
             price: '£365'
           }
         },
@@ -346,9 +430,9 @@ export const collections = [
             'Rows and waves of stitching cover a collage of brown, maroon and yellow fabrics. A single thick thread traces the contours of a dog’s head.',
           desc: {
             year: 2006,
-            medium: 'Cotton and rayon threads free-machined on calico.',
+            medium: 'Cotton and rayon threads free-machined on calico',
             size: '40 x 46cms',
-            mount: 'Framed under glass.',
+            mount: 'Framed under glass',
             price: '£365'
           }
         },
@@ -361,22 +445,22 @@ export const collections = [
             'Small seascape showing two sandstone cliff faces above layers of beach, harbour and sea. A pale blue sky a cloud edges in.',
           desc: {
             year: 2015,
-            medium: 'Cotton and rayon threads free-machined on calico.',
+            medium: 'Cotton and rayon threads free-machined on calico',
             size: '19 x 14cms',
-            mount: 'Framed under glass.',
+            mount: 'Framed under glass',
             price: '£300'
           }
         },
         {
           id: 8,
-          title: 'West Bay II',
-          image: 'west-bay-2',
-          detail: 'detail',
+          title: 'West Bay I',
+          image: 'west-bay-1',
+          detail: 'none',
           altText:
-            'Blue shimmering sea white waves break on shoreline. Side view of impressive golden cliff grassy topped. Pink house and black building in foreground.',
+            'Profile of tall sandstone cliff green grass top. Bright blue sea golden beach. High horizon. Pink cottage and black hut in bottom corners.',
           desc: {
             year: 2016,
-            medium: 'Cotton and rayon threads free-machined on calico.',
+            medium: 'Cotton and rayon threads free-machined on calico',
             size: '22 x 15.5cms',
             mount: 'Framed under museum glass.',
             price: '£450'
@@ -384,14 +468,14 @@ export const collections = [
         },
         {
           id: 9,
-          title: 'West Bay III',
-          image: 'west-bay-3',
+          title: 'West Bay II',
+          image: 'west-bay-2',
           detail: 'detail',
           altText:
-            'Side-on view of East Cliff monumental in size. Large expanse of sea with views to Portland pretty cottage and black shelter in foreground.',
+            'Blue shimmering sea white waves break on shoreline. Side view of impressive golden cliff grassy topped. Pink house and black building in foreground.',
           desc: {
             year: 2016,
-            medium: 'Cotton and rayon threads free-machined on calico.',
+            medium: 'Cotton and rayon threads free-machined on calico',
             size: '22 x 15.5cms',
             mount: 'Framed under museum glass.',
             price: '£450'
@@ -399,6 +483,21 @@ export const collections = [
         },
         {
           id: 10,
+          title: 'West Bay III',
+          image: 'west-bay-3',
+          detail: 'detail',
+          altText:
+            'Side-on view of East Cliff monumental in size. Large expanse of sea with views to Portland pretty cottage and black shelter in foreground.',
+          desc: {
+            year: 2016,
+            medium: 'Cotton and rayon threads free-machined on calico',
+            size: '22 x 15.5cms',
+            mount: 'Framed under museum glass',
+            price: '£450'
+          }
+        },
+        {
+          id: 11,
           title: 'Two Tents, Eweleaze',
           image: 'two-tents-eweleaze',
           detail: 'detail',
@@ -406,15 +505,14 @@ export const collections = [
             'Two white tents anchored in a green field above a cliff overlooking a blue sea with red tanker blue sky above. Black tent edges into scene.',
           desc: {
             year: 2016,
-            medium:
-              'Cotton and rayon threads free-machined on silks on calico.',
+            medium: 'Cotton and rayon threads free-machined on silks on calico',
             size: '25 x 16cms',
-            mount: 'Framed under glass.',
+            mount: 'Framed under glass',
             price: 'NFS'
           }
         },
         {
-          id: 11,
+          id: 12,
           title: 'On the Beach at West Bay',
           image: 'on-the-beach-at-west-bay',
           detail: 'detail',
@@ -422,14 +520,14 @@ export const collections = [
             'A large yellow cliff faces us others recede in to the distance. The beach is pebbled the sea is deep blue the sky pale.',
           desc: {
             year: 2015,
-            medium: 'Cotton and rayon threads free-machined on calico.',
+            medium: 'Cotton and rayon threads free-machined on calico',
             size: '25 x 20.5cms',
-            mount: 'Unframed.',
+            mount: 'Unframed',
             price: '£250'
           }
         },
         {
-          id: 12,
+          id: 13,
           title: 'Cliff and Boat (Grey Sky)',
           image: 'cliff-and-boat-(grey-sky)',
           detail: 'none',
@@ -437,9 +535,9 @@ export const collections = [
             'The profile of a pale cliff topped with deep green. A deep green-black boat sits on multi-coloured pebbles. The sky is tones of grey.',
           desc: {
             year: 2016,
-            medium: 'Cotton and rayon threads free-machined on calico.',
+            medium: 'Cotton and rayon threads free-machined on calico',
             size: '25.8 x 20cms',
-            mount: 'Framed under glass.',
+            mount: 'Framed under glass',
             price: 'ARTISTS COLLECTION'
           }
         }
@@ -470,9 +568,9 @@ export const collections = [
             'Thread drawing in black on a cyan blue linen. Seaweeds, cliffs, the artist’s dog running and a border of waves.',
           desc: {
             year: 2013,
-            medium: 'Cotton and rayon threads, free-machined on linen.',
+            medium: 'Cotton and rayon threads, free-machined on linen',
             size: '92 x 73cms',
-            mount: 'stretched and framed, unglazed.',
+            mount: 'Stretched and framed',
             price: '£650'
           }
         },
@@ -485,9 +583,9 @@ export const collections = [
             'Drawing in black threads inspired by the Dorset shoreline. Seaweeds, rolling waves and the artist’s dog digging. ',
           desc: {
             year: 2013,
-            medium: 'Rayon threads free-machined on silk dupion.',
+            medium: 'Rayon threads free-machined on silk dupion',
             size: '40 x 50 x 3.5cms',
-            mount: 'Stretched and framed, unglazed.',
+            mount: 'Stretched and framed',
             price: '£460 SOLD'
           }
         },
@@ -500,10 +598,10 @@ export const collections = [
             'Embroidered design in black threads on pale green silk. Cliffs, many seaweeds, a border of waves, a dog and his shadow.',
           desc: {
             year: 2013,
-            medium: 'Rayon threads free-machined on calico.',
-            mount: 'Embroidery set in a deep frame hangs on the wall unglazed',
-            size: '40 x 50cms.',
-            price: 'NFS'
+            medium: 'Rayon threads free-machined on calico',
+            mount: 'Stretched and framed',
+            size: '40 x 50cms',
+            price: 'Artist Collection'
           }
         },
         {
@@ -511,10 +609,12 @@ export const collections = [
           title: 'Run On The Strand',
           image: 'run-on-the-strand',
           detail: 'detail',
-          altText: 'portrait of veronica 4',
+          altText:
+            'Stitched drawing, black threads on calico. A border of rolling waves contains images within of seaweeds, cliffs and a running dog.',
           desc: {
             year: 2013,
-            medium: 'Rayon threads free-machined on calico.',
+            medium: 'Rayon threads free-machined on calico',
+            mount: 'Stretched and framed',
             size: '40 x 50cms',
             price: '£460'
           }

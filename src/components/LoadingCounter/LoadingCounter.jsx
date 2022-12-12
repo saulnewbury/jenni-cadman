@@ -13,7 +13,7 @@ const LoadingCounter = ({ isLoading }) => {
   const underlay = useRef(null)
   const overlay = useRef(null)
 
-  const value = useRef(100 / imgs.length)
+  const value = useRef(imgs.length / 100)
   const sum = useRef(0)
 
   const loaderStarted = useRef(false)

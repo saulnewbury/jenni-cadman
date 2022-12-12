@@ -106,6 +106,12 @@
               width: 2em;
             }
             .details {
+              color: grey;
+              font-style: italic;
+              .info {
+                color: black;
+                font-style: normal;
+              }
             }
           }
         }
