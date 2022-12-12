@@ -57,7 +57,6 @@ const Home = () => {
   }, [])
 
   function exitAnim(path) {
-    console.log('scale')
     gsap.to(pageOverlay.current, {
       scaleY: 1,
       duration: 1,

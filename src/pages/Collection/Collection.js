@@ -53,6 +53,7 @@ const Collection = () => {
           <Picker
             imagesData={imagesData}
             collectionId={id}
+            id={0}
             handleExit={handleExit}
           />
         </div>

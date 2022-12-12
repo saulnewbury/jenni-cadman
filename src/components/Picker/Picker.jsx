@@ -323,6 +323,7 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
   //-------------------------------------------------------------------------
 
   function containerPosition(targetId, isInverse) {
+    console.log(numOfItems)
     let newLeft = leftMost
     // FORWARD
     if (!isInverse) {
