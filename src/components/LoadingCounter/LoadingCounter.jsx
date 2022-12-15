@@ -13,7 +13,7 @@ const LoadingCounter = ({ isLoading }) => {
   const underlay = useRef(null)
   const overlay = useRef(null)
 
-  const value = useRef(imgs.length / 100)
+  const value = useRef(100 / imgs.length)
   const sum = useRef(0)
 
   const loaderStarted = useRef(false)
@@ -24,14 +24,22 @@ const LoadingCounter = ({ isLoading }) => {
     cacheImages(imgs)
   }, [])
 
+  // Put images in browser cache
   const cacheImages = async srcArray => {
+    // console.log(srcArray.length)
     const promises = await srcArray.map(src => {
       return new Promise((resolve, reject) => {
         const img = new Image()
         img.src = src
+
+        // Each time an image loads run the following
         img.onload = () => {
           sum.current += value.current
-          if (sum.current >= imgs.length - 1) {
+
+          // console.log(value.current)
+          // console.log(count + ': ' + sum.current)
+
+          if (sum.current > 99 && sum.current < 101) {
             sum.current = 100
           }
 
@@ -40,7 +48,7 @@ const LoadingCounter = ({ isLoading }) => {
             snap: 'innerText',
             duration: 0.1,
             onComplete: () => {
-              if (sum.current === 100) {
+              if (sum.current >= 100) {
                 exitAnim()
               } else {
                 return
@@ -51,7 +59,6 @@ const LoadingCounter = ({ isLoading }) => {
           gsap.to(underlay.current, {
             duration: 0.1,
             width: `${sum.current}%`
-            // snap: 'width'
           })
 
           resolve()
@@ -105,11 +112,15 @@ function getImageUrls() {
   const imgs = []
   collections.forEach(entry => {
     imgs.push(`/images/${entry.subFolder}/${entry.featuredImage.name}.webp`)
+
     entry.imagesData.images.forEach(img => {
       imgs.push(`/images/${entry.imagesData.subFolder}/${img.image}.webp`)
-      imgs.push(
-        `/images/${entry.imagesData.subFolder}/${img.image}-detail.webp`
-      )
+
+      if (img.detail)
+        imgs.push(
+          `/images/${entry.imagesData.subFolder}/${img.image}-detail.webp`
+        )
+
       imgs.push(
         `/images/${entry.imagesData.subFolder}/thumbs/${img.image}-thumb.webp`
       )

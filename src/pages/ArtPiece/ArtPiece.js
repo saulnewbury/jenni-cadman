@@ -68,7 +68,7 @@ const ArtPiece = () => {
         '.detail-image-inner h4',
         { opacity: 0 },
         {
-          delay: 0.3,
+          delay: 0.8,
           opacity: 1,
           scrollTrigger: {
             trigger: '.detail',
@@ -84,7 +84,7 @@ const ArtPiece = () => {
           scaleY: 1
         },
         {
-          delay: 0.5,
+          delay: 0.3,
           scrollTrigger: {
             id: 'detailReveal',
             trigger: '.detail .overlay',
@@ -134,14 +134,10 @@ const ArtPiece = () => {
 
   // get collection which includes a title that is the same as slug.
   const cln = collections.filter(cln => {
-    return cln.imagesData?.images.some(
-      obj => obj.title.toLowerCase() === slug.replace(/-/g, ' ')
-    )
+    return cln.imagesData?.images.some(obj => obj.image === slug)
   })
-
-  const obj = cln[0].imagesData?.images.filter(
-    obj => obj.title.toLowerCase() === slug.replace(/-/g, ' ')
-  )
+  // get specific image from collection
+  const obj = cln[0].imagesData?.images.filter(obj => obj.image === slug)
 
   const { subFolder, imagesData } = cln[0]
   const { id: artpieceId, title, image, detail, altText, desc } = obj[0]
@@ -216,7 +212,7 @@ const ArtPiece = () => {
             </div>
           </div>
         </div>
-        {detail === 'detail' && (
+        {detail && (
           <div className="detail">
             <div className="detail-inner">
               <div className="spacer"></div>
@@ -227,7 +223,7 @@ const ArtPiece = () => {
                     <div className="image">
                       <div className="overlay"></div>
                       <img
-                        src={`../images/${subFolder}/${image}-${detail}.webp`}
+                        src={`../images/${subFolder}/${image}-detail.webp`}
                         alt={altText}
                       />
                     </div>

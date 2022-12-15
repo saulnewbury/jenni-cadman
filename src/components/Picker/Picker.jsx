@@ -61,7 +61,10 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
         '.counter, h2, .back',
         { opacity: 0 },
         {
+          delay: 0.5,
           opacity: 1,
+          stagger: 0.5,
+          duration: 1,
           scrollTrigger: {
             trigger: '.image-menu',
             start: 'top 80%'
@@ -272,11 +275,9 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
     // exit function if clicking on item already selected
     if (targetId === current) {
       // Exit animation on parent
-      handleExit(
-        `/${collectionId}/${images[current].title
-          .replace(/\s+/g, '-')
-          .toLowerCase()}`
-      )
+      console.log(`/collections/${collectionId}/${images[current].image}`)
+
+      handleExit(`/collections/${collectionId}/${images[current].image}`)
       // exit animation on picker
       exitAnimPicker()
       return
@@ -323,7 +324,6 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
   //-------------------------------------------------------------------------
 
   function containerPosition(targetId, isInverse) {
-    console.log(numOfItems)
     let newLeft = leftMost
     // FORWARD
     if (!isInverse) {
@@ -347,8 +347,6 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
       const diff = Math.min(Math.max(pen - targetId, 0), itemsOutside)
       newLeft = leftMost - diff
     }
-
-    console.log(leftMost)
     // move container to new position
     setLeftMost(newLeft)
   }
@@ -412,7 +410,7 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
                 src={`/images/${subFolder}/thumbs/${image.image}-thumb.webp`}
                 alt={image.alt}
                 style={{
-                  opacity: idx === current ? 1.0 : 0.7
+                  opacity: idx === current ? 1.0 : 0.8
                 }}
               />
               <span

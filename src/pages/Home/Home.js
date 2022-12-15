@@ -77,8 +77,9 @@ const Home = () => {
         <div className="text">
           <div className="intro-text">
             <p ref={intro}>
-              Textile artist... drawing with the needle Jenni builds layers of
-              threads in broad painterly strokes and bold flowing lines.
+              Jenni Cadman is a textile artist based in the UK. She draws and
+              paints with threads to create artworks infused with colour,
+              texture and bold graphic lines.
             </p>
           </div>
           <div className="banner-text">
@@ -94,7 +95,7 @@ const Home = () => {
           className="banner-image"
         >
           <div ref={overlay} className="overlay"></div>
-          <img ref={image} src="/images/veronica/veronica-2.webp" alt="" />
+          <img ref={image} src="/images/veronica/veronica-ii.webp" alt="" />
         </div>
       </div>
     </div>

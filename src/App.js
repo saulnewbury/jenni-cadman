@@ -2,7 +2,15 @@ import { useState } from 'react'
 import './global.css'
 import './typography.css'
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { collections } from './data/collections'
+
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+  Route,
+  redirect
+} from 'react-router-dom'
 
 import Home from './pages/Home/Home'
 import Work from './pages/Work/Work'
@@ -36,22 +44,49 @@ function App() {
     { passive: false }
   )
 
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="work" element={<Work />} />
+        <Route path="bio" element={<Bio />} />
+        <Route path="contact" element={<Contact />} />
+        <Route
+          path="collections/:id"
+          element={<Collection />}
+          loader={async ({ params }) => {
+            const exists = collections.some(obj => {
+              return obj.id === +params.id.slice(1)
+            })
+            if (!exists) return redirect('/404')
+          }}
+        />
+        <Route
+          path="collections/:id/:slug"
+          element={<ArtPiece />}
+          loader={async ({ params }) => {
+            const collection = collections.find(
+              obj => obj.id === +params.id.slice(1)
+            )
+
+            const exists = collection.imagesData.images.some(img => {
+              // console.log(img.image + '  ' + params.slug)
+              return img.image === params.slug
+            })
+
+            if (!exists) return redirect('/404')
+          }}
+        />
+        <Route path="404" element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    )
+  )
+
   return isLoading ? (
     <LoadingCounter isLoading={handleLoadingAnimation} />
   ) : (
-    <Router>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/work" element={<Work />} />
-          <Route path="/bio" element={<Bio />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/:id" element={<Collection />} />
-          <Route path="/:id/:slug" element={<ArtPiece />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Layout>
-    </Router>
+    <RouterProvider router={router} />
   )
 }
 

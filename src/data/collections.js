@@ -20,9 +20,10 @@ export const collections = [
         {
           id: 1,
           title: 'Veronica I',
-          image: 'veronica-1',
-          detail: 'detail',
-          altText: 'portrait of veronica 1',
+          image: 'veronica-i',
+          detail: true,
+          altText:
+            'Portrait of a young woman facing forwards, looking straight ahead. Subtle shading on the face, textured cream background with black flecks and loops.',
           desc: {
             year: 2021,
             medium: 'Rayon and cotton threads on linen',
@@ -34,9 +35,10 @@ export const collections = [
         {
           id: 2,
           title: 'Veronica II',
-          image: 'veronica-2',
-          detail: 'detail',
-          altText: 'portrait of veronica 2',
+          image: 'veronica-ii',
+          detail: true,
+          altText:
+            'Head and shoulders of a young woman looking directly ahead. Many threads of black cotton are loosely flowing from her face and hair. The yellow background frames her soft features.',
           desc: {
             year: 2021,
             medium: 'Rayon and cotton threads on linen',
@@ -48,9 +50,10 @@ export const collections = [
         {
           id: 3,
           title: 'Veronica III',
-          image: 'veronica-3',
-          detail: 'detail',
-          altText: 'portrait of veronica 3',
+          image: 'veronica-iii',
+          detail: true,
+          altText:
+            'Portait of a young woman in lustrous colours of gold, silver and bronze tinged with scarlet, black and ochre. Her forward gaze is intense and direct.',
           desc: {
             year: 2021,
             medium: 'Rayon and cotton threads on calico',
@@ -61,9 +64,10 @@ export const collections = [
         {
           id: 4,
           title: 'Veronica IV',
-          image: 'veronica-4',
-          detail: 'detail',
-          altText: 'portrait of veronica 4',
+          image: 'veronica-iv',
+          detail: true,
+          altText:
+            'A young woman looks ahead, she is composed in layers of silver, bronze and gold which radiate around her. Her shoulders are bare, her hair is wavy.',
           desc: {
             year: 2021,
             medium: 'Rayon and cotton threads on calico',
@@ -74,9 +78,10 @@ export const collections = [
         {
           id: 5,
           title: 'Veronica V',
-          image: 'veronica-5',
-          detail: 'detail',
-          altText: 'portrait of veronica 5',
+          image: 'veronica-v',
+          detail: true,
+          altText:
+            'The face of a young woman drawn in threads, some are loosely flowing. Her eyes gaze dreamily at the viewer.',
           desc: {
             year: 2021,
             medium: 'Rayon and cotton threads on linen',
@@ -88,9 +93,10 @@ export const collections = [
         {
           id: 6,
           title: 'Veronica VI',
-          image: 'veronica-6',
-          detail: 'detail',
-          altText: 'portrait of veronica 6',
+          image: 'veronica-vi',
+          detail: true,
+          altText:
+            'A young woman looks distractedly ahead into the distance. Subtle lines suggest black wavy hair and frame a pretty face.',
           desc: {
             year: 2021,
             medium: 'Rayon and cotton threads on linen',
@@ -102,9 +108,10 @@ export const collections = [
         {
           id: 7,
           title: 'Veronica VII',
-          image: 'veronica-7',
-          detail: 'detail',
-          altText: 'portrait of veronica 7',
+          image: 'veronica-vii',
+          detail: true,
+          altText:
+            'Impressionistic portrait of a woman, loosely composed in bold textured swathes of threads on a calico-coloured linen. Her blue eyes look forward, her ruby red lips are full.',
           desc: {
             year: 2021,
             medium: 'Rayon and cotton threads on linen',
@@ -116,9 +123,10 @@ export const collections = [
         {
           id: 8,
           title: 'Portrait of Mother I',
-          image: 'portrait-of-mother-1',
-          detail: 'detail',
-          altText: 'portrait of mother I',
+          image: 'portrait-of-mother-i',
+          detail: true,
+          altText:
+            'A gentle looking woman with short black wavy hair gazes serenely ahead. She holds a bouquet flowers in front of her.',
           desc: {
             year: 2021,
             medium: 'Monotype printed on Fabriano 250 gsm acid free paper',
@@ -130,9 +138,10 @@ export const collections = [
         {
           id: 9,
           title: 'Portrait of Mother II',
-          image: 'portrait-of-mother-2',
-          detail: 'detail',
-          altText: 'portrait of mother II',
+          image: 'portrait-of-mother-ii',
+          detail: true,
+          altText:
+            'A strong black textured background of leaves surrounds the head and shoulders of a young woman. She has closely cropped curly hair and on her shoulders and neck are floral motifs.',
           desc: {
             year: 2021,
             medium: 'Monotype printed on Fabriano 250 gsm acid free paper',
@@ -162,8 +171,9 @@ export const collections = [
           id: 1,
           title: 'A Walk in the Park',
           image: 'a-walk-in-the-park',
-          detail: 'detail',
-          altText: 'Composition inspired by a walk in the park',
+          detail: true,
+          altText:
+            'Landscape of Melbury Park stitched in black graphic lines, suggesting pathways, gardens, lakes, woodland and fields. A deer stands.',
           desc: {
             year: 2012,
             medium: 'Rayon threads free-machined on calico',
@@ -176,23 +186,25 @@ export const collections = [
           id: 2,
           title: 'Deer in Conversation',
           image: 'deer-in-conversation',
-          detail: 'none',
+          detail: false,
           imageDetail: 'deer-in-conversation-detail',
-          altText: 'Composition of elements',
+          altText:
+            'Two deer stand facing one another, a starry shaped sun makes it’s way across the sky.',
           desc: {
             year: 2010,
             medium: 'Rayon and cotton threads free-machined onto calico',
             size: '20.5 X 15.5cms',
             mount: 'Framed under glass',
-            price: 'ARTIST COLLECTION'
+            price: "ARTIST'S COLLECTION"
           }
         },
         {
           id: 3,
           title: 'Grazing',
           image: 'grazing',
-          detail: 'none',
-          altText: 'Composition of elements',
+          detail: false,
+          altText:
+            'Two deer, heads down, graze in the foreground, a pathway lined with trees recedes upwards into the distant hill.',
           desc: {
             year: 2010,
             medium: 'Rayon and cotton threads free-machined onto calico',
@@ -205,8 +217,9 @@ export const collections = [
           id: 4,
           title: 'Teasel by the Stream',
           image: 'teasel-by-the-stream',
-          detail: 'none',
-          altText: 'Composition of elements',
+          detail: false,
+          altText:
+            'A solitary teasel stands in the foreground where a meandering silver stream begins its journey towards a tree-lined hill.',
           desc: {
             year: 2010,
             medium: 'Rayon and cotton threads free-machined onto calico',
@@ -219,8 +232,9 @@ export const collections = [
           id: 5,
           title: 'Every Cloud has a Silver Lining',
           image: 'every-cloud-has-a-silver-lining',
-          detail: 'none',
-          altText: 'Composition of elements',
+          detail: false,
+          altText:
+            'Plants and flowers line a path, the sun is rising on the horizon beneath a small cloud, a tree branch dark against the sky.',
           desc: {
             year: 2010,
             medium: 'Rayon and cotton threads free-machined onto calico',
@@ -233,8 +247,9 @@ export const collections = [
           id: 6,
           title: 'Embracing a Colourful World',
           image: 'embracing-a-colourful-world',
-          detail: 'none',
-          altText: 'Composition of elements',
+          detail: false,
+          altText:
+            'Elements and motifs suggesting the flora and fauna of the deer park are firmly rooted on the ground or floating in the sky.',
           desc: {
             year: 2010,
             medium: 'Rayon and cotton threads free-machined onto mixed fabrics',
@@ -247,26 +262,27 @@ export const collections = [
           id: 7,
           title: 'As The Crow Flys',
           image: 'as-the-crow-flys',
-          detail: 'detail',
+          detail: true,
           altText: '',
           desc: {
             year: 2009,
             medium:
-              'Cotton and rayon threads free-machine embroidered onto mixed fabrics',
+              'A composition of real and imagined areas of the deer park. A dragonfly and trees by the lakes. Crows fly off to the right.',
             size: '40.5 x 28cms',
             mount: 'Framed under glass',
-            price: 'Artists Collection'
+            price: "ARTIST'S COLLECTION"
           }
         },
         {
           id: 8,
           title: 'Making Headway',
           image: 'making-headway',
-          detail: 'detail',
+          detail: true,
           altText: '',
           desc: {
             year: 2009,
-            medium: 'Cotton and rayon threads free-machined on calico',
+            medium:
+              'Three long narrow wall hung panels of stitched calico in subtle colours with gold, silver and black highlights. Abstract and minimal design.',
             size: '29 x 172cms each panel',
             mount: 'Wallhanging',
             price: '£1,500'
@@ -276,8 +292,9 @@ export const collections = [
           id: 9,
           title: 'Fallow Deer By The Lake',
           image: 'fallow-deer-by-the-lake',
-          detail: 'detail',
-          altText: '',
+          detail: true,
+          altText:
+            'Large wallhanging. Colourful thread painting emulating the artist’s watercolour of the deer park in spring.',
           desc: {
             year: 2009,
             medium:
@@ -291,8 +308,9 @@ export const collections = [
           id: 10,
           title: 'Journeyland',
           image: 'journeyland',
-          detail: 'detail',
-          altText: '',
+          detail: true,
+          altText:
+            'Irregular edged embroidery with undulating surfaces. Abstract imagery composed of elements and motifs found in Melbury Park like tracks, gates deer and trees.',
           desc: {
             year: 2009,
             medium: 'Cotton and rayon threads free-machined on calico',
@@ -305,8 +323,9 @@ export const collections = [
           id: 11,
           title: 'Road To Melbury',
           image: 'road-to-melbury',
-          detail: 'none',
-          altText: '',
+          detail: false,
+          altText:
+            'Three nine foot long narrow wallhangings set close together. Each panel is a sliver of densely stitched threads with abstract images.',
           desc: {
             year: 2007,
             medium: 'Cotton and rayon threads free-machined on calico',
@@ -319,8 +338,9 @@ export const collections = [
           id: 12,
           title: 'Pitch',
           image: 'pitch',
-          detail: 'detail',
-          altText: '',
+          detail: true,
+          altText:
+            'A wallhung embroidered triptych in a muted palette of colours with black. Abstract shapes and lines drawn from the artist’s sketches.',
           desc: {
             year: 2007,
             medium: 'Cotton and rayon threads free-machined on calico',
@@ -350,7 +370,7 @@ export const collections = [
           id: 1,
           title: 'West Bay Beach and Harbour',
           image: 'west-bay-beach-and-harbour',
-          detail: 'none',
+          detail: false,
           altText:
             'Shadowy harbour walls in the foreground. Several old cottages painted brightly edge the beach. A tall cliff looms beyond. The sky is bright blue. ',
           desc: {
@@ -365,22 +385,23 @@ export const collections = [
           id: 2,
           title: 'Darwin My Faithful Hound',
           image: 'darwin-my-faithful-hound',
-          detail: 'none',
+          detail: false,
           altText:
             'Black and red embroidery on white. A patterned border of waves surrounds a woman and dog in profile they both look towards a sun with face.',
           desc: {
             year: 2014,
-            medium: 'Embroidery',
-            size: '27.5 cms',
-            mount: 'Stretched over a wooden frame',
-            price: 'Artists collection'
+            medium:
+              'Free machine embroidery, rayon and cotton threads on cotton',
+            size: '27 cms',
+            mount: 'Framed under glass',
+            price: "ARTIST'S COLLECTION"
           }
         },
         {
           id: 3,
           title: 'Coast',
           image: 'coast',
-          detail: 'detail',
+          detail: true,
           altText:
             'Large colourful abstract wall hanging in heavy embroidery threads. Large areas of blue, black and magenta lead into small green horizon.',
           desc: {
@@ -394,8 +415,8 @@ export const collections = [
         {
           id: 4,
           title: 'Darwin I',
-          image: 'darwin-1',
-          detail: 'detail',
+          image: 'darwin-i',
+          detail: true,
           altText:
             'Heavy outline of black stitching depicts the head of a running dog ears flapping. Subtle shades of metallic silver and gold with coloured hints.',
           desc: {
@@ -409,8 +430,8 @@ export const collections = [
         {
           id: 5,
           title: 'Darwin II',
-          image: 'darwin-2',
-          detail: 'none',
+          image: 'darwin-ii',
+          detail: true,
           altText:
             'Predominantly a background of black threads with hints of colour show a dogs head outlined in a thick white stitching.',
           desc: {
@@ -424,8 +445,8 @@ export const collections = [
         {
           id: 6,
           title: 'Darwin IV',
-          image: 'darwin-4',
-          detail: 'none',
+          image: 'darwin-iv',
+          detail: true,
           altText:
             'Rows and waves of stitching cover a collage of brown, maroon and yellow fabrics. A single thick thread traces the contours of a dog’s head.',
           desc: {
@@ -440,7 +461,7 @@ export const collections = [
           id: 7,
           title: 'East Cliff, West Bay',
           image: 'east-cliff-west-bay',
-          detail: 'detail',
+          detail: true,
           altText:
             'Small seascape showing two sandstone cliff faces above layers of beach, harbour and sea. A pale blue sky a cloud edges in.',
           desc: {
@@ -454,8 +475,8 @@ export const collections = [
         {
           id: 8,
           title: 'West Bay I',
-          image: 'west-bay-1',
-          detail: 'none',
+          image: 'west-bay-i',
+          detail: false,
           altText:
             'Profile of tall sandstone cliff green grass top. Bright blue sea golden beach. High horizon. Pink cottage and black hut in bottom corners.',
           desc: {
@@ -469,8 +490,8 @@ export const collections = [
         {
           id: 9,
           title: 'West Bay II',
-          image: 'west-bay-2',
-          detail: 'detail',
+          image: 'west-bay-ii',
+          detail: true,
           altText:
             'Blue shimmering sea white waves break on shoreline. Side view of impressive golden cliff grassy topped. Pink house and black building in foreground.',
           desc: {
@@ -484,8 +505,8 @@ export const collections = [
         {
           id: 10,
           title: 'West Bay III',
-          image: 'west-bay-3',
-          detail: 'detail',
+          image: 'west-bay-iii',
+          detail: true,
           altText:
             'Side-on view of East Cliff monumental in size. Large expanse of sea with views to Portland pretty cottage and black shelter in foreground.',
           desc: {
@@ -500,7 +521,7 @@ export const collections = [
           id: 11,
           title: 'Two Tents, Eweleaze',
           image: 'two-tents-eweleaze',
-          detail: 'detail',
+          detail: true,
           altText:
             'Two white tents anchored in a green field above a cliff overlooking a blue sea with red tanker blue sky above. Black tent edges into scene.',
           desc: {
@@ -515,7 +536,7 @@ export const collections = [
           id: 12,
           title: 'On the Beach at West Bay',
           image: 'on-the-beach-at-west-bay',
-          detail: 'detail',
+          detail: true,
           altText:
             'A large yellow cliff faces us others recede in to the distance. The beach is pebbled the sea is deep blue the sky pale.',
           desc: {
@@ -524,21 +545,6 @@ export const collections = [
             size: '25 x 20.5cms',
             mount: 'Unframed',
             price: '£250'
-          }
-        },
-        {
-          id: 13,
-          title: 'Cliff and Boat (Grey Sky)',
-          image: 'cliff-and-boat-(grey-sky)',
-          detail: 'none',
-          altText:
-            'The profile of a pale cliff topped with deep green. A deep green-black boat sits on multi-coloured pebbles. The sky is tones of grey.',
-          desc: {
-            year: 2016,
-            medium: 'Cotton and rayon threads free-machined on calico',
-            size: '25.8 x 20cms',
-            mount: 'Framed under glass',
-            price: 'ARTISTS COLLECTION'
           }
         }
       ]
@@ -563,7 +569,7 @@ export const collections = [
           id: 1,
           title: 'Blue Strand',
           image: 'blue-strand',
-          detail: 'detail',
+          detail: true,
           altText:
             'Thread drawing in black on a cyan blue linen. Seaweeds, cliffs, the artist’s dog running and a border of waves.',
           desc: {
@@ -578,7 +584,7 @@ export const collections = [
           id: 2,
           title: 'Seaside Harmony In Green',
           image: 'seaside-harmony-in-green',
-          detail: 'detail',
+          detail: true,
           altText:
             'Drawing in black threads inspired by the Dorset shoreline. Seaweeds, rolling waves and the artist’s dog digging. ',
           desc: {
@@ -593,7 +599,7 @@ export const collections = [
           id: 3,
           title: "Let's Go Down To The Water's Edge",
           image: 'lets-go-down-to-the-waters-edge',
-          detail: 'detail',
+          detail: true,
           altText:
             'Embroidered design in black threads on pale green silk. Cliffs, many seaweeds, a border of waves, a dog and his shadow.',
           desc: {
@@ -601,14 +607,14 @@ export const collections = [
             medium: 'Rayon threads free-machined on calico',
             mount: 'Stretched and framed',
             size: '40 x 50cms',
-            price: 'Artist Collection'
+            price: "ARTIST'S COLLECTION"
           }
         },
         {
           id: 4,
           title: 'Run On The Strand',
           image: 'run-on-the-strand',
-          detail: 'detail',
+          detail: true,
           altText:
             'Stitched drawing, black threads on calico. A border of rolling waves contains images within of seaweeds, cliffs and a running dog.',
           desc: {

@@ -1,0 +1,35 @@
+.not-found {
+  width: 100%;
+  height: 100%;
+
+  .not-found-inner {
+    height: calc(100vh - var(--gutter) * 2);
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    .info {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      h1,
+      h2 {
+        margin-bottom: 1rem;
+      }
+
+      h1.warning {
+        font-size: 3rem;
+      }
+
+      .back-to-work {
+        margin-top: 1rem;
+        background-color: white;
+        transition: background-color 0.5s;
+
+        &:hover {
+          background-color: rgb(241, 241, 241);
+        }
+      }
+    }
+  }
+}

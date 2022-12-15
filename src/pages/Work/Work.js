@@ -75,7 +75,6 @@ const Work = () => {
   }
 
   function exitAnim(path) {
-    console.log('scale')
     gsap.to('.page-overlay', {
       scaleY: 1,
       duration: 1,
@@ -92,34 +91,34 @@ const Work = () => {
 
   function handleMouseEnter(e) {
     // Title Link animations
-    console.log('fire')
-    const mySplitText = new SplitText(
-      `.${e.currentTarget.className.slice(0, 7)} .entry-title`,
-      {
-        type: 'chars',
-        charsClass: 'textChars'
-      }
-    )
-    const chars = mySplitText.chars
-    const aTween = gsap.fromTo(
-      chars,
-      { yPercent: 0 },
-      { yPercent: -130, duration: 0.3 }
-    )
-    const bTween = gsap.fromTo(
-      chars,
-      { yPercent: 130 },
-      {
-        // stagger: 0.01,
-        yPercent: 0,
-        delay: 0.2,
-        duration: 0.3,
-        onComplete: () => {
-          bTween.kill()
-          aTween.kill()
-        }
-      }
-    )
+
+    // const mySplitText = new SplitText(
+    //   `.${e.currentTarget.className.slice(0, 7)} .entry-title`,
+    //   {
+    //     type: 'chars',
+    //     charsClass: 'textChars'
+    //   }
+    // )
+    // const chars = mySplitText.chars
+    // const aTween = gsap.fromTo(
+    //   chars,
+    //   { yPercent: 0 },
+    //   { yPercent: -130, duration: 0.3 }
+    // )
+    // const bTween = gsap.fromTo(
+    //   chars,
+    //   { yPercent: 130 },
+    //   {
+    //     // stagger: 0.01,
+    //     yPercent: 0,
+    //     delay: 0.2,
+    //     duration: 0.3,
+    //     onComplete: () => {
+    //       bTween.kill()
+    //       aTween.kill()
+    //     }
+    //   }
+    // )
 
     // Collection number animations
     const mySplitNum = new SplitText(
@@ -189,7 +188,7 @@ const Work = () => {
                   <div
                     className="btn see-collection-link"
                     onClick={() => {
-                      exitAnim(`/0${entry.id}/`)
+                      exitAnim(`/collections/0${entry.id}/`)
                     }}
                   >
                     See Collection

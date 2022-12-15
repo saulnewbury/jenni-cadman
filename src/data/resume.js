@@ -326,7 +326,7 @@ export const resumeEntries = [
     entries: [
       {
         id: 1,
-        date: '1998, 2000, 2002, 2004, 2006, 2010, 2018, 2022',
+        date: '1998 2000 2002 2004 2006 2010 2018 2022',
         info: null,
         location: null
       }

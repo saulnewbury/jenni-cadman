@@ -11,10 +11,11 @@ import { SplitText } from 'gsap/SplitText'
 gsap.registerPlugin(SplitText)
 
 const Collection = () => {
-  const { id } = useParams()
-  const { imagesData, title } = collections[id - 1]
-
   const navigate = useNavigate()
+  const { id } = useParams()
+
+  const { imagesData = {}, title = "doesn't exist" } = collections[id - 1]
+
   useDocumentTitle(`Jenni Cadman | ${id} ${title}`)
 
   const colTitle = useRef()
@@ -31,6 +32,7 @@ const Collection = () => {
   }, [])
 
   function handleExit(path) {
+    console.log(path)
     gsap.to([colTitle.current, picker.current], {
       opacity: 0,
       stagger: 0.2,
