@@ -119,6 +119,31 @@ img {
   height: var(--footer-height);
 }
 
+/* Collection Title */
+.g-collection-title {
+  position: absolute;
+  top: -3px;
+  width: 15em;
+}
+
+@media screen and (min-width: 746px) {
+  .g-collection-title {
+    top: -6px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .g-collection-title {
+    width: 21em;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .g-collection-title {
+    width: unset;
+  }
+}
+
 /* Page-overlay for transitions */
 .page-overlay {
   position: fixed;

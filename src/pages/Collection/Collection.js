@@ -46,7 +46,7 @@ const Collection = () => {
   return (
     <>
       <div className="collection">
-        <div className="collection-title title indent uppercase">
+        <div className="g-collection-title title indent uppercase">
           <h3 ref={colTitle} className="lg">
             {title}
           </h3>

@@ -26,6 +26,7 @@ const ArtPiece = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const artpiece = useRef()
+  const colTitle = useRef()
 
   const { smoother } = useScrollSmoother({})
 
@@ -120,6 +121,20 @@ const ArtPiece = () => {
         ease: 'power2.inOut',
         delay: 1.5
       })
+
+      gsap.fromTo(
+        '.g-collection-title',
+        { opacity: 0, y: 10 },
+        {
+          opacity: 1,
+          y: 0,
+          scrollTrigger: {
+            trigger: '.g-collection-title',
+            start: 'top 5%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      )
     }, artpiece)
 
     return () => {
@@ -139,7 +154,7 @@ const ArtPiece = () => {
   // get specific image from collection
   const obj = cln[0].imagesData?.images.filter(obj => obj.image === slug)
 
-  const { subFolder, imagesData } = cln[0]
+  const { subFolder, imagesData, title: collectionTitle } = cln[0]
   const { id: artpieceId, title, image, detail, altText, desc } = obj[0]
 
   //-------------------------------------------------------------------------
@@ -234,12 +249,19 @@ const ArtPiece = () => {
           </div>
         )}
         <div className="copyright">Jenni Cadman &#169; 2022</div>
-        <Picker
-          imagesData={imagesData}
-          collectionId={id}
-          id={artpieceId - 1}
-          handleExit={handleExit}
-        />
+        <div className="art-piece-picker">
+          <div className="g-collection-title title uppercase">
+            <h3 ref={colTitle} className="lg">
+              {collectionTitle}
+            </h3>
+          </div>
+          <Picker
+            imagesData={imagesData}
+            collectionId={id}
+            id={artpieceId - 1}
+            handleExit={handleExit}
+          />
+        </div>
       </div>
     </>
   )

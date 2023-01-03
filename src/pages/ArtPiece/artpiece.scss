@@ -3,6 +3,8 @@
     padding-left: 0;
     padding-top: 8rem;
     padding-bottom: 21.3vh;
+    height: calc(100vh - var(--gutter));
+    padding-top: 18vh;
   }
 }
 
@@ -135,6 +137,10 @@
       }
     }
   }
+}
+
+.art-piece-picker {
+  position: relative;
 }
 
 // TABLETS

@@ -169,31 +169,21 @@ const Work = () => {
                   onClick={handleClick}
                   id={idx}
                 >
-                  {renderTitleAnim ? (
-                    <h3 className="entry-title title lg">
-                      <span className="entry-title-inner">
-                        <div className="entry-title-container">
-                          <span className="t1 lg">{entry.title}</span>
-
+                  <h3 className="entry-title title lg">
+                    <span className="entry-title-inner">
+                      <div className="entry-title-container">
+                        <span className="t1 lg">{entry.title}</span>
+                        {renderTitleAnim && (
                           <span className="t2 lg">{entry.title}</span>
-                        </div>
-                      </span>
-                      <span className="collection-number-container">
-                        <div className="collection-number-inner">
-                          <div className="collection-number">{`0${entry.id}`}</div>
-                        </div>
-                      </span>
-                    </h3>
-                  ) : (
-                    <>
-                      <h3 className="entry-title title lg">{entry.title}</h3>
-                      <span className="collection-number-container">
-                        <div className="collection-number-inner">
-                          <h1 className="collection-number">{`0${entry.id}`}</h1>
-                        </div>
-                      </span>
-                    </>
-                  )}
+                        )}
+                      </div>
+                    </span>
+                    <span className="collection-number-container">
+                      <div className="collection-number-inner">
+                        <div className="collection-number">{`0${entry.id}`}</div>
+                      </div>
+                    </span>
+                  </h3>
                 </div>
               </div>
             ))}

@@ -36,7 +36,11 @@
         order: 3;
 
         .credentials-inner {
-          display: flex;
+          // display: flex;
+
+          p {
+            display: block;
+          }
         }
       }
       .info {
@@ -46,7 +50,7 @@
         .info-inner {
           p {
             position: relative;
-            overflow: hidden;
+            // overflow: hidden;
             margin: 0;
           }
 
@@ -106,12 +110,7 @@
               width: 2em;
             }
             .details {
-              color: grey;
-              font-style: italic;
-              .info {
-                color: black;
-                font-style: normal;
-              }
+              line-height: 1.3;
             }
           }
         }

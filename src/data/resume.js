@@ -5,12 +5,12 @@ export const resumeEntries = [
     entries: [
       {
         date: 2001,
-        info: 'Craft Award',
+        info: 'Craft Award,',
         location: 'Arts Council, South West'
       },
       {
         date: 2000,
-        info: 'Craft Award',
+        info: 'Craft Award,',
         location: 'Arts Council, South West'
       }
     ]
@@ -43,7 +43,7 @@ export const resumeEntries = [
       {
         id: 2,
         date: 2005,
-        info: 'Stitched Textiles, The Terrace Cafe',
+        info: 'Stitched Textiles, The Terrace Cafe,',
         location: 'The Devon Guild of Craftsmen, Bovey Tracey, Devon'
       },
       {

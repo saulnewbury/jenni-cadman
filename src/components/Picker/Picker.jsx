@@ -22,6 +22,7 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
   // 'fixed' and 'scaled' sizing for image items, and the numeric value
   // gives the required outer container width in those units.
 
+  const picker = useRef()
   const pickerViewport = useRef()
   const container = useRef()
 
@@ -47,12 +48,12 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
         { opacity: 0 },
         {
           opacity: 1,
-          stagger: 0.08,
-          scrollTrigger: {
-            trigger: '.image-menu',
-            start: 'top 80%'
-            // markers: true
-          }
+          stagger: 0.08
+          // scrollTrigger: {
+          //   trigger: '.image-menu',
+          //   start: 'top 80%'
+          //   // markers: true
+          // }
         }
       )
 
@@ -71,7 +72,7 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
           }
         }
       )
-    }, pickerViewport)
+    }, picker)
 
     return () => {
       ctx.revert()
@@ -300,14 +301,14 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
       gsap.to('.counter, h2, .back', {
         opacity: 0,
         duration: 0.5,
-        delay: 0.2
+        delay: 0.5
       })
       gsap.to('.image-item', {
         opacity: 0,
         stagger: 0.05,
         delay: 0.2
       })
-    }, pickerViewport)
+    }, picker)
 
     return () => {
       ctx.revert()
@@ -356,15 +357,11 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
   //-------------------------------------------------------------------------
 
   return (
-    <div className="picker indent">
-      <div
-        ref={pickerViewport}
-        className="picker-viewport"
-        style={{ height: calcValues.height, width: menuWidth }}
-      >
+    <div ref={picker} className="picker indent">
+      <div className="picker-inner">
         <div className="back-link-container">
           <Link className="back link" to="/work">
-            BACK
+            BACK TO WORK
           </Link>
         </div>
 
@@ -373,6 +370,7 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
             <h2 className="uppercase title sm">{images[current].title}</h2>
           </div>
         </div>
+
         <div
           className="counter indent"
           style={{ width: calcValues.linkContainerWidth }}
@@ -380,51 +378,57 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
           <Counter id={current} length={images.length} />
         </div>
         <div
-          ref={container}
-          className="image-menu"
-          style={{
-            left: calcValues.left,
-            height: calcValues.height
-          }}
+          ref={pickerViewport}
+          className="picker-viewport"
+          style={{ height: calcValues.height, width: menuWidth }}
         >
-          {images.map((image, idx) => (
-            <span
-              className="image-item"
-              style={{
-                paddingLeft: calcValues.padding,
-                paddingRight: calcValues.padding,
-                height: calcValues.height,
-                width: `${
-                  idx === current ? calcValues.wide : calcValues.narrow
-                }`
-              }}
-              data-title={image.title}
-              data-size={idx === current ? 'wide' : 'narrow'}
-              data-id={idx}
-              onClick={e => {
-                handleClick(e)
-              }}
-              key={idx}
-            >
-              <img
-                src={`/images/${subFolder}/thumbs/${image.image}-thumb.webp`}
-                alt={image.alt}
-                style={{
-                  opacity: idx === current ? 1.0 : 0.8
-                }}
-              />
+          <div
+            ref={container}
+            className="image-menu"
+            style={{
+              left: calcValues.left,
+              height: calcValues.height
+            }}
+          >
+            {images.map((image, idx) => (
               <span
-                className="view btn"
+                className="image-item"
                 style={{
-                  opacity: idx === current ? 1.0 : 0,
-                  pointerEvents: idx === current ? 'auto' : 'none',
-                  translate: idx === current ? '0px 0px' : '0px 2%'
+                  paddingLeft: calcValues.padding,
+                  paddingRight: calcValues.padding,
+                  height: calcValues.height,
+                  width: `${
+                    idx === current ? calcValues.wide : calcValues.narrow
+                  }`
                 }}
+                data-title={image.title}
+                data-size={idx === current ? 'wide' : 'narrow'}
+                data-id={idx}
+                onClick={e => {
+                  handleClick(e)
+                }}
+                key={idx}
               >
-                View
+                <img
+                  src={`/images/${subFolder}/thumbs/${image.image}-thumb.webp`}
+                  alt={image.alt}
+                  style={{
+                    opacity: idx === current ? 1.0 : 0.8
+                  }}
+                />
+                <span
+                  className="view btn"
+                  style={{
+                    opacity: idx === current ? 1.0 : 0,
+                    pointerEvents: idx === current ? 'auto' : 'none',
+                    translate: idx === current ? '0px 0px' : '0px 2%'
+                  }}
+                >
+                  View
+                </span>
               </span>
-            </span>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

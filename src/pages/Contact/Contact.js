@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from 'react'
+import React, { useLayoutEffect, useRef, useEffect, useState } from 'react'
 import { BsArrowRight } from 'react-icons/bs'
 import './contact.scss'
 
@@ -7,6 +7,24 @@ import { useDocumentTitle } from '../../hooks/useDocumentTitle'
 import gsap from 'gsap'
 
 const Contact = () => {
+  const [token, setToken] = useState({})
+  const [message, setMessage] = useState()
+  const [success, setSuccess] = useState()
+
+  useEffect(() => {
+    async function getToken() {
+      const res = await fetch('/php-mailer/token.php')
+      if (res.ok) {
+        const data = await res.json()
+        setToken({ ...data })
+      } else {
+        setMessage('Server not responding')
+        setSuccess(false)
+      }
+    }
+    getToken()
+  }, [])
+
   const contact = useRef(null)
   const q = gsap.utils.selector(contact)
 
@@ -44,19 +62,50 @@ const Contact = () => {
     }
   }, [])
 
+  function handleSubmit(e) {
+    console.log('called')
+    e.preventDefault()
+    const form = e.currentTarget
+
+    async function postForm() {
+      try {
+        const res = await fetch('php-mailer/mailit.php', {
+          method: 'POST',
+          body: new FormData(form)
+        })
+
+        console.log(res)
+        if (res.ok) {
+          const text = await res.text()
+          setMessage(text)
+          setSuccess(true)
+        } else {
+          setMessage('Error in server response')
+          setSuccess(false)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    postForm()
+  }
+
   return (
     <>
       <div ref={contact} className="contact">
         <div className="contact-inner indent">
-          <form action="" id="subscription">
+          <form id="registrationForm" onSubmit={handleSubmit}>
+            <input type="hidden" name="session" value={token.session} />
+            <input type="hidden" name="nonce" value={token.nonce} />
             <label htmlFor="email">
               Stay informed about upcoming events and exhibitions:
             </label>
             <input type="email" name="email" placeholder="Your Email" />
-            <button type="submit">
+            <button type="submit" disabled={!token.session}>
               <span>Subscribe</span>
               <BsArrowRight />
             </button>
+            <p className={success ? 'success' : 'error'}>{message}</p>
           </form>
 
           <div className="enquiries">

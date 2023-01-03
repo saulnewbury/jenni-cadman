@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import './bio.scss'
 
 import { resumeEntries } from '../../data/resume'
@@ -37,7 +37,7 @@ const Bio = () => {
     smoother.current.scrollTop(0)
   }, [])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       //Image
       gsap.fromTo(
@@ -62,19 +62,44 @@ const Bio = () => {
       )
 
       // Bio text
-      gsap.fromTo(
-        q('p'),
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, delay: 0.3, stagger: 0.15 }
-      )
+      const ps = info.current.children
+      const childSplit = new SplitText(ps, {
+        type: 'lines',
+        linesClass: 'split-child'
+      })
+
+      gsap.from(childSplit.lines, {
+        opacity: 0,
+        duration: 0.8,
+        yPercent: 100,
+        ease: 'power1.inOut',
+        stagger: 0.03,
+        delay: 0.3
+      })
 
       // Credentials
-      gsap.fromTo(
-        qC('p'),
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, delay: 1, stagger: 0.1 }
-      )
+      const credsPs = creds.current.children
+      const credsChildSplit = new SplitText(credsPs, {
+        type: 'lines',
+        linesClass: 'split-child'
+      })
 
+      gsap.from(credsChildSplit.lines, {
+        opacity: 0,
+        duration: 0.8,
+        yPercent: 100,
+        ease: 'power1.inOut',
+        stagger: 0.03,
+        delay: 0.3
+      })
+
+      // gsap.fromTo(
+      //   qC('p'),
+      //   { y: 20, opacity: 0 },
+      //   { y: 0, opacity: 1, duration: 1, delay: 1.5, stagger: 0.1 }
+      // )
+
+      // Titles
       const titles = gsap.utils.toArray(qE('h2'))
       titles.forEach(title => {
         gsap.fromTo(
@@ -91,6 +116,8 @@ const Bio = () => {
           }
         )
       })
+
+      // Dates
       const dates = gsap.utils.toArray(qE('.date'))
       dates.forEach(date => {
         gsap.fromTo(
@@ -108,6 +135,7 @@ const Bio = () => {
         )
       })
 
+      // Details
       const details = gsap.utils.toArray(qE('.details'))
       details.forEach(details => {
         gsap.fromTo(
@@ -150,13 +178,28 @@ const Bio = () => {
               <p>
                 Jenni Cadman <br />
                 Textile artist <br />
-                <br />
+              </p>
+              <br />
+              <p>
+                Dorset, <br />
+                Milborne Port, <br />
+                DT9, UK
+              </p>
+              <br />
+              <p>jennicadman@gmail.com</p>
+              {/* <p>
+                Jenni Cadman <br />
+                Textile artist <br />
+                <p />
+                <p>
                 Dorset, <br />
                 Milborne Port, <br />
                 DT9, UK <br />
+                <p />
+                <>
                 <br />
                 jennicadman@gmail.com
-              </p>
+              <p/> */}
             </div>
           </div>
           <div className="info">

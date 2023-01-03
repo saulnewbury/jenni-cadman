@@ -54,6 +54,17 @@
           }
         }
       }
+
+      .error,
+      .success {
+        margin-top: 20px;
+      }
+      .error {
+        color: red;
+      }
+      .success {
+        color: green;
+      }
     }
 
     .enquiries {

@@ -20,58 +20,42 @@
         padding: 0.2em 0;
 
         .c-link {
-          display: inline;
           display: inline-block;
           position: relative;
-          overflow-y: clip;
-          // border: 1px black solid;
 
           .entry-title {
             margin: 0;
-            line-height: 0.78;
+            line-height: 1;
             font-kerning: none;
             font-style: normal;
-            transform: skewX(0);
-            transition: transform 0.3s;
-            // border: 1px solid black;
+            color: black;
+            display: inline;
 
-            &:hover {
-              transform: skewX(-10deg);
+            .entry-title-inner {
+              display: inline-block;
+
+              .entry-title-container {
+                display: inline-grid;
+                height: 2rem;
+                overflow: hidden;
+              }
             }
 
-            .textChars {
-              pointer-events: none;
-              line-height: 0.78;
+            .t1,
+            .t2 {
+              display: block;
             }
-          }
-
-          &::before {
-            content: '';
-            width: 0.2em;
-            height: 0.01em;
-            position: absolute;
-            left: -30px;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: black;
-            opacity: 0;
-            transition: opacity 0.5s, left 0.3s;
-          }
-
-          &:hover::before {
-            left: -16px;
-            opacity: 1;
           }
 
           .collection-number-container {
             pointer-events: none;
-            position: absolute;
-            right: -1.5em;
-            bottom: 1.15em;
-            bottom: 0.75em;
+            display: inline-block;
+            margin-left: 0.15em;
             font-size: 0.46em;
+            vertical-align: super;
 
             .collection-number-inner {
+              display: inline-block;
               overflow: hidden;
 
               .collection-number {

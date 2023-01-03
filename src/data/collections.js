@@ -260,8 +260,8 @@ export const collections = [
         },
         {
           id: 7,
-          title: 'As The Crow Flys',
-          image: 'as-the-crow-flys',
+          title: 'As The Crow Flies',
+          image: 'as-the-crow-flies',
           detail: true,
           altText: '',
           desc: {
@@ -278,11 +278,11 @@ export const collections = [
           title: 'Making Headway',
           image: 'making-headway',
           detail: true,
-          altText: '',
+          altText:
+            'Three long narrow wall hung panels of stitched calico in subtle colours with gold, silver and black highlights. Abstract and minimal design.',
           desc: {
             year: 2009,
-            medium:
-              'Three long narrow wall hung panels of stitched calico in subtle colours with gold, silver and black highlights. Abstract and minimal design.',
+            medium: 'Cotton and rayon threads free-machined on calico',
             size: '29 x 172cms each panel',
             mount: 'Wallhanging',
             price: '£1,500'
@@ -323,7 +323,7 @@ export const collections = [
           id: 11,
           title: 'Road To Melbury',
           image: 'road-to-melbury',
-          detail: false,
+          detail: true,
           altText:
             'Three nine foot long narrow wallhangings set close together. Each panel is a sliver of densely stitched threads with abstract images.',
           desc: {
@@ -392,7 +392,7 @@ export const collections = [
             year: 2014,
             medium:
               'Free machine embroidery, rayon and cotton threads on cotton',
-            size: '27 cms',
+            size: '27 x 27cms',
             mount: 'Framed under glass',
             price: "ARTIST'S COLLECTION"
           }
@@ -476,7 +476,7 @@ export const collections = [
           id: 8,
           title: 'West Bay I',
           image: 'west-bay-i',
-          detail: false,
+          detail: true,
           altText:
             'Profile of tall sandstone cliff green grass top. Bright blue sea golden beach. High horizon. Pink cottage and black hut in bottom corners.',
           desc: {
@@ -529,7 +529,7 @@ export const collections = [
             medium: 'Cotton and rayon threads free-machined on silks on calico',
             size: '25 x 16cms',
             mount: 'Framed under glass',
-            price: 'NFS'
+            price: '£450'
           }
         },
         {
@@ -604,7 +604,7 @@ export const collections = [
             'Embroidered design in black threads on pale green silk. Cliffs, many seaweeds, a border of waves, a dog and his shadow.',
           desc: {
             year: 2013,
-            medium: 'Rayon threads free-machined on calico',
+            medium: 'Rayon threads free-machined on silk dupion',
             mount: 'Stretched and framed',
             size: '40 x 50cms',
             price: "ARTIST'S COLLECTION"
