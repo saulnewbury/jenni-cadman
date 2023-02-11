@@ -76,7 +76,7 @@ const NavBar = () => {
             {isNumber.current ? `0${isNumber.current}` : null}
           </span>
         </div>
-        <div className={`cross`} onClick={handleClick}>
+        <div className="cross" onClick={handleClick}>
           <span></span>
           <span></span>
         </div>

@@ -52,10 +52,10 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
           // scrollTrigger: {
           //   trigger: '.image-menu',
           //   start: 'top 80%'
-          //   // markers: true
           // }
         }
       )
+      console.log('running')
 
       // Counter
       gsap.fromTo(
@@ -65,11 +65,12 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
           delay: 0.5,
           opacity: 1,
           stagger: 0.5,
-          duration: 1,
-          scrollTrigger: {
-            trigger: '.image-menu',
-            start: 'top 80%'
-          }
+          duration: 1
+          // scrollTrigger: {
+          //   trigger: '.image-menu',
+          //   start: 'top 80%'
+          //   // markers: true
+          // }
         }
       )
     }, picker)
@@ -269,6 +270,7 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
   //-------------------------------------------------------------------------
 
   function handleClick(e) {
+    e.preventDefault()
     e.stopPropagation()
     const target = e.currentTarget
     const targetId = +target.dataset.id
@@ -365,7 +367,7 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
           </Link>
         </div>
 
-        <div className="artpiece-title">
+        <div className="artpiece-title sm">
           <div className="artpiece-title-container">
             <h2 className="uppercase title sm">{images[current].title}</h2>
           </div>
@@ -391,7 +393,9 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
             }}
           >
             {images.map((image, idx) => (
-              <span
+              <Link
+                // default action is prevented on handleClick so that exit animations may run - the 'to' attribute is provided here should a visiter wish to open the link in a new tab
+                to={`/collections/${collectionId}/${images[current].image}`}
                 className="image-item"
                 style={{
                   paddingLeft: calcValues.padding,
@@ -426,7 +430,7 @@ const Picker = ({ imagesData, collectionId, id, handleExit }) => {
                 >
                   View
                 </span>
-              </span>
+              </Link>
             ))}
           </div>
         </div>

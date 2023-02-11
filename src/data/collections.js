@@ -25,7 +25,7 @@ export const collections = [
           altText:
             'Portrait of a young woman facing forwards, looking straight ahead. Subtle shading on the face, textured cream background with black flecks and loops.',
           desc: {
-            year: 2021,
+            year: 2022,
             medium: 'Rayon and cotton threads on linen',
             size: '41 x 31 x 2cms',
             mount: 'Stretched over a wooden frame',
@@ -40,7 +40,7 @@ export const collections = [
           altText:
             'Head and shoulders of a young woman looking directly ahead. Many threads of black cotton are loosely flowing from her face and hair. The yellow background frames her soft features.',
           desc: {
-            year: 2021,
+            year: 2022,
             medium: 'Rayon and cotton threads on linen',
             size: '41 x 31 x 2cms',
             mount: 'Stretched over a wooden frame',
@@ -55,7 +55,7 @@ export const collections = [
           altText:
             'Portait of a young woman in lustrous colours of gold, silver and bronze tinged with scarlet, black and ochre. Her forward gaze is intense and direct.',
           desc: {
-            year: 2021,
+            year: 2022,
             medium: 'Rayon and cotton threads on calico',
             size: '41 x 30cms',
             price: 'NFS'
@@ -69,7 +69,7 @@ export const collections = [
           altText:
             'A young woman looks ahead, she is composed in layers of silver, bronze and gold which radiate around her. Her shoulders are bare, her hair is wavy.',
           desc: {
-            year: 2021,
+            year: 2022,
             medium: 'Rayon and cotton threads on calico',
             size: '42 x 30cms',
             price: 'NFS'
@@ -83,7 +83,7 @@ export const collections = [
           altText:
             'The face of a young woman drawn in threads, some are loosely flowing. Her eyes gaze dreamily at the viewer.',
           desc: {
-            year: 2021,
+            year: 2022,
             medium: 'Rayon and cotton threads on linen',
             size: '32 x 37 x 2.2cms',
             mount: 'Mounted in a tray frame',
@@ -98,7 +98,7 @@ export const collections = [
           altText:
             'A young woman looks distractedly ahead into the distance. Subtle lines suggest black wavy hair and frame a pretty face.',
           desc: {
-            year: 2021,
+            year: 2022,
             medium: 'Rayon and cotton threads on linen',
             size: '32 x 37 x 2.2cms',
             mount: 'Mounted in a tray frame',
@@ -113,7 +113,7 @@ export const collections = [
           altText:
             'Impressionistic portrait of a woman, loosely composed in bold textured swathes of threads on a calico-coloured linen. Her blue eyes look forward, her ruby red lips are full.',
           desc: {
-            year: 2021,
+            year: 2022,
             medium: 'Rayon and cotton threads on linen',
             size: '32 x 37 x 2.2cms',
             mount: 'Mounted in a tray frame',

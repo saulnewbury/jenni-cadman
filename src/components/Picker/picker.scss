@@ -21,16 +21,17 @@
     }
   }
   .artpiece-title {
+    height: 1.1em;
     position: absolute;
-    bottom: -1.8em;
-    bottom: -1.9em;
+    bottom: -1.3em;
     z-index: 10;
 
     .artpiece-title-container {
       overflow: hidden;
       width: max-content;
+      max-width: 70vw;
       margin-bottom: 0.1em;
-      // border: 1px solid black;
+      position: absolute;
 
       h2 {
         margin: 0;
@@ -108,3 +109,13 @@
 // *******************
 // TITLE MEDIA QUERIES
 // *******************
+
+// 0
+// 399
+// 457
+// 514
+// 571
+// 628
+// 685
+// 742
+// 1399

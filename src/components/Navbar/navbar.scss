@@ -95,31 +95,22 @@
         right: 1.3rem;
       }
 
-      // .nav-item:after {
-      //   content: '';
-      //   position: absolute;
-      //   background-color: black;
-      //   height: 1px;
-      //   width: 0%;
-      //   bottom: -0.1em;
-      //   left: 0;
-      //   transition: width 0.5s;
-      // }
-
-      // .nav-item:not(.num):not(.current-path):hover:after {
-      //   width: 95%;
-      // }
-
-      // .nav-item.current-path:after {
-      //   width: 95%;
-      // }
-
       .nav-item:not(.num):not(.current-path):hover {
         color: grey;
       }
 
       .nav-item.current-path {
         color: grey;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    .logo {
+      .logo-link {
+        visibility: hidden;
       }
     }
   }

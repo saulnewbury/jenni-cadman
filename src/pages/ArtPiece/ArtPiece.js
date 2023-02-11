@@ -24,6 +24,7 @@ const ArtPiece = () => {
   const location = useLocation()
 
   const [isOpen, setIsOpen] = useState(false)
+  const [collectionTitleHidden, setCollectionTitleHidden] = useState()
 
   const artpiece = useRef()
   const colTitle = useRef()
@@ -31,6 +32,40 @@ const ArtPiece = () => {
   const { smoother } = useScrollSmoother({})
 
   useDocumentTitle(`Jenni Cadman | ${slug}`)
+
+  useLayoutEffect(mediaQueries, [])
+
+  //-------------------------------------------------------------------------
+  // Media Queries
+  //-------------------------------------------------------------------------
+
+  function mediaQueries() {
+    let mm = gsap.matchMedia()
+
+    mm.add(`(max-width: 649px)`, () => {
+      setCollectionTitleHidden(true)
+    })
+
+    mm.add(`(min-width: 650px)`, () => {
+      setCollectionTitleHidden(false)
+    })
+
+    return () => {
+      mm.kill()
+    }
+  }
+
+  //-------------------------------------------------------------------------
+  // Show and hide collection title
+  //-------------------------------------------------------------------------
+
+  useLayoutEffect(() => {
+    if (collectionTitleHidden) {
+      gsap.to(colTitle.current, { opacity: 0 })
+    } else {
+      gsap.to(colTitle.current, { opacity: 1 })
+    }
+  }, [collectionTitleHidden])
 
   //-------------------------------------------------------------------------
   // Enter animations
@@ -99,29 +134,41 @@ const ArtPiece = () => {
           )
         }
       )
+
+      // Title
       const childSplit = new SplitText('.info h1', {
         type: 'chars'
       })
 
       gsap.from(childSplit.chars, {
         duration: 1.2,
+        opacity: 0,
         yPercent: 100,
         ease: 'power2.inOut',
         delay: 1.4
       })
 
-      // Details
-      const childSplitDetails = new SplitText('.info p', {
+      // Info
+      const childSplitInfo = new SplitText('.info p', {
         type: 'chars'
       })
 
-      gsap.from(childSplitDetails.chars, {
+      gsap.fromTo(
+        '.p-container',
+        {
+          opacity: 0
+        },
+        { opacity: 1, delay: 1.8 }
+      )
+
+      gsap.from(childSplitInfo.chars, {
         duration: 1,
         yPercent: 100,
         ease: 'power2.inOut',
         delay: 1.5
       })
 
+      // Collection title
       gsap.fromTo(
         '.g-collection-title',
         { opacity: 0, y: 10 },
@@ -205,22 +252,22 @@ const ArtPiece = () => {
                 <div className="title-container">
                   <h1 className="title uppercase sm">{title}</h1>
                 </div>
-                <div className="p-container">
+                <div className="p-container" style={{ opacity: 0 }}>
                   <p className="collection-date">{desc.year}</p>
                 </div>
-                <div className="p-container">
+                <div className="p-container" style={{ opacity: 0 }}>
                   <p className="medium">{desc.medium}</p>
                 </div>
-                <div className="p-container">
+                <div className="p-container" style={{ opacity: 0 }}>
                   <p className="size">{desc.size}</p>
                 </div>
 
                 {desc.mount && (
-                  <div className="p-container">
+                  <div className="p-container" style={{ opacity: 0 }}>
                     <p className="mount">{desc.mount}</p>
                   </div>
                 )}
-                <div className="p-container">
+                <div className="p-container" style={{ opacity: 0 }}>
                   <p className="price">{desc.price}</p>
                 </div>
               </div>

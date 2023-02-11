@@ -70,7 +70,6 @@ function App() {
             )
 
             const exists = collection.imagesData.images.some(img => {
-              // console.log(img.image + '  ' + params.slug)
               return img.image === params.slug
             })
 

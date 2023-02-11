@@ -93,7 +93,7 @@ img {
 }
 
 .lg {
-  --lg: 1.6rem;
+  --lg: 1.8rem;
   font-size: var(--lg);
   line-height: 1em;
 }

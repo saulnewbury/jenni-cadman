@@ -115,6 +115,19 @@
   }
 }
 
+@media screen and (max-width: 767px) {
+  .work {
+    .work-inner {
+      .collections-gallery {
+        .collection {
+          .info {
+            margin-bottom: 3rem;
+          }
+        }
+      }
+    }
+  }
+}
 @media screen and (min-width: 768px) {
   .work {
     --base: 10;

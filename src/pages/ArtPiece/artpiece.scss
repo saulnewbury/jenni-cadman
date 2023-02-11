@@ -78,6 +78,7 @@
         }
 
         .p-container {
+          opacity: 0;
           overflow: hidden;
           // border: 1px solid black;
           width: max-content;
@@ -124,11 +125,13 @@
               z-index: 100;
               transform-origin: bottom;
             }
+
             img {
               max-height: 600px;
               max-width: calc(100vw - var(--gutter) * 2);
               width: auto;
               min-height: 450px; // stop image collapsing to 0 with min-height
+              min-height: 292px; // stop image collapsing to 0 with min-height
               object-fit: contain;
               padding: 0.5px;
             }
@@ -167,9 +170,11 @@
       .detail-content {
         .detail-image {
           justify-content: center;
+          overflow: hidden;
           .detail-image-inner {
             .image {
               img {
+                min-height: 450px;
               }
             }
           }
