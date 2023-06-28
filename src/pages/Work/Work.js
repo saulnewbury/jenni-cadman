@@ -88,7 +88,7 @@ const Work = () => {
     gsap.to(smoother.current, {
       scrollTo: smoother.current.offset(cRefs[id].current, "center center"),
       duration: 1,
-      ease: "power1.inOut",
+      ease: "power2.inOut",
     })
   }
 
