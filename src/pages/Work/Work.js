@@ -1,18 +1,19 @@
-import React, { useEffect, useLayoutEffect, useState, useRef } from 'react'
-import './work.scss'
+import React, { useEffect, useLayoutEffect, useState, useRef } from "react"
+import "./work.scss"
 
-import { collections } from '../../data/collections'
+import { collections } from "../../data/collections"
 
-import { useNavigate } from 'react-router-dom'
-import gsap from 'gsap'
-import CustomEase from 'gsap/CustomEase'
-import SplitText from 'gsap/SplitText'
+import { useNavigate } from "react-router-dom"
+import gsap from "gsap"
+import CustomEase from "gsap/CustomEase"
+import SplitText from "gsap/SplitText"
+import { ScrollToPlugin } from "gsap/ScrollToPlugin"
 
-import { useDocumentTitle } from '../../hooks/useDocumentTitle'
-import useScrollSmoother from '../../hooks/useScrollSmoother'
+import { useDocumentTitle } from "../../hooks/useDocumentTitle"
+import useScrollSmoother from "../../hooks/useScrollSmoother"
 
 const Work = () => {
-  gsap.registerPlugin(CustomEase, SplitText)
+  gsap.registerPlugin(CustomEase, SplitText, ScrollToPlugin)
   const navigate = useNavigate()
   useDocumentTitle(`Jenni Cadman | Work`)
 
@@ -65,7 +66,7 @@ const Work = () => {
           y: 0,
           stagger: 0.1,
           duration: 0.8,
-          delay: 0.5
+          delay: 0.5,
         }
       )
       gsap.fromTo(
@@ -81,27 +82,28 @@ const Work = () => {
   }, [])
 
   function handleClick(e) {
+    console.log(smoother.current)
     const id = e.currentTarget.id
 
     gsap.to(smoother.current, {
-      scrollTop: smoother.current.offset(cRefs[id].current, 'center center'),
-      duration: 1.5,
-      ease: 'power3.out'
+      scrollTo: smoother.current.offset(cRefs[id].current, "center center"),
+      duration: 1,
+      ease: "power1.inOut",
     })
   }
 
   function exitAnim(path) {
-    gsap.to('.page-overlay', {
+    gsap.to(".page-overlay", {
       scaleY: 1,
       duration: 1,
       ease: CustomEase.create(
-        'custom',
-        'M0,0,C0.05,0,0.149,0.279,0.19,0.374,0.36,0.772,0.528,0.988,1,1'
+        "custom",
+        "M0,0,C0.05,0,0.149,0.279,0.19,0.374,0.36,0.772,0.528,0.988,1,1"
       ),
       onComplete: () => {
         smoother.current.scrollTop(0)
         navigate(path)
-      }
+      },
     })
   }
 
@@ -121,10 +123,10 @@ const Work = () => {
       { y: 0 },
       {
         y: -32,
-        ease: 'power1.inOut',
+        ease: "power1.inOut",
         onComplete: () => {
           tween.revert()
-        }
+        },
       }
     )
 
@@ -132,8 +134,8 @@ const Work = () => {
     const mySplitNum = new SplitText(
       `.${target.classList[0]} .collection-number`,
       {
-        type: 'chars',
-        charsClass: 'numChars'
+        type: "chars",
+        charsClass: "numChars",
       }
     )
 
@@ -151,7 +153,7 @@ const Work = () => {
         onComplete: () => {
           delete target.dataset.running
           mySplitNum.revert()
-        }
+        },
       }
     )
   }
