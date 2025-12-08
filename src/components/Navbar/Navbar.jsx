@@ -5,13 +5,41 @@ import { useLocation } from 'react-router-dom'
 
 import { Link } from 'react-router-dom'
 
+import gsap from 'gsap'
+
 const NavBar = () => {
   const [autoOpenNav, setAutoOpenNav] = useState(true)
   const [navIsOpen, setNavIsOpen] = useState(false)
   const isNumber = useRef(false)
   const [isCurrentRoute, setIsCurrentRoute] = useState('/')
 
+  const logoRef = useRef(null)
+  const crossRef = useRef(null)
+  const hasAnimated = useRef(false)
+
   const location = useLocation()
+
+  // Fade in animation on mount
+  useEffect(() => {
+    if (hasAnimated.current) return
+    hasAnimated.current = true
+
+    const tl = gsap.timeline()
+
+    tl.to(logoRef.current, {
+      opacity: 1,
+      duration: 0.6,
+      ease: 'power2.out'
+    }).to(
+      crossRef.current,
+      {
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out'
+      },
+      '-=0.3'
+    )
+  }, [])
 
   useEffect(() => {
     if (location.pathname === '/' && autoOpenNav) {
@@ -30,10 +58,10 @@ const NavBar = () => {
   isNumber.current = parseInt(isCurrentRoute.replace(/\D/g, ''))
 
   return (
-    <div className="navbar uppercase gutter">
-      <div className="logo">
+    <div className='navbar uppercase gutter'>
+      <div className='logo' ref={logoRef}>
         <Link
-          to="/"
+          to='/'
           className={`logo-link ${
             /\d/.test(location.pathname) ? 'visibility' : ''
           }`}
@@ -42,9 +70,9 @@ const NavBar = () => {
         </Link>
       </div>
       <nav className={navIsOpen ? 'open' : ''}>
-        <div className="links">
+        <div className='links'>
           <Link
-            to="/work"
+            to='/work'
             className={`link item nav-item ${
               isCurrentRoute === '/work' ? 'current-path' : ''
             }`}
@@ -53,7 +81,7 @@ const NavBar = () => {
             Work
           </Link>
           <Link
-            to="/bio"
+            to='/bio'
             className={`link item nav-item ${
               isCurrentRoute === '/bio' ? 'current-path' : ''
             }`}
@@ -62,7 +90,7 @@ const NavBar = () => {
             Bio
           </Link>
           <Link
-            to="/contact"
+            to='/contact'
             className={`link item nav-item ${
               isCurrentRoute === '/contact' ? 'current-path' : ''
             }`}
@@ -72,11 +100,11 @@ const NavBar = () => {
           >
             Contact
           </Link>
-          <span className="nav-item num">
+          <span className='nav-item num'>
             {isNumber.current ? `0${isNumber.current}` : null}
           </span>
         </div>
-        <div className="cross" onClick={handleClick}>
+        <div className='cross' ref={crossRef} onClick={handleClick}>
           <span></span>
           <span></span>
         </div>
