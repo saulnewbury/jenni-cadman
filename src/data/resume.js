@@ -317,6 +317,18 @@ export const resumeEntries = [
         date: '1997-1999',
         info: 'Off The Shelf, Art Supermarket,',
         location: 'Sherborne Contemporary Arts, Sherborne House, Dorset'
+      },
+      {
+        id: 43,
+        date: 2024,
+        info: 'Making Dorset,',
+        location: 'The Sherborne, Sherborne, Dorset'
+      },
+      {
+        id: 44,
+        date: 2024,
+        info: 'Housework,',
+        location: 'The Sherborne, Sherborne, Dorset'
       }
     ]
   },

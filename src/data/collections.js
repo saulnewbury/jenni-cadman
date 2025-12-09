@@ -499,7 +499,7 @@ export const collections = [
             medium: 'Cotton and rayon threads free-machined on calico',
             size: '22 x 15.5cms',
             mount: 'Framed under museum glass.',
-            price: '£450'
+            price: '£450 SOLD'
           }
         },
         {
@@ -544,7 +544,7 @@ export const collections = [
             medium: 'Cotton and rayon threads free-machined on calico',
             size: '25 x 20.5cms',
             mount: 'Unframed',
-            price: '£250'
+            price: '£250 SOLD'
           }
         }
       ]
