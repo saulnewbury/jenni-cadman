@@ -6,8 +6,6 @@ import { collections } from '../../data/collections'
 import gsap from 'gsap'
 
 const LoadingCounter = ({ isLoading }) => {
-  const imageSets = getImageSets()
-
   const container = useRef(null)
   const overlay = useRef(null)
   const progressBar = useRef(null)
@@ -17,41 +15,75 @@ const LoadingCounter = ({ isLoading }) => {
 
   const loaderStarted = useRef(false)
   const loadedCount = useRef(0)
+  const displayedCount = useRef(0)
+  const thumbQueue = useRef([])
+  const isDisplaying = useRef(false)
 
   useEffect(() => {
     if (loaderStarted.current) return
     loaderStarted.current = true
-    loadImageSets(imageSets)
-  }, [])
 
-  const loadImageSets = async (sets) => {
-    for (let i = 0; i < sets.length; i++) {
-      const set = sets[i]
-      await loadImageSet(set)
+    const sets = getImageSets()
+    const totalSets = sets.length
 
-      // Update counter
-      loadedCount.current = i + 1
-      if (counterRef.current) {
-        counterRef.current.textContent = `${loadedCount.current}/${sets.length}`
-      }
-
-      // Update progress bar
-      const progress = ((i + 1) / sets.length) * 100
-      gsap.to(progressBar.current, {
-        width: `${progress}%`,
-        duration: 0.15,
-        ease: 'none'
-      })
-
-      // Show the thumbnail
-      setCurrentThumb(set.thumb)
-
-      // Minimum display time so images don't flicker
-      await new Promise((resolve) => setTimeout(resolve, 150))
+    if (counterRef.current) {
+      counterRef.current.textContent = `0/${totalSets}`
     }
 
-    // All done - run exit animation
-    exitAnim()
+    sets.forEach((set) => {
+      loadImageSet(set).then(() => {
+        loadedCount.current++
+
+        // Add thumb to queue
+        thumbQueue.current.push(set.thumb)
+
+        // Start displaying if not already
+        if (!isDisplaying.current) {
+          displayNextThumb(totalSets)
+        }
+      })
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const displayNextThumb = async (totalSets) => {
+    if (thumbQueue.current.length === 0) {
+      isDisplaying.current = false
+      return
+    }
+
+    isDisplaying.current = true
+
+    const thumb = thumbQueue.current.shift()
+    displayedCount.current++
+
+    // Update counter
+    if (counterRef.current) {
+      counterRef.current.textContent = `${displayedCount.current}/${totalSets}`
+    }
+
+    // Update progress bar
+    const progress = (displayedCount.current / totalSets) * 100
+    gsap.to(progressBar.current, {
+      width: `${progress}%`,
+      duration: 0.15,
+      ease: 'none'
+    })
+
+    // Show the thumbnail
+    setCurrentThumb(thumb)
+
+    // Check if we're done
+    if (displayedCount.current >= totalSets) {
+      exitAnim()
+      return
+    }
+
+    // Small delay before next thumbnail
+    await new Promise((resolve) => setTimeout(resolve, 100))
+
+    // Continue displaying
+    displayNextThumb(totalSets)
   }
 
   const loadImageSet = (set) => {
@@ -86,15 +118,15 @@ const LoadingCounter = ({ isLoading }) => {
 
     gsap.to(overlay.current, {
       height: '100vh',
-      duration: 0.6,
-      delay: 0.4,
+      duration: 0.4,
+      delay: 0.2,
       ease: 'power1.inOut'
     })
 
     gsap.to(overlay.current, {
       y: '-100vh',
-      delay: 1.1,
-      duration: 0.6,
+      delay: 0.7,
+      duration: 0.4,
       ease: 'power1.inOut',
       onComplete: () => {
         isLoading()
@@ -113,9 +145,7 @@ const LoadingCounter = ({ isLoading }) => {
         <div className='progress-container'>
           <div ref={progressBar} className='progress-bar'></div>
         </div>
-        <div ref={counterRef} className='counter'>
-          0/{imageSets.length}
-        </div>
+        <div ref={counterRef} className='counter'></div>
       </div>
       <div ref={overlay} className='overlay'></div>
     </div>
