@@ -9,6 +9,7 @@
 
   .logo {
     cursor: pointer;
+    opacity: 0;
 
     .logo-link.visibility {
       visibility: hidden;
@@ -46,10 +47,11 @@
       height: 20px;
       width: 20px;
       position: relative;
-      // background: grey;
+      /* background: grey; */
       cursor: pointer;
       transform: rotate(0deg);
       transition: transform 0.4s ease;
+      opacity: 0;
 
       span {
         position: absolute;

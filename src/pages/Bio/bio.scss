@@ -36,10 +36,11 @@
         order: 3;
 
         .credentials-inner {
-          /* display: flex; */
-
           p {
             display: block;
+          }
+          .split-child {
+            line-height: 1.3em;
           }
         }
       }
@@ -50,7 +51,7 @@
         .info-inner {
           p {
             position: relative;
-            // overflow: hidden;
+            /* overflow: hidden; */
             margin: 0;
           }
 
@@ -143,7 +144,7 @@
 
           .info-inner {
             padding-left: var(--gutter);
-            /* padding-right: var(--gutter); */
+            // padding-right: var(--gutter);
           }
         }
       }
@@ -255,9 +256,9 @@
   .bio .bio-inner .jenni-cadman {
     .credentials {
       .credentials-inner {
-        // justify-self: center;
-        // padding-left: var(--gutter);
-        // padding-right: var(--gutter);
+        /* justify-self: center;
+        padding-left: var(--gutter);
+        padding-right: var(--gutter); */
       }
     }
     .info {
