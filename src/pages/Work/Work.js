@@ -1,16 +1,16 @@
-import React, { useEffect, useLayoutEffect, useState, useRef } from "react"
-import "./work.scss"
+import React, { useEffect, useLayoutEffect, useState, useRef } from 'react'
+import './work.scss'
 
-import { collections } from "../../data/collections"
+import { collections } from '../../data/collections'
 
-import { useNavigate } from "react-router-dom"
-import gsap from "gsap"
-import CustomEase from "gsap/CustomEase"
-import SplitText from "gsap/SplitText"
-import { ScrollToPlugin } from "gsap/ScrollToPlugin"
+import { useNavigate } from 'react-router-dom'
+import gsap from 'gsap'
+import CustomEase from 'gsap/CustomEase'
+import SplitText from 'gsap/SplitText'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 
-import { useDocumentTitle } from "../../hooks/useDocumentTitle"
-import useScrollSmoother from "../../hooks/useScrollSmoother"
+import { useDocumentTitle } from '../../hooks/useDocumentTitle'
+import useScrollSmoother from '../../hooks/useScrollSmoother'
 
 const Work = () => {
   gsap.registerPlugin(CustomEase, SplitText, ScrollToPlugin)
@@ -66,7 +66,7 @@ const Work = () => {
           y: 0,
           stagger: 0.1,
           duration: 0.8,
-          delay: 0.5,
+          delay: 0.5
         }
       )
       gsap.fromTo(
@@ -86,24 +86,24 @@ const Work = () => {
     const id = e.currentTarget.id
 
     gsap.to(smoother.current, {
-      scrollTo: smoother.current.offset(cRefs[id].current, "center center"),
+      scrollTo: smoother.current.offset(cRefs[id].current, 'center center'),
       duration: 1,
-      ease: "power2.inOut",
+      ease: 'power2.inOut'
     })
   }
 
   function exitAnim(path) {
-    gsap.to(".page-overlay", {
+    gsap.to('.page-overlay', {
       scaleY: 1,
       duration: 1,
       ease: CustomEase.create(
-        "custom",
-        "M0,0,C0.05,0,0.149,0.279,0.19,0.374,0.36,0.772,0.528,0.988,1,1"
+        'custom',
+        'M0,0,C0.05,0,0.149,0.279,0.19,0.374,0.36,0.772,0.528,0.988,1,1'
       ),
       onComplete: () => {
         smoother.current.scrollTop(0)
         navigate(path)
-      },
+      }
     })
   }
 
@@ -123,10 +123,10 @@ const Work = () => {
       { y: 0 },
       {
         y: -32,
-        ease: "power1.inOut",
+        ease: 'power1.inOut',
         onComplete: () => {
           tween.revert()
-        },
+        }
       }
     )
 
@@ -134,8 +134,8 @@ const Work = () => {
     const mySplitNum = new SplitText(
       `.${target.classList[0]} .collection-number`,
       {
-        type: "chars",
-        charsClass: "numChars",
+        type: 'chars',
+        charsClass: 'numChars'
       }
     )
 
@@ -153,18 +153,18 @@ const Work = () => {
         onComplete: () => {
           delete target.dataset.running
           mySplitNum.revert()
-        },
+        }
       }
     )
   }
 
   return (
-    <div ref={work} className="work">
-      <div className="work-inner">
-        <div className="collections-menu title lg uppercase indent">
-          <div className="collections-menu-inner">
+    <div ref={work} className='work'>
+      <div className='work-inner'>
+        <div className='collections-menu title lg uppercase indent'>
+          <div className='collections-menu-inner'>
             {collections.map((entry, idx) => (
-              <div key={entry.id} ref={tRefs[idx]} className="link-wrapper">
+              <div key={entry.id} ref={tRefs[idx]} className='link-wrapper'>
                 <div
                   className={`c-link${idx} c-link`}
                   onMouseEnter={handleMouseEnter}
@@ -172,26 +172,26 @@ const Work = () => {
                   id={idx}
                 >
                   {renderTitleAnim ? (
-                    <h3 className="entry-title title lg">
-                      <span className="entry-title-inner">
-                        <div className="entry-title-container">
-                          <span className="t1 lg">{entry.title}</span>
+                    <h3 className='entry-title title lg'>
+                      <span className='entry-title-inner'>
+                        <div className='entry-title-container'>
+                          <span className='t1 lg'>{entry.title}</span>
 
-                          <span className="t2 lg">{entry.title}</span>
+                          <span className='t2 lg'>{entry.title}</span>
                         </div>
                       </span>
-                      <span className="collection-number-container">
-                        <div className="collection-number-inner">
-                          <div className="collection-number">{`0${entry.id}`}</div>
+                      <span className='collection-number-container'>
+                        <div className='collection-number-inner'>
+                          <div className='collection-number'>{`0${entry.id}`}</div>
                         </div>
                       </span>
                     </h3>
                   ) : (
                     <>
-                      <h3 className="entry-title title lg">{entry.title}</h3>
-                      <span className="collection-number-container">
-                        <div className="collection-number-inner">
-                          <h1 className="collection-number">{`0${entry.id}`}</h1>
+                      <h3 className='entry-title title lg'>{entry.title}</h3>
+                      <span className='collection-number-container'>
+                        <div className='collection-number-inner'>
+                          <h1 className='collection-number'>{`0${entry.id}`}</h1>
                         </div>
                       </span>
                     </>
@@ -201,30 +201,30 @@ const Work = () => {
             ))}
           </div>
         </div>
-        <div ref={gallery} className="collections-gallery">
+        <div ref={gallery} className='collections-gallery'>
           {collections.map((entry, idx) => (
             <div
               key={entry.id}
               ref={cRefs[idx]}
               className={`collection c${idx + 1}`}
             >
-              <div className="image">
-                <div className="image-wrapper">
+              <div className='image'>
+                <div className='image-wrapper'>
                   <img
                     src={`/images/${entry.subFolder}/${entry.featuredImage.name}.webp`}
-                    alt=""
+                    alt=''
                   />
                 </div>
               </div>
-              <div className="info">
-                <div className="info-inner">
-                  <h2 className="title sm uppercase">{entry.title}</h2>
+              <div className='info'>
+                <div className='info-inner'>
+                  <h2 className='title sm uppercase'>{entry.title}</h2>
                   {entry.desc.map((p, idx) => (
                     <p key={idx.toString()}>{p}</p>
                   ))}
 
                   <div
-                    className="btn see-collection-link"
+                    className='btn see-collection-link'
                     onClick={() => {
                       exitAnim(`/collections/0${entry.id}/`)
                     }}
@@ -237,7 +237,7 @@ const Work = () => {
           ))}
         </div>
       </div>
-      <div className="copyright">Jenni Cadman &#169; 2022</div>
+      <div className='copyright'>Jenni Cadman &#169; 2026</div>
     </div>
   )
 }

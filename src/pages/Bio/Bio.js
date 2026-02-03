@@ -241,7 +241,7 @@ const Bio = () => {
             )
           })}
         </section>
-        <div className='copyright'>Jenni Cadman &#169; 2022</div>
+        <div className='copyright'>Jenni Cadman &#169; 2026</div>
       </div>
     </div>
   )
