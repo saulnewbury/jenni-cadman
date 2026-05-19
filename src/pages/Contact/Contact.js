@@ -92,72 +92,72 @@ const Contact = () => {
 
   return (
     <>
-      <div ref={contact} className="contact">
-        <div className="contact-inner indent">
-          <form id="registrationForm" onSubmit={handleSubmit}>
-            <input type="hidden" name="session" value={token.session} />
-            <input type="hidden" name="nonce" value={token.nonce} />
-            <label htmlFor="email">
+      <div ref={contact} className='contact'>
+        <div className='contact-inner indent'>
+          <form id='registrationForm' onSubmit={handleSubmit}>
+            <input type='hidden' name='session' value={token.session} />
+            <input type='hidden' name='nonce' value={token.nonce} />
+            <label htmlFor='email'>
               Stay informed about upcoming events and exhibitions:
             </label>
-            <input type="email" name="email" placeholder="Your Email" />
-            <button type="submit" disabled={!token.session}>
+            <input type='email' name='email' placeholder='Your Email' />
+            <button type='submit' disabled={!token.session}>
               <span>Subscribe</span>
               <BsArrowRight />
             </button>
             <p className={success ? 'success' : 'error'}>{message}</p>
           </form>
 
-          <div className="enquiries">
-            <a className="mailto" href="mailto:jennicadman@gmail.com">
+          <div className='enquiries'>
+            <a className='mailto' href='mailto:jennicadman@gmail.com'>
               All Enquiries:
             </a>
             &nbsp;<span>jennicadman@gmail.com</span>
           </div>
 
-          <div className="socials">
-            <div className="socials-inner uppercase">
+          <div className='socials'>
+            <div className='socials-inner uppercase'>
               <span>
                 <a
-                  href="https://www.axisweb.org/p/jennicadman/"
-                  target="_blank"
-                  rel="noreferrer"
+                  href='https://www.axisweb.org/p/jennicadman/'
+                  target='_blank'
+                  rel='noreferrer'
                 >
                   Axis
                 </a>
               </span>
               <span>
                 <a
-                  href="https://www.flickr.com/photos/jencad/"
-                  target="_blank"
-                  rel="noreferrer"
+                  href='https://www.flickr.com/photos/jencad/'
+                  target='_blank'
+                  rel='noreferrer'
                 >
                   Flickr
                 </a>
               </span>
               <span>
                 <a
-                  href="https://www.instagram.com/jennicadmanartist/"
-                  target="_blank"
-                  rel="noreferrer"
+                  href='https://www.instagram.com/jennicadmanartist/'
+                  target='_blank'
+                  rel='noreferrer'
                 >
                   Instagram
                 </a>
               </span>
               <span>
                 <a
-                  href="https://www.pinterest.co.uk/jennicadman/"
-                  target="_blank"
-                  rel="noreferrer"
+                  href='https://www.pinterest.co.uk/jennicadman/'
+                  target='_blank'
+                  rel='noreferrer'
                 >
                   Pinterest
                 </a>
               </span>
               <span>
                 <a
-                  href="https://www.linkedin.com/in/jenni-cadman-74a5269b/"
-                  target="_blank"
-                  rel="noreferrer"
+                  href='https://www.linkedin.com/in/jenni-cadman-74a5269b/'
+                  target='_blank'
+                  rel='noreferrer'
                 >
                   LinkedIn
                 </a>
@@ -166,7 +166,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <div className="copyright">Jenni Cadman &#169; 2022</div>
+      <div className='copyright'>Jenni Cadman &#169; 2026</div>
     </>
   )
 }

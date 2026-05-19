@@ -45,13 +45,13 @@ const Collection = () => {
 
   return (
     <>
-      <div className="collection">
-        <div className="g-collection-title title indent uppercase">
-          <h3 ref={colTitle} className="lg">
+      <div className='collection'>
+        <div className='g-collection-title title indent uppercase'>
+          <h3 ref={colTitle} className='lg'>
             {title}
           </h3>
         </div>
-        <div ref={picker} className="collection-inner">
+        <div ref={picker} className='collection-inner'>
           <Picker
             imagesData={imagesData}
             collectionId={id}
@@ -60,7 +60,7 @@ const Collection = () => {
           />
         </div>
       </div>
-      <div className="copyright">Jenni Cadman &#169; 2022</div>
+      <div className='copyright'>Jenni Cadman &#169; 2026</div>
     </>
   )
 }
