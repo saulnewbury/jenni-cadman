@@ -111,22 +111,20 @@ const LoadingCounter = ({ isLoading }) => {
 
   function exitAnim() {
     // Fade out the thumbnail
-    gsap.to(container.current, {
+    gsap.set(container.current, {
       opacity: 0,
-      duration: 0.3
+      delay: 2.5
     })
 
     gsap.to(overlay.current, {
-      height: '100vh',
-      duration: 0.4,
-      delay: 0.2,
+      height: '75vh',
+      duration: 2.5,
       ease: 'power1.inOut'
     })
 
-    gsap.to(overlay.current, {
+    gsap.set(overlay.current, {
       y: '-100vh',
-      delay: 0.7,
-      duration: 0.4,
+      delay: 2.5,
       ease: 'power1.inOut',
       onComplete: () => {
         isLoading()

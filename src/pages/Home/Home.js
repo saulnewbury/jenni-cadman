@@ -22,7 +22,7 @@ const Home = () => {
         intro.current,
         2,
         { opacity: 0 },
-        { opacity: 1, ease: 'power4.inOut', delay: 0.2 }
+        { opacity: 1, ease: 'power4.inOut' }
       )
       gsap.fromTo(
         heading.current,
@@ -71,19 +71,19 @@ const Home = () => {
   }
 
   return (
-    <div className="home">
-      <div ref={pageOverlay} className="page-overlay"></div>
-      <div className="home-inner">
-        <div className="text">
-          <div className="intro-text">
+    <div className='home'>
+      <div ref={pageOverlay} className='page-overlay'></div>
+      <div className='home-inner'>
+        <div className='text'>
+          <div className='intro-text'>
             <p ref={intro}>
               Jenni Cadman is a textile artist based in the UK. She draws and
               paints with threads to create artworks infused with colour,
               texture and bold graphic lines.
             </p>
           </div>
-          <div className="banner-text">
-            <h1 ref={heading} className="uppercase">
+          <div className='banner-text'>
+            <h1 ref={heading} className='uppercase'>
               Jenni Cadman
             </h1>
           </div>
@@ -92,10 +92,10 @@ const Home = () => {
           onClick={() => {
             exitAnim('/work')
           }}
-          className="banner-image"
+          className='banner-image'
         >
-          <div ref={overlay} className="overlay"></div>
-          <img ref={image} src="/images/veronica/veronica-ii.webp" alt="" />
+          <div ref={overlay} className='overlay'></div>
+          <img ref={image} src='/images/veronica/veronica-ii.webp' alt='' />
         </div>
       </div>
     </div>
