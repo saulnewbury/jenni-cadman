@@ -155,6 +155,8 @@ img {
   background-color: white;
   transform: scaleY(0);
   transform-origin: bottom;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 /* Copyright */

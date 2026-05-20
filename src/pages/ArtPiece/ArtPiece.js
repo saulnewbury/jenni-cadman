@@ -72,6 +72,12 @@ const ArtPiece = () => {
   //-------------------------------------------------------------------------
 
   useLayoutEffect(() => {
+    let innerRafId
+    const rafId = requestAnimationFrame(() => {
+      innerRafId = requestAnimationFrame(() => {
+        gsap.set('.page-overlay', { scaleY: 0 })
+      })
+    })
     gsap.set('body', {
       overflowY: 'auto'
     })
@@ -185,6 +191,8 @@ const ArtPiece = () => {
     }, artpiece)
 
     return () => {
+      cancelAnimationFrame(rafId)
+      if (innerRafId) cancelAnimationFrame(innerRafId)
       page.kill()
       ctx.revert()
     }
@@ -215,8 +223,11 @@ const ArtPiece = () => {
       duration: 1,
       delay: 0.8,
       onComplete: () => {
-        smoother.current.scrollTop(0)
-        navigate(path)
+        gsap.set('.page-overlay', { scaleY: 1 })
+        requestAnimationFrame(() => {
+          smoother.current.scrollTop(0)
+          navigate(path)
+        })
       }
     })
   }
