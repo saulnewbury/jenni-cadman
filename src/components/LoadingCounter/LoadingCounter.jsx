@@ -162,7 +162,7 @@ function getImageSets() {
       sets.push({
         normal: `${basePath}/${img.image}.webp`,
         detail: img.detail ? `${basePath}/${img.image}-detail.webp` : null,
-        thumb: `${basePath}/thumbs/${img.image}-thumb.webp`
+        thumb: `${basePath}/thumbs/${img.image}-thumb.webp?v=2`
       })
     })
   })
